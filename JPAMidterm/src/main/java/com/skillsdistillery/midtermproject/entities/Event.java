@@ -48,8 +48,8 @@ public class Event {
 	@Column(name = "rideshare")
 	private boolean rideShare;
 	
-	@Column(name = "owner_id")
-	private int customerId;
+	@Column(name = "user_id")
+	private int ownerId;
 	
 	@Column(name = "date_created")
 	private Date dateCreated;
@@ -147,11 +147,11 @@ public class Event {
 	}
 
 	public int getCustomerId() {
-		return customerId;
+		return ownerId;
 	}
 
 	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
+		this.ownerId = customerId;
 	}
 
 	public Date getDateCreated() {
@@ -179,6 +179,6 @@ public class Event {
 		return "Event [id=" + id + ", name=" + name + ", description=" + description + ", eventSubjectId="
 				+ eventSubjectId + ", startTime=" + startTime + ", finishTime=" + finishTime + ", imageUrl=" + imageUrl
 				+ ", addressID=" + addressID + ", open=" + open + ", maxSize=" + maxSize + ", rideShare=" + rideShare
-				+ ", customerId=" + customerId + ", dateCreated=" + dateCreated + ", active=" + active + "]";
+				+ ", customerId=" + ownerId + ", dateCreated=" + dateCreated + ", active=" + active + "]";
 	}
 }
