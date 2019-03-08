@@ -22,11 +22,16 @@ DROP TABLE IF EXISTS `user` ;
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(200) NOT NULL,
+  `address_id` INT NOT NULL,
+  `role_id` INT NOT NULL,
+  `password` VARCHAR(100) NOT NULL,
+  `first_name` VARCHAR(45) NOT NULL,
+  `last_name` VARCHAR(100) NULL,
   `email` VARCHAR(200) NULL,
-  `role` VARCHAR(45) NULL,
+  `phone` INT NULL,
+  `image_url` VARCHAR(500) NULL,
   `active` TINYINT NULL,
+  `date_created` DATETIME NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
