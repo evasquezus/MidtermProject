@@ -1,4 +1,4 @@
-package com.skillsdistillery.midtermproject.entities;
+package com.skillsdistillery.midterm.entities;
 
 import java.util.Date;
 

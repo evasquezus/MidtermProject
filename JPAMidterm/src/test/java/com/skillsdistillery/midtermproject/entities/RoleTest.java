@@ -9,6 +9,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
+import com.skillsdistillery.midterm.entities.EventSubject;
+
 public class RoleTest {
 
 	private static EntityManagerFactory emf;

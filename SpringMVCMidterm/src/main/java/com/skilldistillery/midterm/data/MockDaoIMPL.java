@@ -1,4 +1,4 @@
-package com.skilldistillery.midtermproject.data;
+package com.skilldistillery.midterm.data;
 
 public class MockDaoIMPL implements MidtermMockDAO {
 

@@ -3,10 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<jsp:include page="bootstrap/bootstrapHead.jsp" />
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Events app</title>
 </head>
 <body>
-test
+	<jsp:include page="navigation/navigation.jsp" />
+	<div class="container-fluid">
+		test	
+	</div>
+	<jsp:include page="bootstrap/bootstrapFoot.jsp" />
 </body>
 </html>
