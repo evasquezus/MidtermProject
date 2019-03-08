@@ -61,8 +61,84 @@ DROP TABLE IF EXISTS `event` ;
 
 CREATE TABLE IF NOT EXISTS `event` (
   `id` INT NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `description` TEXT(5000) NOT NULL,
+  `event_type_id` INT NOT NULL,
+  `start_time` DATETIME NOT NULL,
+  `finish_time` DATETIME NOT NULL,
+  `image_url` VARCHAR(200) NULL,
+  `address_id` INT NULL,
+  `open` TINYINT NULL,
+  `max_size` INT NULL,
+  `rideshare` TINYINT NULL,
+  `owner_id` INT NULL,
+  `date_created` DATETIME NULL,
+  `active` TINYINT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `event_subject`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `event_subject` ;
+
+CREATE TABLE IF NOT EXISTS `event_subject` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `event_name` VARCHAR(200) NULL,
+  `img_url` VARCHAR(200) NULL,
+  `user_id` INT NULL,
+  `date_created` DATETIME NOT NULL,
+  `flag_content` TINYINT NULL,
+  `active` TINYINT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `user_event`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `user_event` ;
+
+CREATE TABLE IF NOT EXISTS `user_event` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NULL,
+  `date_created` DATETIME NULL,
+  `event_rating` INT NULL,
+  `flag_content` TINYINT NULL,
+  `active` TINYINT NULL,
+  `host_rating` INT NULL,
+  `event_id` INT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `comment`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `comment` ;
+
+CREATE TABLE IF NOT EXISTS `comment` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(200) NULL,
+  `body` TEXT(2000) NULL,
+  `flag_content` TINYINT NULL,
+  `date_created` DATETIME NULL,
+  `in_reply_to` INT NULL,
+  `active` TINYINT NULL,
+  `user_event_id` INT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `role`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `role` ;
+
+CREATE TABLE IF NOT EXISTS `role` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
-  `description` TEXT(5000) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
