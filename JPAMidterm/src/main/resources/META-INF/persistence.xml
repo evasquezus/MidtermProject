@@ -10,6 +10,10 @@
 
 		<class>com.skilldistillery.midterm.entities.User</class>
 		<class>com.skilldistillery.midterm.entities.Address</class>
+		<class>com.skilldistillery.midterm.entities.Comment</class>
+		<class>com.skilldistillery.midterm.entities.Event</class>
+		<class>com.skilldistillery.midterm.entities.Role</class>
+		<class>com.skilldistillery.midterm.entities.UserEvent</class>
 
 
 		<properties>
