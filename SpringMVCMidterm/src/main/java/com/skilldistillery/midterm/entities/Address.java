@@ -1,10 +1,14 @@
 package com.skilldistillery.midterm.entities;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 public class Address {
@@ -31,6 +35,18 @@ public class Address {
 	
 	@Column(name = "zip_code")
 	private int zipcode;
+	
+	@Column(name="date_created")
+	@CreationTimestamp
+	private Date dateCreated;
+
+	public Date getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
 
 	public int getId() {
 		return id;
@@ -91,7 +107,8 @@ public class Address {
 	@Override
 	public String toString() {
 		return "Address [id=" + id + ", address=" + address + ", apartment=" + apartment + ", city=" + city + ", state="
-				+ state + ", stateAbbreviation=" + stateAbbreviation + ", zipcode=" + zipcode + "]";
+				+ state + ", stateAbbreviation=" + stateAbbreviation + ", zipcode=" + zipcode + ", dateCreated="
+				+ dateCreated + "]";
 	}
 
 	public Address() {
