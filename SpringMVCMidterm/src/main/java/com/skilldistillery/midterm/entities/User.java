@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 public class User {
@@ -35,7 +35,7 @@ public class User {
 	
 	private Boolean active;
 	
-	@Temporal(TemporalType.DATE)
+	@CreationTimestamp
 	@Column(name="date_created")
 	private Date dateCreated;
 
