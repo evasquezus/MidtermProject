@@ -1,4 +1,4 @@
-package com.skilldistillery.midterm.entities;
+package com.skillsdistillery.midtermproject.entities;
 
 import java.util.Date;
 
@@ -11,6 +11,18 @@ import javax.persistence.Id;
 @Entity
 public class Event {
 
+	
+	public Event() {
+		super();
+	}
+	
+	@Override
+	public String toString() {
+		return "Event [id=" + id + ", name=" + name + ", description=" + description + ", eventTypeId=" + eventTypeId
+				+ ", startTime=" + startTime + ", finishTime=" + finishTime + ", imageUrl=" + imageUrl + ", addressID="
+				+ addressID + ", open=" + open + ", maxSize=" + maxSize + ", rideShare=" + rideShare + ", customerId="
+				+ customerId + ", dateCreated=" + dateCreated + ", active=" + active + "]";
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -167,18 +179,6 @@ public class Event {
 
 	public void setActive(boolean active) {
 		this.active = active;
-	}
-	
-	public Event() {
-		super();
-	}
-	
-	@Override
-	public String toString() {
-		return "Event [id=" + id + ", name=" + name + ", description=" + description + ", eventTypeId=" + eventTypeId
-				+ ", startTime=" + startTime + ", finishTime=" + finishTime + ", imageUrl=" + imageUrl + ", addressID="
-				+ addressID + ", open=" + open + ", maxSize=" + maxSize + ", rideShare=" + rideShare + ", customerId="
-				+ customerId + ", dateCreated=" + dateCreated + ", active=" + active + "]";
 	}
 	
 	
