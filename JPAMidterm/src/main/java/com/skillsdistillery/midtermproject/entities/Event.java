@@ -24,8 +24,8 @@ public class Event {
 	@Column(name = "description")
 	private String description;
 	
-	@Column(name = "event_type_id")
-	private String eventTypeId;
+	@Column(name = "event_subject_id")
+	private String eventSubjectId;
 	
 	@Column(name = "start_time")
 	private  Date startTime;
@@ -81,12 +81,13 @@ public class Event {
 		this.description = description;
 	}
 
-	public String getEventTypeId() {
-		return eventTypeId;
+
+	public String getEventSubjectId() {
+		return eventSubjectId;
 	}
 
-	public void setEventTypeId(String eventTypeId) {
-		this.eventTypeId = eventTypeId;
+	public void setEventSubjectId(String eventSubjectId) {
+		this.eventSubjectId = eventSubjectId;
 	}
 
 	public Date getStartTime() {
@@ -175,9 +176,9 @@ public class Event {
 	
 	@Override
 	public String toString() {
-		return "Event [id=" + id + ", name=" + name + ", description=" + description + ", eventTypeId=" + eventTypeId
-				+ ", startTime=" + startTime + ", finishTime=" + finishTime + ", imageUrl=" + imageUrl + ", addressID="
-				+ addressID + ", open=" + open + ", maxSize=" + maxSize + ", rideShare=" + rideShare + ", customerId="
-				+ customerId + ", dateCreated=" + dateCreated + ", active=" + active + "]";
+		return "Event [id=" + id + ", name=" + name + ", description=" + description + ", eventSubjectId="
+				+ eventSubjectId + ", startTime=" + startTime + ", finishTime=" + finishTime + ", imageUrl=" + imageUrl
+				+ ", addressID=" + addressID + ", open=" + open + ", maxSize=" + maxSize + ", rideShare=" + rideShare
+				+ ", customerId=" + customerId + ", dateCreated=" + dateCreated + ", active=" + active + "]";
 	}
 }
