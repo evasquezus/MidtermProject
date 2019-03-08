@@ -8,13 +8,14 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
-class EventSubjectTest {
+public class AddressTest {
+
 	private static EntityManagerFactory emf;
 	private EntityManager em;
 	private EventSubject eventSubject;
-
+	
+	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		System.out.println("In BeforeAll");
@@ -28,7 +29,7 @@ class EventSubjectTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		em = emf.createEntityManager();
+		em=emf.createEntityManager();
 		eventSubject = em.find(EventSubject.class, 1);
 	}
 
@@ -37,5 +38,4 @@ class EventSubjectTest {
 		em.close();
 		eventSubject = null;
 	}
-
 }
