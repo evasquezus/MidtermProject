@@ -14,7 +14,7 @@ public class MidTermController {
 	@Autowired
 	private MidtermMockDAO mockDao;
 	
-	@RequestMapping(path = "/", method = RequestMethod.GET)
+	@RequestMapping(path= {"/", "home.do"}, method = RequestMethod.GET)
 	public String index() {
 		return "WEB-INF/index.jsp";
 	}
