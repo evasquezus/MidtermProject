@@ -25,9 +25,6 @@ public class Event {
 
 	private String description;
 
-	@Column(name = "event_subject_id")
-	private String eventSubjectId;
-
 	@CreationTimestamp
 	@Column(name = "start_time")
 	private Date startTime;
@@ -58,15 +55,23 @@ public class Event {
 	@JoinColumn(name = "user_id")
 	private User user; // can be changed as ownerUser ?
 
-
-
 	@OneToMany(mappedBy = "event")
 	private List<UserEvent> userevents;
 
-
+	@ManyToOne
+	@JoinColumn(name = "event_subject_id")
+	private EventSubject eventSubject;
 
 	public int getAddressId() {
 		return addressId;
+	}
+
+	public EventSubject getEventSubject() {
+		return eventSubject;
+	}
+
+	public void setEventSubject(EventSubject eventSubject) {
+		this.eventSubject = eventSubject;
 	}
 
 	public void setAddressId(int addressId) {
@@ -113,13 +118,6 @@ public class Event {
 		this.description = description;
 	}
 
-	public String getEventSubjectId() {
-		return eventSubjectId;
-	}
-
-	public void setEventSubjectId(String eventSubjectId) {
-		this.eventSubjectId = eventSubjectId;
-	}
 
 	public Date getStartTime() {
 		return startTime;
@@ -190,10 +188,10 @@ public class Event {
 
 	@Override
 	public String toString() {
-		return "Event [id=" + id + ", name=" + name + ", description=" + description + ", eventSubjectId="
-				+ eventSubjectId + ", startTime=" + startTime + ", finishTime=" + finishTime + ", imageUrl=" + imageUrl
-				+ ", addressId=" + addressId + ", open=" + open + ", maxSize=" + maxSize + ", rideShare=" + rideShare
-				+ ", dateCreated=" + dateCreated + ", active=" + active + ", user=" + user + ", userevents="
-				+ userevents + "]";
+		return "Event [id=" + id + ", name=" + name + ", description=" + description + ", startTime=" + startTime
+				+ ", finishTime=" + finishTime + ", imageUrl=" + imageUrl + ", addressId=" + addressId + ", open="
+				+ open + ", maxSize=" + maxSize + ", rideShare=" + rideShare + ", dateCreated=" + dateCreated
+				+ ", active=" + active + ", user=" + user + ", userevents=" + userevents + ", eventSubject="
+				+ eventSubject + "]";
 	}
 }

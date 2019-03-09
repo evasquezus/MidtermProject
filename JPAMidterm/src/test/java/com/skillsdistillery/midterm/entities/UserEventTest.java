@@ -39,7 +39,7 @@ public class UserEventTest {
 	@Test
 	public void test_userevent_map_event_manytone_assosiation() {
 		assertNotNull(userEvent);
-		assertEquals("1", userEvent.getEvent().getEventSubjectId().toString());
+		assertEquals(1, userEvent.getEvent().getEventSubject().getId());
 		assertEquals("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", userEvent.getEvent().getDescription());
 		assertEquals("todd@todd.com", userEvent.getUser().getEmail());
 	}

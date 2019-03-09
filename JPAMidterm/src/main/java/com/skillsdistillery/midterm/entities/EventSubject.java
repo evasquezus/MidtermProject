@@ -1,6 +1,7 @@
 package com.skillsdistillery.midterm.entities;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -38,7 +40,17 @@ public class EventSubject {
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
+	
+	@OneToMany(mappedBy="eventSubject")
+	private List<Event> events;
 
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
 
 	public String getEventName() {
 		return eventName;
@@ -100,7 +112,8 @@ public class EventSubject {
 	@Override
 	public String toString() {
 		return "EventSubject [id=" + id + ", eventName=" + eventName + ", imgUrl=" + imgUrl + ", dateCreated="
-				+ dateCreated + ", flagContent=" + flagContent + ", active=" + active + ", user=" + user + "]";
+				+ dateCreated + ", flagContent=" + flagContent + ", active=" + active + ", user=" + user + ", events="
+				+ events + "]";
 	}
 	
 	

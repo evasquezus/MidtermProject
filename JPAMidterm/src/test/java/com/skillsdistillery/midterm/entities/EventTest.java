@@ -61,5 +61,11 @@ public class EventTest {
 		assertEquals(1, event.getUserevents().size());
 		assertEquals("2004-05-23 14:25:10.0", event.getUserevents().get(0).getDateCreated().toString());
 	}
+	
+	@Test
+	public void test_event_map_eventSubject_manytoone_assosiation() {
+		assertNotNull(event);
+		assertEquals("metallica", event.getEventSubject().getEventName());
+	}
 
 }
