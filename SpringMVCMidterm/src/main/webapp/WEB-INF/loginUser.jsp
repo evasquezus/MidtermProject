@@ -10,8 +10,21 @@
 			<div>
 				<div class="card" style="width: 18rem;">
 					<div class="card-body">
-						<h5 class="card-title">${user.messageTitle}</h5>
-						<p class="card-text">${message.messageBody}</p>
+						<h5 class="card-title">${user.firstName}</h5>
+						<p class="card-text">
+						${user.id}
+						${user.addressId}
+						${user.roleId}
+						${user.firstName}
+						${user.lastName}
+						${user.email}
+						${user.active}
+						${user.dateCreated}
+						${user.firstName}
+						${user.firstName}
+						${user.firstName}
+						${user.firstName}
+						</p>
 						<a href="#" class="card-link"></a><a
 							href="getMessage.do?fid=${message.id}">${message.messageTitle}</a>
 					</div>
