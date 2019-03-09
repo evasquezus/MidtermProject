@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -15,10 +16,11 @@ public class UserEvent {
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
+	@Id
 	private int id;
 	
-	@Column(name = "user_id")
-	private int userId;
+//	@Column(name = "user_id")
+//	private int userId;
 	
 	public User getUser() {
 		return user;
@@ -42,14 +44,16 @@ public class UserEvent {
 	
 	@Column(name = "host_rating")
 	private int hostRating;
-	
-	@Column(name = "event_id")
-	private int eventId;
+
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 
+	@ManyToOne
+	@JoinColumn(name = "event_id")
+	private Event event;
+	
 	public Event getEvent() {
 		return event;
 	}
@@ -58,25 +62,12 @@ public class UserEvent {
 		this.event = event;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "event_id")
-	private Event event;
-	
-
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
 	}
 
 	public Date getDateCreated() {
@@ -120,23 +111,15 @@ public class UserEvent {
 		this.hostRating = hostRating;
 	}
 
-	public int getEventId() {
-		return eventId;
-	}
-
-	public void setEventId(int eventId) {
-		this.eventId = eventId;
-	}
-
 	public UserEvent() {
 		super();
 	}
 	
 	@Override
 	public String toString() {
-		return "UserEvent [id=" + id + ", userId=" + userId + ", dateCreated=" + dateCreated + ", eventRating="
-				+ eventRating + ", flagContent=" + flagContent + ", active=" + active + ", hostRating=" + hostRating
-				+ ", eventId=" + eventId + ", user=" + user + ", event=" + event + "]";
+		return "UserEvent [id=" + id + ", dateCreated=" + dateCreated + ", eventRating=" + eventRating
+				+ ", flagContent=" + flagContent + ", active=" + active + ", hostRating=" + hostRating + ", user="
+				+ user + ", event=" + event + "]";
 	}
 	
 	

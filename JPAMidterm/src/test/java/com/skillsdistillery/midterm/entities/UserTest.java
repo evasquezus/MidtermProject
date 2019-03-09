@@ -24,7 +24,7 @@ class UserTest {
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		System.out.println("In BeforeAll");
-		emf = Persistence.createEntityManagerFactory("VideoStore");
+		emf = Persistence.createEntityManagerFactory("MidtermProject");
 	}
 
 	@AfterAll
@@ -34,8 +34,10 @@ class UserTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		System.out.println("In each");
 		em=emf.createEntityManager();
 		user = em.find(User.class, 2);
+		System.out.println(user +"##########");
 	}
 
 	@AfterEach
@@ -47,6 +49,7 @@ class UserTest {
 
 	@Test
 	void test_user() {
+		System.out.println("11111111111");
 		assertEquals("Todd", user.getFirstName());
 		
 	}
