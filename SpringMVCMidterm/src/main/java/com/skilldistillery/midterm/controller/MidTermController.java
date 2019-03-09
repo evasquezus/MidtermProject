@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.midterm.data.MidtermMockDAO;
-import com.skillsdistillery.midterm.entities.Event;
-import com.skillsdistillery.midterm.entities.User;
+import com.skilldistillery.midterm.entities.Event;
+import com.skilldistillery.midterm.entities.User;
 
 @Controller
 public class MidTermController {
