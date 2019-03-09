@@ -16,9 +16,9 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="#">Home
-				</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+				<form action="getHome.do" method="GET">
+					<input class="btn btn-primary" type="submit" value="Home">
+				</form>
 				<form action="getLogin.do" method="GET">
 					<input class="btn btn-primary" type="submit" value="Login">
 				</form>
