@@ -28,17 +28,36 @@ public class Comment {
 	
 	@Column(name = "date_created")
 	private Date dateCreated;
-	
-	@Column(name = "in_reply_to")
-	private int inReplyTo;
-	
+		
 	private boolean active;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_event_id")
 	private UserEvent userEvent;
 	
+	@OneToMany(mappedBy ="comment")
+	private List<Comment> replyComments;
 	
+	@ManyToOne
+	@JoinColumn(name = "in_reply_to")
+	private Comment comment; 
+	
+	public List<Comment> getReplyComments() {
+		return replyComments;
+	}
+
+	public void setReplyComments(List<Comment> replyComments) {
+		this.replyComments = replyComments;
+	}
+
+	public Comment getComment() {
+		return comment;
+	}
+
+	public void setComment(Comment comment) {
+		this.comment = comment;
+	}
+
 	public UserEvent getUserEvent() {
 		return userEvent;
 	}
@@ -87,14 +106,6 @@ public class Comment {
 		this.dateCreated = dateCreated;
 	}
 
-	public int getInReplyTo() {
-		return inReplyTo;
-	}
-
-	public void setInReplyTo(int inReplyTo) {
-		this.inReplyTo = inReplyTo;
-	}
-
 	public boolean isActive() {
 		return active;
 	}
@@ -107,8 +118,8 @@ public class Comment {
 	@Override
 	public String toString() {
 		return "Comment [id=" + id + ", title=" + title + ", body=" + body + ", flagContent=" + flagContent
-				+ ", dateCreated=" + dateCreated + ", inReplyTo=" + inReplyTo + ", active=" + active + ", userEvent="
-				+ userEvent + "]";
+				+ ", dateCreated=" + dateCreated + ", active=" + active + ", userEvent=" + userEvent
+				+ ", replyComments=" + replyComments + ", comment=" + comment + "]";
 	}
 
 	public Comment() {

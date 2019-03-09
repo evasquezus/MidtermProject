@@ -36,5 +36,21 @@ public class CommentTest {
 		assertEquals("2004-05-23 14:25:10.0", comment.getUserEvent().getDateCreated().toString());
 	}
 	
+	@Test
+	public void test_comment_map_replycomments_one_to_many() {
+		assertNotNull(comment);
+		assertEquals("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
+				comment.getReplyComments().get(0).getBody());
+	}
+	
+	@Test
+	public void test_replycomments_comment_map_many_to_one_() {
+		assertNotNull(comment);
+		assertEquals("first comment", 
+				comment.getComment().getTitle());
+		assertEquals("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
+				comment.getComment().getBody());
+	}
+	
 
 }
