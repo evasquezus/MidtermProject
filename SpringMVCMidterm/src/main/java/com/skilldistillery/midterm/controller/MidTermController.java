@@ -18,4 +18,6 @@ public class MidTermController {
 	public String index() {
 		return "WEB-INF/index.jsp";
 	}
+	
+	
 }
