@@ -37,16 +37,14 @@
 							id="dropdownMenuButtonForRegister" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false">Register</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<form action="registerUser.do" method="POST" name="registerUser">
+							<form action="registerUser.do" method="POST">
 								First Name: <input type="text" name="firstName"> <br>
 								Last Name: <input type="text" name="lastName"> <br>
 								Email: <input type="text" name="email"> <br>
 								Password: <input type="text" name="password"> <br>
 								Confirm Password: <input type="text" name="confirmPassword">
 								<br>
-								<input type="hidden" name="userID"
-										value="${user.id}" /> <input type="submit" name="userID"
-										value="Register User" />
+								<input type="submit" name="userID" value="Register User" />
 							</form>
 						</div>
 					</div>

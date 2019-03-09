@@ -22,7 +22,7 @@ public class MidTermController {
 		return "WEB-INF/index.jsp";
 	}
 
-	@RequestMapping(path = "registerUser.do", params = { "registerUser" }, method = RequestMethod.POST)
+	@RequestMapping(path = "registerUser.do", method = RequestMethod.POST)
 	public ModelAndView registerUser(User user) {
 		ModelAndView mv = new ModelAndView();
 		mockDao.createUser(user);
