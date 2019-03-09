@@ -1,11 +1,11 @@
 package com.skillsdistillery.midterm.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -13,44 +13,46 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.skillsdistillery.midterm.entities.User;
-
 class UserTest {
-	private static EntityManagerFactory emf;
+
+	@PersistenceContext
 	private EntityManager em;
+	
 	private User user;
 	
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		System.out.println("In BeforeAll");
-		emf = Persistence.createEntityManagerFactory("MidtermProject");
+		
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		emf.close();
+		
 	}
 
 	@BeforeEach
 	void setUp() throws Exception {
 		System.out.println("In each");
-		em=emf.createEntityManager();
-		user = em.find(User.class, 2);
+//		em=emf.createEntityManager();
+		
 		System.out.println(user +"##########");
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		em.close();
-		user = null;
+//		em.close();
+//		user = null;
 	}
 
 
 	@Test
 	void test_user() {
-		System.out.println("11111111111");
-		assertEquals("Todd", user.getFirstName());
+		user = em.find(User.class, 2);
+//		emf = Persistence.createEntityManagerFactory("MidtermProject");
+		System.out.println("user");
+		assertEquals("Toddksjdfsd", user.getFirstName());
 		
 	}
 
