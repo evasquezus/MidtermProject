@@ -15,7 +15,6 @@
 		<class>com.skilldistillery.midterm.entities.Role</class>
 		<class>com.skilldistillery.midterm.entities.UserEvent</class>
 		<class>com.skilldistillery.midterm.entities.EventSubject</class>
-		<class>com.skilldistillery.midterm.entities.State</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.url"

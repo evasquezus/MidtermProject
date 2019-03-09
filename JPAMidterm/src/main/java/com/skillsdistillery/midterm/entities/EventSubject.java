@@ -20,6 +20,9 @@ public class EventSubject {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@Column(name="event_name")
+	private String eventName;
+	
 	@Column(name="img_url")
 	private String imgUrl;
 	
@@ -36,6 +39,14 @@ public class EventSubject {
 	@JoinColumn(name = "user_id")
 	private User user;
 
+
+	public String getEventName() {
+		return eventName;
+	}
+
+	public void setEventName(String eventName) {
+		this.eventName = eventName;
+	}
 
 	public User getUser() {
 		return user;
@@ -88,8 +99,8 @@ public class EventSubject {
 	
 	@Override
 	public String toString() {
-		return "EventSubject [id=" + id + ", imgUrl=" + imgUrl + ", dateCreated=" + dateCreated + ", flagContent="
-				+ flagContent + ", active=" + active + "]";
+		return "EventSubject [id=" + id + ", eventName=" + eventName + ", imgUrl=" + imgUrl + ", dateCreated="
+				+ dateCreated + ", flagContent=" + flagContent + ", active=" + active + ", user=" + user + "]";
 	}
 	
 	

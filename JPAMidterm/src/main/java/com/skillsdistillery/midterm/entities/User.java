@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -45,51 +46,44 @@ public class User {
 	@JoinColumn(name = "address_id")
 	private Address address;
 
-	@OneToOne
-	@JoinColumn(name = "role_id")
+	@ManyToOne
+	@JoinColumn(name="role_id")
 	private Role role;
 	
 	@OneToMany(mappedBy="user")
-	  private List<Event> eventList;
-//	
-//	@OneToMany(mappedBy="user")
-//	  private List<UserEvent> userEventList;
-//	
+	private List<Event> events;
+
 	@OneToMany(mappedBy="user")
-	  private List<EventSubject> eventSubjectList;
+	private List<EventSubject> eventSubjects;
+
+	@OneToMany(mappedBy="user")
+	private List<UserEvent> userEvents;
 
 
-	public List<Event> getEventList() {
-		return eventList;
+	public List<UserEvent> getUserEvents() {
+		return userEvents;
 	}
 
-	public void setEventList(List<Event> eventList) {
-		this.eventList = eventList;
+	public void setUserEvents(List<UserEvent> userEvents) {
+		this.userEvents = userEvents;
 	}
 
-//	public List<UserEvent> getUserEventList() {
-//		return userEventList;
-//	}
-//
-//	public void setUserEventList(List<UserEvent> userEventList) {
-//		this.userEventList = userEventList;
-//	}
-
-	public List<EventSubject> getEventSubjectList() {
-		return eventSubjectList;
+	public List<EventSubject> getEventSubjects() {
+		return eventSubjects;
 	}
 
-	public void setEventSubjectList(List<EventSubject> eventSubjectList) {
-		this.eventSubjectList = eventSubjectList;
+	public void setEventSubjects(List<EventSubject> eventSubjects) {
+		this.eventSubjects = eventSubjects;
 	}
 
-//
-//	@Override
-//	public String toString() {
-//		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-//				+ ", phone=" + phone + ", imageUrl=" + imageUrl + ", password=" + password + ", active=" + active
-//				+ ", dateCreated=" + dateCreated + ", address=" + address + ", role=" + role + "]";
-//	}
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+
 
 	public Address getAddress() {
 		return address;
@@ -177,6 +171,14 @@ public class User {
 
 	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
+	}
+	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", phone=" + phone + ", imageUrl=" + imageUrl + ", password=" + password + ", active=" + active
+				+ ", dateCreated=" + dateCreated + ", address=" + address + ", role=" + role + ", events=" + events
+				+ ", eventSubjects=" + eventSubjects + ", userEvents=" + userEvents + "]";
 	}
 
 }

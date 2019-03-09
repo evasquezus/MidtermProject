@@ -13,13 +13,10 @@ public class Comment {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
 	private int id;
 	
-	@Column(name = "title")
 	private String title;
 	
-	@Column(name = "body")
 	private String body;
 	
 	@Column(name = "flag_content")
@@ -31,7 +28,6 @@ public class Comment {
 	@Column(name = "in_reply_to")
 	private int inReplyTo;
 	
-	@Column(name = "active")
 	private boolean active;
 	
 	@Column(name = "user_event_id")

@@ -9,58 +9,53 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-public class UserEvent {
-
-	
+@Table(name="user_event")
+public class UserEvent {	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
 	@Id
 	private int id;
-	
-//	@Column(name = "user_id")
-//	private int userId;
-	
-//	public User getUser() {
-//		return user;
-//	}
-//
-//	public void setUser(User user) {
-//		this.user = user;
-//	}
 
 	@Column(name = "date_created")
 	private Date dateCreated;
 	
 	@Column(name = "event_rating")
-	private int eventRating;
+	private Integer eventRating;
 	
 	@Column(name = "flag_content")
 	private boolean flagContent;
 	
-	@Column(name = "active")
 	private boolean active;
 	
 	@Column(name = "host_rating")
-	private int hostRating;
+	private Integer hostRating;
 
-	
-//	@ManyToOne
-//	@JoinColumn(name = "user_id")
-//	private User user;
-//
-//	@ManyToOne
-//	@JoinColumn(name = "event_id")
-//	private Event event;
-//	
-//	public Event getEvent() {
-//		return event;
-//	}
-//
-//	public void setEvent(Event event) {
-//		this.event = event;
-//	}
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	@ManyToOne
+	@JoinColumn(name = "event_id")
+	private Event event;
+
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
 
 	public int getId() {
 		return id;
@@ -110,15 +105,5 @@ public class UserEvent {
 	public void setHostRating(int hostRating) {
 		this.hostRating = hostRating;
 	}
-
-
-	
-//	@Override
-//	public String toString() {
-//		return "UserEvent [id=" + id + ", dateCreated=" + dateCreated + ", eventRating=" + eventRating
-//				+ ", flagContent=" + flagContent + ", active=" + active + ", hostRating=" + hostRating + ", user="
-//				+ user + ", event=" + event + "]";
-//	}
-	
 	
 }

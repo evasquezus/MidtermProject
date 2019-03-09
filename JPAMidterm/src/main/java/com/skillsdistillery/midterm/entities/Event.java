@@ -1,6 +1,7 @@
 package com.skillsdistillery.midterm.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,27 +10,29 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 public class Event {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
 	private int id;
 
-	@Column(name = "name")
 	private String name;
 
-	@Column(name = "description")
 	private String description;
 
 	@Column(name = "event_subject_id")
 	private String eventSubjectId;
 
+	@CreationTimestamp
 	@Column(name = "start_time")
 	private Date startTime;
 
+	@CreationTimestamp
 	@Column(name = "finish_time")
 	private Date finishTime;
 
@@ -37,38 +40,46 @@ public class Event {
 	private String imageUrl;
 
 	@Column(name = "address_id")
-	private int addressID;
+	private int addressId;
 
-	@Column(name = "open")
 	private boolean open;
 
 	@Column(name = "max_size")
 	private int maxSize;
 
-	@Column(name = "rideshare")
 	private boolean rideShare;
 
 	@Column(name = "date_created")
 	private Date dateCreated;
 
-	@Column(name = "active")
 	private boolean active;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user; // can be changed as ownerUser ?
 
-//	@OneToMany(mappedBy = "event")
-//	private List<UserEvent> userevents;
 
-//	public List<UserEvent> getUserevents() {
-//		return userevents;
-//	}
-//
-//	public void setUserevents(List<UserEvent> userevents) {
-//		this.userevents = userevents;
-//	}
 
+	@OneToMany(mappedBy = "event")
+	private List<UserEvent> userevents;
+
+
+
+	public int getAddressId() {
+		return addressId;
+	}
+
+	public void setAddressId(int addressId) {
+		this.addressId = addressId;
+	}
+
+	public List<UserEvent> getUserevents() {
+		return userevents;
+	}
+
+	public void setUserevents(List<UserEvent> userevents) {
+		this.userevents = userevents;
+	}
 
 	public User getUser() {
 		return user;
@@ -134,13 +145,7 @@ public class Event {
 		this.imageUrl = imageUrl;
 	}
 
-	public int getAddressID() {
-		return addressID;
-	}
 
-	public void setAddressID(int addressID) {
-		this.addressID = addressID;
-	}
 
 	public boolean isOpen() {
 		return open;
@@ -183,12 +188,12 @@ public class Event {
 	}
 
 
-//	@Override
-//	public String toString() {
-//		return "Event [id=" + id + ", name=" + name + ", description=" + description + ", eventSubjectId="
-//				+ eventSubjectId + ", startTime=" + startTime + ", finishTime=" + finishTime + ", imageUrl=" + imageUrl
-//				+ ", addressID=" + addressID + ", open=" + open + ", maxSize=" + maxSize + ", rideShare=" + rideShare
-//				+ ", ownerId=" + ownerId + ", dateCreated=" + dateCreated + ", active=" + active + ", user=" + user
-//				+ ", userevents=" + userevents + "]";
-//	}
+	@Override
+	public String toString() {
+		return "Event [id=" + id + ", name=" + name + ", description=" + description + ", eventSubjectId="
+				+ eventSubjectId + ", startTime=" + startTime + ", finishTime=" + finishTime + ", imageUrl=" + imageUrl
+				+ ", addressId=" + addressId + ", open=" + open + ", maxSize=" + maxSize + ", rideShare=" + rideShare
+				+ ", dateCreated=" + dateCreated + ", active=" + active + ", user=" + user + ", userevents="
+				+ userevents + "]";
+	}
 }

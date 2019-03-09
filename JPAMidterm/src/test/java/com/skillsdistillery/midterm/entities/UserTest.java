@@ -31,11 +31,53 @@ class UserTest {
 	}
 
 	@Test
-	public void test_user_to_address_association() {
-		User cust = em.find(User.class, 4);
-		assertNotNull(cust);
-		assertEquals(4, cust.getId());
-		assertEquals("bella", cust.getFirstName());
+	public void test_user_get_data_from_user_table() {
+		user = em.find(User.class, 4);
+		assertNotNull(user);
+		assertEquals(4, user.getId());
+		assertEquals("bella", user.getFirstName());
 	}
+	
+	@Test
+	public void test_user_map_address_onetone_assosiation() {
+		assertNotNull(user);
+		assertEquals("todd", user.getFirstName());
+		assertEquals("cartersville", user.getAddress().getCity());
+		assertEquals("ga", user.getAddress().getStateAbbreviation());
+	}
+	
+	
+	@Test
+	public void test_user_map_role_onetone_assosiation() {
+		assertNotNull(user);
+		assertEquals("todd", user.getFirstName());
+		assertEquals("admin", user.getRole().getName());
+	}
+	
+	@Test
+	public void test_user_map_event_onetomany_assosiation() {
+		assertNotNull(user);
+		assertEquals("todd", user.getFirstName());
+		assertEquals(1, user.getEvents().size());
+		assertEquals("metallica at red rocks", user.getEvents().get(0).getName());
+	}
+	
+	@Test
+	public void test_user_map_eventsubject_onetomany_assosiation() {
+		assertNotNull(user);
+		assertEquals("todd", user.getFirstName());
+		assertEquals(1, user.getEventSubjects().size());
+		assertEquals("metallica", user.getEventSubjects().get(0).getEventName());
+	}
+	
+	@Test
+	public void test_user_map_userevent_onetomany_assosiation() {
+		assertNotNull(user);
+		assertEquals("todd", user.getFirstName());
+		assertEquals(1, user.getUserEvents().size());
+		assertEquals("2004-05-23 14:25:10.0", user.getUserEvents().get(0).getDateCreated().toString());
+	}
+	
+	
 
 }

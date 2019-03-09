@@ -21,32 +21,22 @@ public class Address {
 	@Column(name = "id")
 	private int id;
 	
-	@Column(name = "address")
 	private String address;
 	
-	@Column(name = "apartment")
 	private String apartment;
 	
-	@Column(name = "city")
 	private String city;
 	
-
-//	@Enumerated(EnumType.STRING)
+//	@Enumerated(EnumType.ORDINAL) we can uncomment this one enum fixed with ignore cases or data in db will be updated
 //	private State state;
 	
+	private String state;
+
 	@Column(name = "state_abbreviation")
 	private String stateAbbreviation;
 	
 	@Column(name = "zip_code")
 	private int zipcode;
-	
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	@Column(name="date_created")
 	@CreationTimestamp
@@ -55,6 +45,15 @@ public class Address {
 	@OneToOne(mappedBy="address")
 	private User user;
 
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	public Date getDateCreated() {
 		return dateCreated;
 	}
@@ -95,15 +94,6 @@ public class Address {
 		this.city = city;
 	}
 
-
-
-//	@Override
-//	public String toString() {
-//		return "Address [id=" + id + ", address=" + address + ", apartment=" + apartment + ", city=" + city + ", state="
-//				+ state + ", stateAbbreviation=" + stateAbbreviation + ", zipcode=" + zipcode + ", dateCreated="
-//				+ dateCreated + ", user=" + user + "]";
-//	}
-
 //	public State getState() {
 //		return state;
 //	}
@@ -111,6 +101,13 @@ public class Address {
 //	public void setState(State state) {
 //		this.state = state;
 //	}
+
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", address=" + address + ", apartment=" + apartment + ", city=" + city + ", state="
+				+ state + ", stateAbbreviation=" + stateAbbreviation + ", zipcode=" + zipcode + ", dateCreated="
+				+ dateCreated + ", user=" + user + "]";
+	}
 
 	public String getStateAbbreviation() {
 		return stateAbbreviation;
@@ -127,11 +124,15 @@ public class Address {
 	public void setZipcode(int zipcode) {
 		this.zipcode = zipcode;
 	}
-
-
-	public Address() {
-		super();
+	
+	public String getState() {
+		return state;
 	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
 
 	
 	

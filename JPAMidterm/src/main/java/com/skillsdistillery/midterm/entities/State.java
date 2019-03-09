@@ -11,7 +11,7 @@ public enum State {
 	Delaware,
 	District_of_Columbia,
 	Florida,
-	Georgia,
+	georgia,
 	Hawaii,
 	Idaho,
 	Illinois,
@@ -25,7 +25,7 @@ public enum State {
 	Nebraska,
 	Nevada,
 	New_Hampshire,
-	New_Jersey,
+	new_jersey,
 	New_Mexico,
 	New_York,
 	North_Carolina,
@@ -51,5 +51,5 @@ public enum State {
 	Washington,
 	West_Virginia,
 	Wisconsin,
-	Wyoming
+	Wyoming;
 }
