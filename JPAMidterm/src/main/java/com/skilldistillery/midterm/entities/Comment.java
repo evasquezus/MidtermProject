@@ -1,12 +1,16 @@
 package com.skilldistillery.midterm.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Comment {
@@ -30,8 +34,18 @@ public class Comment {
 	
 	private boolean active;
 	
-	@Column(name = "user_event_id")
-	private int userEventId;
+	@ManyToOne
+	@JoinColumn(name = "user_event_id")
+	private UserEvent userEvent;
+	
+	
+	public UserEvent getUserEvent() {
+		return userEvent;
+	}
+
+	public void setUserEvent(UserEvent userEvent) {
+		this.userEvent = userEvent;
+	}
 
 	public int getId() {
 		return id;
@@ -89,19 +103,12 @@ public class Comment {
 		this.active = active;
 	}
 
-	public int getUserEventId() {
-		return userEventId;
-	}
-
-	public void setUserEventId(int userEventId) {
-		this.userEventId = userEventId;
-	}
 
 	@Override
 	public String toString() {
 		return "Comment [id=" + id + ", title=" + title + ", body=" + body + ", flagContent=" + flagContent
-				+ ", dateCreated=" + dateCreated + ", inReplyTo=" + inReplyTo + ", active=" + active + ", userEventId="
-				+ userEventId + "]";
+				+ ", dateCreated=" + dateCreated + ", inReplyTo=" + inReplyTo + ", active=" + active + ", userEvent="
+				+ userEvent + "]";
 	}
 
 	public Comment() {
