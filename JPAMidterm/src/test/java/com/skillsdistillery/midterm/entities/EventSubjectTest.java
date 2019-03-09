@@ -1,7 +1,4 @@
-package com.skillsdistillery.midtermproject.entities;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+package com.skillsdistillery.midterm.entities;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,14 +10,13 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.skillsdistillery.midterm.entities.User;
+import com.skillsdistillery.midterm.entities.EventSubject;
 
-class UserTest {
+class EventSubjectTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
-	
-	
+	private EventSubject eventSubject;
+
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		System.out.println("In BeforeAll");
@@ -34,22 +30,14 @@ class UserTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		em=emf.createEntityManager();
-		user = em.find(User.class, 1);
+		em = emf.createEntityManager();
+		eventSubject = em.find(EventSubject.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
+		eventSubject = null;
 	}
-
-//
-//	@Test
-//	void user_() {
-//		assertEquals("Todd", user.getFirstName());
-//		
-//	}
-
 
 }

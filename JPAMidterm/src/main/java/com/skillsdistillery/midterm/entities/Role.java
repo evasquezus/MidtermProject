@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Role {
@@ -17,6 +18,18 @@ public class Role {
 	
 	@Column(name = "name")
 	private String name;
+	
+	@OneToOne(mappedBy="role")
+	private User user;
+	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public int getId() {
 		return id;
@@ -40,7 +53,7 @@ public class Role {
 
 	@Override
 	public String toString() {
-		return "Role [id=" + id + ", name=" + name + "]";
+		return "Role [id=" + id + ", name=" + name + ", user=" + user + "]";
 	}
 	
 	

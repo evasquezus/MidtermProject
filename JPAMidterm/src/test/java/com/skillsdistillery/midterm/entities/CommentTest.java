@@ -1,4 +1,4 @@
-package com.skillsdistillery.midtermproject.entities;
+package com.skillsdistillery.midterm.entities;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import com.skillsdistillery.midterm.entities.EventSubject;
 
-public class UserEventTest {
+public class CommentTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
@@ -39,5 +39,4 @@ public class UserEventTest {
 		em.close();
 		eventSubject = null;
 	}
-
 }

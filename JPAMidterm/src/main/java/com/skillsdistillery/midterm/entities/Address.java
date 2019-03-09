@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -28,7 +31,8 @@ public class Address {
 	private String city;
 	
 	@Column(name = "state")
-	private String state;
+	@Enumerated(EnumType.STRING)
+	private State state;
 	
 	@Column(name = "state_abbreviation")
 	private String stateAbbreviation;
@@ -36,9 +40,20 @@ public class Address {
 	@Column(name = "zip_code")
 	private int zipcode;
 	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Column(name="date_created")
 	@CreationTimestamp
 	private Date dateCreated;
+	
+	@OneToOne(mappedBy="address")
+	private User user;
 
 	public Date getDateCreated() {
 		return dateCreated;
@@ -80,11 +95,20 @@ public class Address {
 		this.city = city;
 	}
 
-	public String getState() {
+
+
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", address=" + address + ", apartment=" + apartment + ", city=" + city + ", state="
+				+ state + ", stateAbbreviation=" + stateAbbreviation + ", zipcode=" + zipcode + ", dateCreated="
+				+ dateCreated + ", user=" + user + "]";
+	}
+
+	public State getState() {
 		return state;
 	}
 
-	public void setState(String state) {
+	public void setState(State state) {
 		this.state = state;
 	}
 
@@ -104,16 +128,11 @@ public class Address {
 		this.zipcode = zipcode;
 	}
 
-	@Override
-	public String toString() {
-		return "Address [id=" + id + ", address=" + address + ", apartment=" + apartment + ", city=" + city + ", state="
-				+ state + ", stateAbbreviation=" + stateAbbreviation + ", zipcode=" + zipcode + ", dateCreated="
-				+ dateCreated + "]";
-	}
 
 	public Address() {
 		super();
 	}
+
 	
 	
 	

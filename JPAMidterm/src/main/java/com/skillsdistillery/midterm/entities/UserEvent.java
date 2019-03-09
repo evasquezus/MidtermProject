@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class UserEvent {
@@ -18,6 +20,14 @@ public class UserEvent {
 	@Column(name = "user_id")
 	private int userId;
 	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Column(name = "date_created")
 	private Date dateCreated;
 	
@@ -35,6 +45,23 @@ public class UserEvent {
 	
 	@Column(name = "event_id")
 	private int eventId;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "event_id")
+	private Event event;
+	
 
 	public int getId() {
 		return id;
@@ -109,7 +136,7 @@ public class UserEvent {
 	public String toString() {
 		return "UserEvent [id=" + id + ", userId=" + userId + ", dateCreated=" + dateCreated + ", eventRating="
 				+ eventRating + ", flagContent=" + flagContent + ", active=" + active + ", hostRating=" + hostRating
-				+ ", eventId=" + eventId + "]";
+				+ ", eventId=" + eventId + ", user=" + user + ", event=" + event + "]";
 	}
 	
 	

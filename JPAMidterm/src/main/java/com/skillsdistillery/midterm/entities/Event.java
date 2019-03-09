@@ -1,61 +1,94 @@
 package com.skillsdistillery.midterm.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Event {
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
 
 	@Column(name = "description")
 	private String description;
-	
+
 	@Column(name = "event_subject_id")
 	private String eventSubjectId;
-	
+
 	@Column(name = "start_time")
-	private  Date startTime;
-	
+	private Date startTime;
+
 	@Column(name = "finish_time")
 	private Date finishTime;
-	
+
 	@Column(name = "image_url")
 	private String imageUrl;
-	
+
 	@Column(name = "address_id")
 	private int addressID;
-	
+
 	@Column(name = "open")
 	private boolean open;
-	
+
 	@Column(name = "max_size")
 	private int maxSize;
-	
+
 	@Column(name = "rideshare")
 	private boolean rideShare;
-	
+
 	@Column(name = "user_id")
 	private int ownerId;
-	
+
 	@Column(name = "date_created")
 	private Date dateCreated;
-	
+
 	@Column(name = "active")
 	private boolean active;
+
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user; // can be changed as ownerUser ?
+
+	@OneToMany(mappedBy = "event")
+	private List<UserEvent> userevents;
+
+	public List<UserEvent> getUserevents() {
+		return userevents;
+	}
+
+	public void setUserevents(List<UserEvent> userevents) {
+		this.userevents = userevents;
+	}
+
+	public int getOwnerId() {
+		return ownerId;
+	}
+
+	public void setOwnerId(int ownerId) {
+		this.ownerId = ownerId;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public int getId() {
 		return id;
@@ -80,7 +113,6 @@ public class Event {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 
 	public String getEventSubjectId() {
 		return eventSubjectId;
@@ -169,16 +201,17 @@ public class Event {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	
+
 	public Event() {
 		super();
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Event [id=" + id + ", name=" + name + ", description=" + description + ", eventSubjectId="
 				+ eventSubjectId + ", startTime=" + startTime + ", finishTime=" + finishTime + ", imageUrl=" + imageUrl
 				+ ", addressID=" + addressID + ", open=" + open + ", maxSize=" + maxSize + ", rideShare=" + rideShare
-				+ ", customerId=" + ownerId + ", dateCreated=" + dateCreated + ", active=" + active + "]";
+				+ ", ownerId=" + ownerId + ", dateCreated=" + dateCreated + ", active=" + active + ", user=" + user
+				+ ", userevents=" + userevents + "]";
 	}
 }
