@@ -217,14 +217,14 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `unha`;
--- INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (id, 'address', 'apartment', 'city', 'state', 'state_abbreviation', zip_code, 'date_created');
-INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (1, '123 street', 'a', 'cartersville', 'georgia', 'ga', 12345, '2004-05-23T14:25:10');
-INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (2, '234 street', 'b', 'new york', 'new york', 'ny', 23456, '2004-05-23T14:25:10');
-INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (3, '345 street', 'c', 'denver', 'colorado', 'co', 34567, '2004-05-23T14:25:10');
-INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (4, '456 street', 'd', 'jersey city', 'new jersey', 'nj', 45678, '2004-05-23T14:25:10');
-INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (5, '18300 W Alameda Pkwy', 'NULL', 'morrison', 'colorado', 'co', 80465, '2004-05-23T14:25:10');
-INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (6, '4600 Humboldt Street', 'NULL', 'denver', 'colorado', 'co', 80216, '2004-05-23T14:25:10');
-INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (7, '1350 Curtis Street', 'NULL', 'denver', 'colorado', 'co', 80202, '2004-05-23T14:25:10');
+INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (id, 'address', 'apartment', 'city', 'state', 'state_abbreviation', zip_code, 'date_created');
+INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (1, '123 street', 'a', 'cartersville', 'georgia', 'ga', 12345, 'NULL');
+INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (2, '234 street', 'b', 'new york', 'new york', 'ny', 23456, 'NULL');
+INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (3, '345 street', 'c', 'denver', 'colorado', 'co', 34567, 'NULL');
+INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (4, '456 street', 'd', 'jersey city', 'new jersey', 'nj', 45678, 'NULL');
+INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (5, '18300 W Alameda Pkwy', 'NULL', 'morrison', 'colorado', 'co', 80465, 'NULL');
+INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (6, '4600 Humboldt Street', 'NULL', 'denver', 'colorado', 'co', 80216, 'NULL');
+INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (7, '1350 Curtis Street', 'NULL', 'denver', 'colorado', 'co', 80202, 'NULL');
 
 COMMIT;
 
@@ -234,7 +234,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `unha`;
--- INSERT INTO `role` (`id`, `name`) VALUES (id, 'name');
+INSERT INTO `role` (`id`, `name`) VALUES (id, 'name');
 INSERT INTO `role` (`id`, `name`) VALUES (1, 'user');
 INSERT INTO `role` (`id`, `name`) VALUES (2, 'admin');
 
@@ -246,11 +246,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `unha`;
--- INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (id, address_id, role_id, 'password', 'first_name', 'last_name', 'email', phone, 'image_url', active, 'date_created');
-INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (1, 1, 2, '1234', 'todd', 'trowbridge', 'todd@todd.com', 123456789, 'NULL', 1, '2004-05-23T14:25:10');
-INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (2, 2, 2, '2345', 'eric', 'vasquez', 'eric@eric.com', 234567890, 'NULL', 1, '2004-05-23T14:25:10');
-INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (3, 3, 2, '3456', 'anna', 'jimenez', 'anna@anna.com', 345678901, 'NULL', 1, '2004-05-23T14:25:10');
-INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (4, 4, 1, '4567', 'bella', 'jimenez', 'bella@bella.com', 456789012, 'NULL', 1, '2004-05-23T14:25:10');
+INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (id, address_id, role_id, 'password', 'first_name', 'last_name', 'email', phone, 'image_url', active, 'date_created');
+INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (1, 1, 2, '1234', 'todd', 'trowbridge', 'todd@todd.com', 123456789, 'NULL', 1, 'NULL');
+INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (2, 2, 2, '2345', 'eric', 'vasquez', 'eric@eric.com', 234567890, 'NULL', 1, 'NULL');
+INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (3, 3, 2, '3456', 'anna', 'jimenez', 'anna@anna.com', 345678901, 'NULL', 1, 'NULL');
+INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (4, 4, 1, '4567', 'bella', 'jimenez', 'bella@bella.com', 456789012, 'NULL', 1, 'NULL');
 
 COMMIT;
 
@@ -260,10 +260,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `unha`;
--- INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (id, 'event_name', 'img_url', user_id, 'date_created', flag_content, active);
-INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (1, 'metallica', 'NULL', 1, '2004-05-23T14:25:10', 0, 1);
-INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (2, 'blink 182', 'NULL', 2, '2004-05-23T14:25:10', 0, 1);
-INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (3, 'chainsmokers', 'NULL', 3, '2004-05-23T14:25:10', 0, 1);
+INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (id, 'event_name', 'img_url', user_id, 'date_created', flag_content, active);
+INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (1, 'metallica', 'NULL', 1, 'NULL', 0, 1);
+INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (2, 'blink 182', 'NULL', 2, 'NULL', 0, 1);
+INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (3, 'chainsmokers', 'NULL', 3, 'NULL', 0, 1);
 
 COMMIT;
 
@@ -273,10 +273,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `unha`;
--- INSERT INTO `event` (`id`, `name`, `description`, `event_subject_id`, `start_time`, `finish_time`, `image_url`, `address_id`, `open`, `max_size`, `rideshare`, `user_id`, `date_created`, `active`) VALUES (id, 'name', 'description', event_subject_id, 'start_time', 'finish_time', 'image_url', address_id, open, max_size, rideshare, user_id, 'date_created', active);
-INSERT INTO `event` (`id`, `name`, `description`, `event_subject_id`, `start_time`, `finish_time`, `image_url`, `address_id`, `open`, `max_size`, `rideshare`, `user_id`, `date_created`, `active`) VALUES (1, 'metallica at red rocks', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, '2004-05-23T14:25:10', '2004-05-23T14:25:10', 'NULL', 5, 1, 5, 1, 1, '2004-05-23T14:25:10', 1);
-INSERT INTO `event` (`id`, `name`, `description`, `event_subject_id`, `start_time`, `finish_time`, `image_url`, `address_id`, `open`, `max_size`, `rideshare`, `user_id`, `date_created`, `active`) VALUES (2, 'blink 182 at denver coliseum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 2, '2004-05-23T14:25:10', '2004-05-23T14:25:10', 'NULL', 6, 1, 10, 0, 2, '2004-05-23T14:25:10', 1);
-INSERT INTO `event` (`id`, `name`, `description`, `event_subject_id`, `start_time`, `finish_time`, `image_url`, `address_id`, `open`, `max_size`, `rideshare`, `user_id`, `date_created`, `active`) VALUES (3, 'chainsmokers at buell theatre', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 3, '2004-05-23T14:25:10', '2004-05-23T14:25:10', 'NULL', 7, 1, NULL, 1, 3, '2004-05-23T14:25:10', 1);
+INSERT INTO `event` (`id`, `name`, `description`, `event_subject_id`, `start_time`, `finish_time`, `image_url`, `address_id`, `open`, `max_size`, `rideshare`, `user_id`, `date_created`, `active`) VALUES (id, 'name', 'description', event_subject_id, 'start_time', 'finish_time', 'image_url', address_id, open, max_size, rideshare, user_id, 'date_created', active);
+INSERT INTO `event` (`id`, `name`, `description`, `event_subject_id`, `start_time`, `finish_time`, `image_url`, `address_id`, `open`, `max_size`, `rideshare`, `user_id`, `date_created`, `active`) VALUES (1, 'metallica at red rocks', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, 'NULL', 'NULL', 'NULL', 5, 1, 5, 1, 1, 'NULL', 1);
+INSERT INTO `event` (`id`, `name`, `description`, `event_subject_id`, `start_time`, `finish_time`, `image_url`, `address_id`, `open`, `max_size`, `rideshare`, `user_id`, `date_created`, `active`) VALUES (2, 'blink 182 at denver coliseum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 2, 'NULL', 'NULL', 'NULL', 6, 1, 10, 0, 2, 'NULL', 1);
+INSERT INTO `event` (`id`, `name`, `description`, `event_subject_id`, `start_time`, `finish_time`, `image_url`, `address_id`, `open`, `max_size`, `rideshare`, `user_id`, `date_created`, `active`) VALUES (3, 'chainsmokers at buell theatre', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 3, 'NULL', 'NULL', 'NULL', 7, 1, NULL, 1, 3, 'NULL', 1);
 
 COMMIT;
 
@@ -286,10 +286,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `unha`;
--- INSERT INTO `user_event` (`id`, `user_id`, `date_created`, `event_rating`, `flag_content`, `active`, `host_rating`, `event_id`) VALUES (id, user_id, 'date_created', event_rating, flag_content, active, host_rating, event_id);
-INSERT INTO `user_event` (`id`, `user_id`, `date_created`, `event_rating`, `flag_content`, `active`, `host_rating`, `event_id`) VALUES (1, 1, '2004-05-23T14:25:10', NULL, 0, 1, NULL, 1);
-INSERT INTO `user_event` (`id`, `user_id`, `date_created`, `event_rating`, `flag_content`, `active`, `host_rating`, `event_id`) VALUES (2, 2, '2004-05-23T14:25:10', NULL, 0, 1, NULL, 2);
-INSERT INTO `user_event` (`id`, `user_id`, `date_created`, `event_rating`, `flag_content`, `active`, `host_rating`, `event_id`) VALUES (3, 3, '2004-05-23T14:25:10', NULL, 0, 1, NULL, 3);
+INSERT INTO `user_event` (`id`, `user_id`, `date_created`, `event_rating`, `flag_content`, `active`, `host_rating`, `event_id`) VALUES (id, user_id, 'date_created', event_rating, flag_content, active, host_rating, event_id);
+INSERT INTO `user_event` (`id`, `user_id`, `date_created`, `event_rating`, `flag_content`, `active`, `host_rating`, `event_id`) VALUES (1, 1, 'NULL', NULL, 0, 1, NULL, 1);
+INSERT INTO `user_event` (`id`, `user_id`, `date_created`, `event_rating`, `flag_content`, `active`, `host_rating`, `event_id`) VALUES (2, 2, 'NULL', NULL, 0, 1, NULL, 2);
+INSERT INTO `user_event` (`id`, `user_id`, `date_created`, `event_rating`, `flag_content`, `active`, `host_rating`, `event_id`) VALUES (3, 3, 'NULL', NULL, 0, 1, NULL, 3);
 
 COMMIT;
 
@@ -299,9 +299,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `unha`;
--- INSERT INTO `comment` (`id`, `title`, `body`, `flag_content`, `date_created`, `in_reply_to`, `active`, `user_event_id`) VALUES (id, 'title', 'body', flag_content, 'date_created', in_reply_to, active, user_event_id);
-INSERT INTO `comment` (`id`, `title`, `body`, `flag_content`, `date_created`, `in_reply_to`, `active`, `user_event_id`) VALUES (1, 'first comment', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, '2004-05-23T14:25:10', 1, 1, 1);
-INSERT INTO `comment` (`id`, `title`, `body`, `flag_content`, `date_created`, `in_reply_to`, `active`, `user_event_id`) VALUES (2, 'second comment', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, '2004-05-23T14:25:10', 1, 1, 1);
-INSERT INTO `comment` (`id`, `title`, `body`, `flag_content`, `date_created`, `in_reply_to`, `active`, `user_event_id`) VALUES (3, 'third comment', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, '2004-05-23T14:25:10', 2, 1, 1);
+INSERT INTO `comment` (`id`, `title`, `body`, `flag_content`, `date_created`, `in_reply_to`, `active`, `user_event_id`) VALUES (id, 'title', 'body', flag_content, 'date_created', in_reply_to, active, user_event_id);
+INSERT INTO `comment` (`id`, `title`, `body`, `flag_content`, `date_created`, `in_reply_to`, `active`, `user_event_id`) VALUES (1, 'first comment', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, 'NULL', 1, 1, 1);
+INSERT INTO `comment` (`id`, `title`, `body`, `flag_content`, `date_created`, `in_reply_to`, `active`, `user_event_id`) VALUES (2, 'second comment', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, 'NULL', 1, 1, 1);
+INSERT INTO `comment` (`id`, `title`, `body`, `flag_content`, `date_created`, `in_reply_to`, `active`, `user_event_id`) VALUES (3, 'third comment', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, 'NULL', 2, 1, 1);
 
 COMMIT;
+

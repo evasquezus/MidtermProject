@@ -1,7 +1,10 @@
 package com.skilldistillery.midterm.data;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -62,6 +65,45 @@ public class MockDaoIMPL implements MidtermMockDAO {
 		return false;
 	}
 
+	@Override
+	public User loginUser(HttpSession httpSession, String email, String password) {
+
+		User user = findUserByEmailAndPassword(email, password);
+		
+		
+		
+		return user;
+		
+//		String sessionKey = "firstAccessTime";
+//		Object time = httpSession.getAttribute(sessionKey);
+//		if (time == null) {
+//			time = LocalDateTime.now();
+//			httpSession.setAttribute(sessionKey, time);
+//		}
+//		//return "first access time : " + time + "\nsession id: " + httpSession.getId();
+//		return null;
+
+	}
+
+	@Override
+	public User findUserByEmailAndPassword(String email, String password) {
+		
+		if (email != null && password != null) {
+			
+//			String queryString = "SELECT s.firstName, s.lastName FROM Staff s WHERE id < :val";
+//			List<Object[]> results = em.createQuery(queryString, Object[].class).setParameter("val", val).getResultList();
+			
+			
+			String query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password";
+
+			return em.createQuery(query, User.class).getSingleResult();
+		}
+		
+		
+		return null;
+		
+	}
+
 	// Method for adding user to an event
 
 //	public User addUserToEvent(User userToBeAdded, Event eventId, int id) {
@@ -77,6 +119,5 @@ public class MockDaoIMPL implements MidtermMockDAO {
 //		return null;
 //
 //	}
-	// Method for
 
 }

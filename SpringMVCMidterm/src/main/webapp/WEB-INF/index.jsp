@@ -5,7 +5,7 @@
 <head>
 <jsp:include page="bootstrap/bootstrapHead.jsp" />
 <meta charset="UTF-8">
-<title>Events app</title>
+<title>Events App</title>
 </head>
 <body>
 	<jsp:include page="navigation/navigation.jsp" />
@@ -23,11 +23,10 @@
 						id="dropdownMenuButtonForLogin" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false">Login</button>
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<form action="register.do" method="POST" name="registerUser">
+						<form action="login.do" method="POST">
 							Email: <input type="text" name="email"> <br>
 							Password: <input type="text" name="lastName"> <br> <br>
-							<input type="hidden" name="userID" value="${user.id}" /> <input
-								type="submit" name="eventID" value="Login" />
+							<input type="submit" value="Login" />
 						</form>
 					</div>
 
@@ -43,13 +42,16 @@
 								Email: <input type="text" name="email"> <br>
 								Password: <input type="text" name="password"> <br>
 								Confirm Password: <input type="text" name="confirmPassword">
-								<br>
-								<input type="submit" name="userID" value="Register User" />
+								Zip Code (optional): <input type="text" name="zipcode"> <br>
+								<br> <input type="submit" name="userID"
+									value="Register User" />
 							</form>
 						</div>
 					</div>
 				</div>
 			</div>
-			<jsp:include page="bootstrap/bootstrapFoot.jsp" />
+		</div>
+	</div>
+	<jsp:include page="bootstrap/bootstrapFoot.jsp" />
 </body>
 </html>
