@@ -13,31 +13,6 @@ import com.skillsdistillery.midterm.entities.EventSubject;
 
 public class EventTest {
 
-	private static EntityManagerFactory emf;
-	private EntityManager em;
-	private EventSubject eventSubject;
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-		System.out.println("In BeforeAll");
-		emf = Persistence.createEntityManagerFactory("VideoStore");
-	}
-
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-		emf.close();
-	}
-
-	@BeforeEach
-	void setUp() throws Exception {
-		em = emf.createEntityManager();
-		eventSubject = em.find(EventSubject.class, 1);
-	}
-
-	@AfterEach
-	void tearDown() throws Exception {
-		em.close();
-		eventSubject = null;
-	}
 
 }

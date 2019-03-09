@@ -22,13 +22,13 @@ public class UserEvent {
 //	@Column(name = "user_id")
 //	private int userId;
 	
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+//	public User getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 
 	@Column(name = "date_created")
 	private Date dateCreated;
@@ -46,21 +46,21 @@ public class UserEvent {
 	private int hostRating;
 
 	
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private User user;
-
-	@ManyToOne
-	@JoinColumn(name = "event_id")
-	private Event event;
-	
-	public Event getEvent() {
-		return event;
-	}
-
-	public void setEvent(Event event) {
-		this.event = event;
-	}
+//	@ManyToOne
+//	@JoinColumn(name = "user_id")
+//	private User user;
+//
+//	@ManyToOne
+//	@JoinColumn(name = "event_id")
+//	private Event event;
+//	
+//	public Event getEvent() {
+//		return event;
+//	}
+//
+//	public void setEvent(Event event) {
+//		this.event = event;
+//	}
 
 	public int getId() {
 		return id;
@@ -111,16 +111,14 @@ public class UserEvent {
 		this.hostRating = hostRating;
 	}
 
-	public UserEvent() {
-		super();
-	}
+
 	
-	@Override
-	public String toString() {
-		return "UserEvent [id=" + id + ", dateCreated=" + dateCreated + ", eventRating=" + eventRating
-				+ ", flagContent=" + flagContent + ", active=" + active + ", hostRating=" + hostRating + ", user="
-				+ user + ", event=" + event + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "UserEvent [id=" + id + ", dateCreated=" + dateCreated + ", eventRating=" + eventRating
+//				+ ", flagContent=" + flagContent + ", active=" + active + ", hostRating=" + hostRating + ", user="
+//				+ user + ", event=" + event + "]";
+//	}
 	
 	
 }

@@ -30,9 +30,9 @@ public class Address {
 	@Column(name = "city")
 	private String city;
 	
-	@Column(name = "state")
-	@Enumerated(EnumType.STRING)
-	private State state;
+
+//	@Enumerated(EnumType.STRING)
+//	private State state;
 	
 	@Column(name = "state_abbreviation")
 	private String stateAbbreviation;
@@ -97,20 +97,20 @@ public class Address {
 
 
 
-	@Override
-	public String toString() {
-		return "Address [id=" + id + ", address=" + address + ", apartment=" + apartment + ", city=" + city + ", state="
-				+ state + ", stateAbbreviation=" + stateAbbreviation + ", zipcode=" + zipcode + ", dateCreated="
-				+ dateCreated + ", user=" + user + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Address [id=" + id + ", address=" + address + ", apartment=" + apartment + ", city=" + city + ", state="
+//				+ state + ", stateAbbreviation=" + stateAbbreviation + ", zipcode=" + zipcode + ", dateCreated="
+//				+ dateCreated + ", user=" + user + "]";
+//	}
 
-	public State getState() {
-		return state;
-	}
-
-	public void setState(State state) {
-		this.state = state;
-	}
+//	public State getState() {
+//		return state;
+//	}
+//
+//	public void setState(State state) {
+//		this.state = state;
+//	}
 
 	public String getStateAbbreviation() {
 		return stateAbbreviation;

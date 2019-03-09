@@ -51,10 +51,10 @@ public class User {
 	
 	@OneToMany(mappedBy="user")
 	  private List<Event> eventList;
-	
-	@OneToMany(mappedBy="user")
-	  private List<UserEvent> userEventList;
-	
+//	
+//	@OneToMany(mappedBy="user")
+//	  private List<UserEvent> userEventList;
+//	
 	@OneToMany(mappedBy="user")
 	  private List<EventSubject> eventSubjectList;
 
@@ -67,13 +67,13 @@ public class User {
 		this.eventList = eventList;
 	}
 
-	public List<UserEvent> getUserEventList() {
-		return userEventList;
-	}
-
-	public void setUserEventList(List<UserEvent> userEventList) {
-		this.userEventList = userEventList;
-	}
+//	public List<UserEvent> getUserEventList() {
+//		return userEventList;
+//	}
+//
+//	public void setUserEventList(List<UserEvent> userEventList) {
+//		this.userEventList = userEventList;
+//	}
 
 	public List<EventSubject> getEventSubjectList() {
 		return eventSubjectList;
@@ -83,13 +83,13 @@ public class User {
 		this.eventSubjectList = eventSubjectList;
 	}
 
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", phone=" + phone + ", imageUrl=" + imageUrl + ", password=" + password + ", active=" + active
-				+ ", dateCreated=" + dateCreated + ", address=" + address + ", role=" + role + "]";
-	}
+//
+//	@Override
+//	public String toString() {
+//		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+//				+ ", phone=" + phone + ", imageUrl=" + imageUrl + ", password=" + password + ", active=" + active
+//				+ ", dateCreated=" + dateCreated + ", address=" + address + ", role=" + role + "]";
+//	}
 
 	public Address getAddress() {
 		return address;
