@@ -6,8 +6,8 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.skillsdistillery.midterm.entities.Event;
-import com.skillsdistillery.midterm.entities.User;
+import com.skilldistillery.midterm.entities.Event;
+import com.skilldistillery.midterm.entities.User;
 
 @Transactional
 @Service

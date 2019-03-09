@@ -1,6 +1,7 @@
-package com.skillsdistillery.midterm.entities;
+package com.skilldistillery.midterm.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -44,8 +46,19 @@ public class Address {
 	
 	@OneToOne(mappedBy="address")
 	private User user;
-
 	
+	@OneToMany(mappedBy ="address")
+	private List<Event> events;
+	
+	
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+
 	public User getUser() {
 		return user;
 	}
@@ -102,12 +115,6 @@ public class Address {
 //		this.state = state;
 //	}
 
-	@Override
-	public String toString() {
-		return "Address [id=" + id + ", address=" + address + ", apartment=" + apartment + ", city=" + city + ", state="
-				+ state + ", stateAbbreviation=" + stateAbbreviation + ", zipcode=" + zipcode + ", dateCreated="
-				+ dateCreated + ", user=" + user + "]";
-	}
 
 	public String getStateAbbreviation() {
 		return stateAbbreviation;
@@ -133,6 +140,12 @@ public class Address {
 		this.state = state;
 	}
 
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", address=" + address + ", apartment=" + apartment + ", city=" + city + ", state="
+				+ state + ", stateAbbreviation=" + stateAbbreviation + ", zipcode=" + zipcode + ", dateCreated="
+				+ dateCreated + ", user=" + user + ", events=" + events + "]";
+	}
 
 	
 	

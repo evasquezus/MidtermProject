@@ -1,4 +1,4 @@
-package com.skillsdistillery.midterm.entities;
+package com.skilldistillery.midterm.entities;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,7 +13,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.skillsdistillery.midterm.entities.EventSubject;
+import com.skilldistillery.midterm.entities.Event;
+import com.skilldistillery.midterm.entities.EventSubject;
 
 public class EventTest {
 	private EntityManagerFactory emf;
@@ -66,6 +67,12 @@ public class EventTest {
 	public void test_event_map_eventSubject_manytoone_assosiation() {
 		assertNotNull(event);
 		assertEquals("metallica", event.getEventSubject().getEventName());
+	}
+	
+	@Test
+	public void test_event_map_address_manytoone_assosiation() {
+		assertNotNull(event);
+		assertEquals("co", event.getAddress().getStateAbbreviation());
 	}
 
 }

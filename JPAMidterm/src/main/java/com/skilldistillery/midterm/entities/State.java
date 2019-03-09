@@ -1,4 +1,4 @@
-package com.skillsdistillery.midterm.entities;
+package com.skilldistillery.midterm.entities;
 
 public enum State {
 	Alabama,

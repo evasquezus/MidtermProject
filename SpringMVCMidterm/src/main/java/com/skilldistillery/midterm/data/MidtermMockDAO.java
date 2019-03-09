@@ -1,7 +1,7 @@
 package com.skilldistillery.midterm.data;
 
-import com.skillsdistillery.midterm.entities.Event;
-import com.skillsdistillery.midterm.entities.User;
+import com.skilldistillery.midterm.entities.Event;
+import com.skilldistillery.midterm.entities.User;
 
 public interface MidtermMockDAO {
 

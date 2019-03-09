@@ -1,4 +1,4 @@
-package com.skillsdistillery.midterm.entities;
+package com.skilldistillery.midterm.entities;
 
 import java.util.Date;
 import java.util.List;
@@ -36,9 +36,6 @@ public class Event {
 	@Column(name = "image_url")
 	private String imageUrl;
 
-	@Column(name = "address_id")
-	private int addressId;
-
 	private boolean open;
 
 	@Column(name = "max_size")
@@ -62,8 +59,16 @@ public class Event {
 	@JoinColumn(name = "event_subject_id")
 	private EventSubject eventSubject;
 
-	public int getAddressId() {
-		return addressId;
+	@ManyToOne
+	@JoinColumn(name = "address_id")
+	private Address address;	
+	
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public EventSubject getEventSubject() {
@@ -74,9 +79,6 @@ public class Event {
 		this.eventSubject = eventSubject;
 	}
 
-	public void setAddressId(int addressId) {
-		this.addressId = addressId;
-	}
 
 	public List<UserEvent> getUserevents() {
 		return userevents;
@@ -185,13 +187,13 @@ public class Event {
 		this.active = active;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Event [id=" + id + ", name=" + name + ", description=" + description + ", startTime=" + startTime
-				+ ", finishTime=" + finishTime + ", imageUrl=" + imageUrl + ", addressId=" + addressId + ", open="
-				+ open + ", maxSize=" + maxSize + ", rideShare=" + rideShare + ", dateCreated=" + dateCreated
-				+ ", active=" + active + ", user=" + user + ", userevents=" + userevents + ", eventSubject="
-				+ eventSubject + "]";
+				+ ", finishTime=" + finishTime + ", imageUrl=" + imageUrl + ", open=" + open + ", maxSize=" + maxSize
+				+ ", rideShare=" + rideShare + ", dateCreated=" + dateCreated + ", active=" + active + ", user=" + user
+				+ ", userevents=" + userevents + ", eventSubject=" + eventSubject + ", address=" + address + "]";
 	}
+
+
 }

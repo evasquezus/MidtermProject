@@ -1,4 +1,4 @@
-package com.skillsdistillery.midterm.entities;
+package com.skilldistillery.midterm.entities;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,6 +10,8 @@ import javax.persistence.Persistence;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import com.skilldistillery.midterm.entities.Address;
 
 public class AddressTest {
 	private EntityManagerFactory emf;
@@ -47,6 +49,14 @@ public class AddressTest {
 		assertEquals("456 street", address.getAddress());
 		assertEquals("bella", address.getUser().getFirstName());
 		assertEquals("jimenez", address.getUser().getLastName());
+
+	}
+	
+	@Test
+	public void test_address_event_map_onetomany_assosiation() {
+		Address address = em.find(Address.class, 5);
+		assertNotNull(address);
+		assertEquals("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", address.getEvents().get(0).getDescription());
 
 	}
 }

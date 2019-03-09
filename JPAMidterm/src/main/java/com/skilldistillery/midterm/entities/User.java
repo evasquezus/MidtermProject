@@ -1,4 +1,4 @@
-package com.skillsdistillery.midterm.entities;
+package com.skilldistillery.midterm.entities;
 
 import java.sql.Date;
 import java.util.List;
@@ -17,6 +17,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 public class User {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
