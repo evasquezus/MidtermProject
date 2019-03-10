@@ -41,6 +41,7 @@ public class Event {
 	@Column(name = "max_size")
 	private int maxSize;
 
+	@Column(name = "rideshare")
 	private boolean rideShare;
 
 	@Column(name = "date_created")
