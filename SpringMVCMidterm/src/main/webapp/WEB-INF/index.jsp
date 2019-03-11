@@ -25,7 +25,7 @@
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 						<form action="login.do" method="POST">
 							Email: <input type="text" name="email"> <br>
-							Password: <input type="text" name="lastName"> <br> <br>
+							Password: <input type="text" name="password"> <br> <br>
 							<input type="submit" value="Login" />
 						</form>
 					</div>
