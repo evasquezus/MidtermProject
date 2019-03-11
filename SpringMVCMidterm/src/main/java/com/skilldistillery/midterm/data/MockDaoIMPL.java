@@ -2,7 +2,6 @@ package com.skilldistillery.midterm.data;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -64,40 +63,20 @@ public class MockDaoIMPL implements MidtermMockDAO {
 	}
 
 	@Override
-	public User loginUser(HttpSession httpSession, String email, String password) {
+	public User findUserByEmail(String email) {
 
-		User user = findUserByEmailAndPassword(email, password);
-		
-		
-		
-		return user;
-		
-//		String sessionKey = "firstAccessTime";
-//		Object time = httpSession.getAttribute(sessionKey);
-//		if (time == null) {
-//			time = LocalDateTime.now();
-//			httpSession.setAttribute(sessionKey, time);
-//		}
-//		//return "first access time : " + time + "\nsession id: " + httpSession.getId();
-//		return null;
+		User user = null;
 
-	}
+		if (email != null) {
 
-	@Override
-	public User findUserByEmailAndPassword(String email, String password) {
-		
-		if (email != null && password != null) {
-			
-//			String queryString = "SELECT s.firstName, s.lastName FROM Staff s WHERE id < :val";
-//			List<Object[]> results = em.createQuery(queryString, Object[].class).setParameter("val", val).getResultList();
-			
-			
-			String query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password";
+			String query = "SELECT u FROM User u WHERE u.email = :email";
+
+			user = em.createQuery(query, User.class).setParameter("email", email).getSingleResult();
 
 		}
-		return null;
-		//return em.createQuery(query, User.class).getSingleResult();
-		
+
+		return user;
+
 	}
 
 	// Method for adding user to an event
