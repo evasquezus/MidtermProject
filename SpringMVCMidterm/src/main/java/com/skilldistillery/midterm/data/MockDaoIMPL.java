@@ -1,7 +1,5 @@
 package com.skilldistillery.midterm.data;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpSession;
@@ -96,11 +94,8 @@ public class MockDaoIMPL implements MidtermMockDAO {
 			
 			String query = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password";
 
-			return em.createQuery(query, User.class).getSingleResult();
 		}
-		
-		
-		return null;
+		return em.createQuery(query, User.class).getSingleResult();
 		
 	}
 

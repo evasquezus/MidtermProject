@@ -41,10 +41,8 @@
 								Last Name: <input type="text" name="lastName"> <br>
 								Email: <input type="text" name="email"> <br>
 								Password: <input type="text" name="password"> <br>
-								Confirm Password: <input type="text" name="confirmPassword">
-								Zip Code (optional): <input type="text" name="zipcode"> <br>
-								<br> <input type="submit" name="userID"
-									value="Register User" />
+								Confirm Password: <input type="text" name="confirmPassword"><br>
+								<input type="submit" name="userID" value="Register User" />
 							</form>
 						</div>
 					</div>

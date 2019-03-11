@@ -22,8 +22,10 @@ public class MidTermController {
 	private MidtermMockDAO mockDao;
 
 	@RequestMapping(path = { "/", "home.do" }, method = RequestMethod.GET)
-	public String index() {
-		return "WEB-INF/index.jsp";
+	public ModelAndView index() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/index.jsp");
+		return mv;
 	}
 
 	@RequestMapping(path = "registerUser.do", method = RequestMethod.POST)
@@ -31,7 +33,7 @@ public class MidTermController {
 		ModelAndView mv = new ModelAndView();
 		mockDao.createUser(user);
 		mv.addObject("userID", user);
-		mv.setViewName("redirect:/index.jsp");
+		mv.setViewName("registerUser.jsp");
 		return mv;
 
 	}
