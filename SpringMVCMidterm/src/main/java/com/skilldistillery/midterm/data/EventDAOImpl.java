@@ -1,5 +1,8 @@
 package com.skilldistillery.midterm.data;
 
+
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpSession;
@@ -7,15 +10,26 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.skilldistillery.midterm.entities.Address;
 import com.skilldistillery.midterm.entities.Event;
+import com.skilldistillery.midterm.entities.EventSubject;
 import com.skilldistillery.midterm.entities.User;
 
 @Transactional
 @Service
-public class MockDaoIMPL implements MidtermMockDAO {
+public class EventDAOImpl implements EventDAO {
 
 	@PersistenceContext
 	private EntityManager em;
+	
+	@Override
+	public List<EventSubject>  findAllEventSubjects() {
+		String query = "SELECT es FROM EventSubject es";
+
+		List<EventSubject> results = em.createQuery(query, EventSubject.class).getResultList();
+
+		return results;
+	}
 
 	// Method for creating user
 	@Override
@@ -37,7 +51,12 @@ public class MockDaoIMPL implements MidtermMockDAO {
 
 	// Method for creating event
 	@Override
-	public Event createEvent(Event event) {
+	public Event createEvent(int userId, Event event, Address address, EventSubject eventSubject) {
+		User userAddEventTo = em.find(User.class, userId);
+		eventSubject.setUser(userAddEventTo);
+		event.setEventSubject(eventSubject);
+		event.setUser(userAddEventTo);
+		event.setAddress(address);
 		em.persist(event);
 		em.flush();
 		return event;

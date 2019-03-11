@@ -1,13 +1,18 @@
 package com.skilldistillery.midterm.data;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
+import com.skilldistillery.midterm.entities.Address;
 import com.skilldistillery.midterm.entities.Event;
+import com.skilldistillery.midterm.entities.EventSubject;
 import com.skilldistillery.midterm.entities.User;
 
-public interface MidtermMockDAO {
+public interface EventDAO {
 
-	public Event createEvent(Event event);
+	public Event createEvent(int userId, Event event, Address address, EventSubject eventSubject);
+	public List<EventSubject> findAllEventSubjects();
 
 	public User createUser(User user);
 

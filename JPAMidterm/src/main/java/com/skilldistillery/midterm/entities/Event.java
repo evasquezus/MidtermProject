@@ -1,8 +1,10 @@
 package com.skilldistillery.midterm.entities;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -25,13 +28,11 @@ public class Event {
 
 	private String description;
 
-	@CreationTimestamp
 	@Column(name = "start_time")
-	private Date startTime;
+	private String startTime;
 
-	@CreationTimestamp
 	@Column(name = "finish_time")
-	private Date finishTime;
+	private String finishTime;
 
 	@Column(name = "image_url")
 	private String imageUrl;
@@ -41,6 +42,7 @@ public class Event {
 	@Column(name = "max_size")
 	private int maxSize;
 
+	@Column(name = "rideshare")
 	private boolean rideShare;
 
 	@Column(name = "date_created")
@@ -48,18 +50,18 @@ public class Event {
 
 	private boolean active;
 
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "user_id")
 	private User user; // can be changed as ownerUser ?
 
 	@OneToMany(mappedBy = "event")
 	private List<UserEvent> userevents;
 
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "event_subject_id")
 	private EventSubject eventSubject;
 
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "address_id")
 	private Address address;	
 	
@@ -121,19 +123,19 @@ public class Event {
 	}
 
 
-	public Date getStartTime() {
+	public String getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(Date startTime) {
+	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
 
-	public Date getFinishTime() {
+	public String getFinishTime() {
 		return finishTime;
 	}
 
-	public void setFinishTime(Date finishTime) {
+	public void setFinishTime(String finishTime) {
 		this.finishTime = finishTime;
 	}
 
