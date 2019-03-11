@@ -21,11 +21,9 @@ public class MidTermController {
 	@Autowired
 	private MidtermMockDAO mockDao;
 
-	@RequestMapping(path = { "/", "home.do"}, method = RequestMethod.GET)
-	public ModelAndView index() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/index.jsp");
-		return mv;
+	@RequestMapping(path = { "/", "home.do" }, method = RequestMethod.GET)
+	public String index() {
+		return "WEB-INF/index.jsp";
 	}
 
 	@RequestMapping(path = "registerUser.do", method = RequestMethod.POST)
