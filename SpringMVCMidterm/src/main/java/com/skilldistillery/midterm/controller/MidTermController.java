@@ -33,7 +33,7 @@ public class MidTermController {
 		ModelAndView mv = new ModelAndView();
 		mockDao.createUser(user);
 		mv.addObject("userID", user);
-		mv.setViewName("WEB-INF/registerUser.jsp");
+		mv.setViewName("redirect:/index.jsp");
 		return mv;
 
 	}
