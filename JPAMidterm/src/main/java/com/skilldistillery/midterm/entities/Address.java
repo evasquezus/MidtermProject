@@ -48,7 +48,19 @@ public class Address {
 	@OneToMany(mappedBy ="address")
 	private List<Event> events;
 	
-	
+	public Address() {}
+
+
+
+	public Address(String address, String city, String state, int zipcode) {
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.zipcode = zipcode;
+	}
+
+
+
 	public List<Event> getEvents() {
 		return events;
 	}
@@ -134,9 +146,6 @@ public class Address {
 		return "Address [id=" + id + ", address=" + address + ", apartment=" + apartment + ", city=" + city + ", state="
 				+ state + ", stateAbbreviation=" + stateAbbreviation + ", zipcode=" + zipcode + ", dateCreated="
 				+ dateCreated + ", user=" + user + ", events=" + events + "]";
-	}
-
-	
-	
+	}	
 	
 }

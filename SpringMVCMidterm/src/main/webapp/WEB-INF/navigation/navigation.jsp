@@ -18,14 +18,13 @@
       </li>
       <li class="nav-item" >
       	<form class="form-inline my-2 my-lg-0" action="createEvent.do" method="GET">
-				<input type="hidden" name="" value="" /> 
-				
+				<input type="hidden" name="" value="" /> 				
 				<input 
 					class="  btn btnResult  btn-outline-primary btn-main-color" type="submit"
 					value="Create Event"/>
-			</form>
+		</form>
       </li>
-<!--       <li class="nav-item dropdown">
+<!--   <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown
         </a>
@@ -38,7 +37,7 @@
       </li> -->
     </ul>
     
-    <form action="getKitty.do" method="GET" class="form-inline my-2 my-lg-0">
+    <form action="#" method="GET" class="form-inline my-2 my-lg-0">
       <input required name="id" class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
       <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
     </form>

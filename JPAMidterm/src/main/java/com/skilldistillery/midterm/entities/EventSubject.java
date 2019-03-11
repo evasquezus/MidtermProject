@@ -21,7 +21,7 @@ public class EventSubject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(name="event_name")
 	private String eventName;
 	
@@ -44,6 +44,14 @@ public class EventSubject {
 	@OneToMany(mappedBy="eventSubject")
 	private List<Event> events;
 
+	public EventSubject(String eventName, String imgUrl, Boolean active) {
+		this.eventName = eventName;
+		this.imgUrl = imgUrl;
+		this.active = active;
+	}
+
+	public EventSubject() {}
+	
 	public List<Event> getEvents() {
 		return events;
 	}

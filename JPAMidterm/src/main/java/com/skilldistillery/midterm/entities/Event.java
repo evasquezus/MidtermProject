@@ -3,6 +3,7 @@ package com.skilldistillery.midterm.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -49,18 +50,18 @@ public class Event {
 
 	private boolean active;
 
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "user_id")
 	private User user; // can be changed as ownerUser ?
 
 	@OneToMany(mappedBy = "event")
 	private List<UserEvent> userevents;
 
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "event_subject_id")
 	private EventSubject eventSubject;
 
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "address_id")
 	private Address address;	
 	
