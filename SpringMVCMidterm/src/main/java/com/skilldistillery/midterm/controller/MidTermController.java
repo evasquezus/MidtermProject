@@ -1,15 +1,10 @@
 package com.skilldistillery.midterm.controller;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.datetime.standard.DateTimeContext;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -83,8 +78,6 @@ public class MidTermController {
 		event.setStartTime(startTime2.toString());
 		event.setFinishTime(finishTime2.toString());
 		ModelAndView mv = new ModelAndView();
-
-		StringBuilder startTime = new StringBuilder(event.getStartTime().toString());
 
 		EventSubject eventSubject = new EventSubject(eventName, imgEventSubject, true);
 		Address address = new Address(location, city, state, zipcode);
