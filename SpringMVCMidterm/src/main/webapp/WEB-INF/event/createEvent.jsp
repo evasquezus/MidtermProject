@@ -19,16 +19,18 @@
 			<fieldset class="form-fieldset">
 				<legend class="form-legend">Create New Event </legend>
 				<div class="form-row">
+				
 					<div class=" form-group col-md-5 col-sm-12">
-						<select name="eventType" class="form-control">
+						<select name="eventName" class="form-control">
 							<option selected>Choose event type</option>
 							<c:if test="${not empty eventsubjects  }">
 								<c:forEach var="k" items="${eventsubjects}">
-									<option>${k.eventName}</option>
+									<option name="${k.eventName}" value="${k.eventName}" >${k.eventName}</option>
 								</c:forEach>
 							</c:if>
 						</select>
 					</div>
+					
 					<div class="form-group text-center col-md-2 col-sm-12">
 						<h3>or</h3>
 					</div>
@@ -46,7 +48,7 @@
 						<div class="form-group">
 							<label class="form-label" for="name"> Type</label> <input
 								type="text" class="form-control" name="eventName"
-								placeholder="Type of event" tabindex="1" required>
+								placeholder="Type of event" tabindex="1" >
 								<label class="form-label" for="name"> Image url</label>
 								<input
 								type="text" class="form-control" name="imgEventSubject"
@@ -85,11 +87,19 @@
 					</div>
 				</div>
 
-				<div class=" form-group">
+				<div class=" form-group col-md-6">
 					<label class="form-label" for="userId"> user id</label> <input
 						name="userId" class="form-control" placeholder="user Id"
 						type="number" required />
 
+				</div>
+				<div class="form-row">
+				<div class=" form-group col-md-5">
+					<label class="form-label" for="maxSize"> Maximum people can attend your event</label> <input
+						name="maxSize" min="1" class="form-control" placeholder="number of people"
+						type="number" required />
+
+				</div>
 				</div>
 				<div class="form-group">
 					<label class="form-label" for="description">Describe your
@@ -98,19 +108,19 @@
 						class="form-control" id="description" placeholder="Message..."
 						tabindex="0"></textarea>
 				</div>
-
-				<!-- 			<div class="form-row">
+				
+				 <div class="form-row">
 					<div class="col-md-6 col-sm-12">
 						<label class="form-label" for="startTime">Start Day and
 							time</label> <input class="form-control dateForm" type="datetime-local"
-							name="startTime" min="2018-06-07T00:00" max="2020-06-14T00:00">
+							name="startTime2" min="2018-06-07T00:00" max="2020-06-14T00:00">
 					</div>
 					<div class="form-group col-md-6 col-sm-12">
 						<label class="form-label" for="finishTime">End Day and
 							time</label> <input class="form-control dateForm" type="datetime-local"
-							name="finishTime" min="2018-06-07T00:00" max="2020-06-14T00:00">
+							name="finishTime2" min="2018-06-07T00:00" max="2020-06-14T00:00">
 					</div>
-				</div> -->
+				</div>  
 
 				<div class="form-group ">
 					<label class="form-label" for="imageUrl">Image url:</label> <input
