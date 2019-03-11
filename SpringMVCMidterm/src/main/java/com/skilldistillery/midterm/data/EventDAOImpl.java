@@ -53,6 +53,7 @@ public class EventDAOImpl implements EventDAO {
 	public Event createEvent(int userId, Event event, Address address, EventSubject eventSubject) {
 		User userAddEventTo = em.find(User.class, userId);
 		eventSubject.setUser(userAddEventTo);
+		event.setEventSubject(eventSubject);
 		event.setUser(userAddEventTo);
 		event.setAddress(address);
 		em.persist(event);
