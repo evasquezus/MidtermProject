@@ -13,7 +13,7 @@
 </head>
 <body>
 	<jsp:include page="../navigation/navigation.jsp" />
-	<%-- <c:if test = "${user != null}"> --%>
+ <c:if test = "${user != null}"> 
 	<div class="container">
 		<form action="saveEvent.do" method="POST"
 			class="form-card addEditEvent">
@@ -167,8 +167,8 @@
 		</form>
 
 	</div>
-	<%-- 	</c:if>
-	<c:if test = "${user == null}"> You must be logged in to create event</c:if> --%>
+</c:if>
+	<c:if test = "${user == null}"> You must be logged in to create event</c:if>
 	<jsp:include page="../bootstrap/bootstrapFoot.jsp" />
 
 
