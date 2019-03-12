@@ -122,6 +122,9 @@
 								<br>
 
 								<br>
+							
+							</c:if>
+							<br> <br>
 								<form action="editUser.do" method="POST" name="userID">
 								First Name: <input type="text" name="firstName"
 									value=${user.firstName}> <br> Last Name: <input
@@ -136,9 +139,6 @@
 								<br> <input type="submit" class="btn btn-danger btn-sm"
 									value="Edit User" /> <br>
 							</form>
-							</c:if>
-							<br> <br>
-							
 						</div>
 					</div>
 				</div>
