@@ -147,8 +147,6 @@ public class Event {
 		this.imageUrl = imageUrl;
 	}
 
-
-
 	public boolean isOpen() {
 		return open;
 	}
