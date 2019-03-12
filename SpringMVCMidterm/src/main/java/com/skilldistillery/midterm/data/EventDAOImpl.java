@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -99,21 +98,6 @@ public class EventDAOImpl implements EventDAO {
 	}
 
 	@Override
-	public User getSessionUser(HttpSession session) {
-
-		User user = null;
-
-		if (session.getId() != null) {
-
-		} else {
-
-		}
-
-		return user;
-
-	}
-
-	@Override
 	public User updateUser(User user, Integer id) {
 		User toBeUpdated = em.find(User.class, id);
 		toBeUpdated.setFirstName(user.getFirstName());
@@ -125,6 +109,18 @@ public class EventDAOImpl implements EventDAO {
 		return toBeUpdated;
 		
 	}
+
+	@Override
+	public List<Event> findEventsForFrontPage() {
+
+		String query = "SELECT e FROM Event e";
+
+		List<Event> results = em.createQuery(query, Event.class).getResultList();
+		
+		return results;
+	}
+
+
 
 	// Method for adding user to an event
 

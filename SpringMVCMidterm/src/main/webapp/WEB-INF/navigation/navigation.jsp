@@ -28,7 +28,7 @@
       	</c:if>
       	<c:if test = "${user != null}">
 	    	<a class="nav-link" href="/userProfile.jsp">Hello, ${user.firstName}</a>
-	        <a class="nav-link" href="/logout.jsp">logout</a>
+	        <a class="nav-link" href="logout.do">logout</a>
       	</c:if>
 	</div>
 </nav>

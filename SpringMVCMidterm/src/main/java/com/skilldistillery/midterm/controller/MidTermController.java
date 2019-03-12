@@ -26,11 +26,13 @@ public class MidTermController {
 
 	@RequestMapping(path = { "/", "home.do" }, method = RequestMethod.GET)
 	public ModelAndView index() {
+		List<Event> indexEvents = eventDao.findEventsForFrontPage();
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("indexEvents", indexEvents);
 		mv.setViewName("WEB-INF/index.jsp");
 		return mv;
 	}
-
+	
 	@RequestMapping(path = "registerUser.do", method = RequestMethod.POST)
 	public ModelAndView registerUser(User user) {
 		ModelAndView mv = new ModelAndView();
@@ -123,6 +125,14 @@ public class MidTermController {
 		System.out.println(id);
 		mv.addObject("userID", user);
 		mv.setViewName("WEB-INF/userProfile.jsp");
+		return mv;
+	}
+	
+	@RequestMapping(path = "logout.do")
+	public ModelAndView logoutUser(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		session.invalidate();
+		mv.setViewName("home.do");
 		return mv;
 	}
 }
