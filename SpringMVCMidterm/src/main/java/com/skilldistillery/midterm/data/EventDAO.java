@@ -2,6 +2,8 @@ package com.skilldistillery.midterm.data;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.skilldistillery.midterm.entities.Address;
 import com.skilldistillery.midterm.entities.Event;
 import com.skilldistillery.midterm.entities.EventSubject;
@@ -19,11 +21,13 @@ public interface EventDAO {
 
 	boolean destroyEvent(Event eventId, int id);
 
-	boolean destroyUser(User user, int id);
+	boolean destroyUser(Integer id);
 
-	boolean editEvent(Event eventID, int id);
+	boolean editEvent(int id, Event event);
 	
 	public User findUserByEmail(String email);
+	
+	public User getSessionUser(HttpSession session);
 	
 	public User updateUser(User user, Integer id);
 	

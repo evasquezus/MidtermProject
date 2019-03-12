@@ -121,9 +121,36 @@ public class MidTermController {
 	public ModelAndView editUser(Integer id, User editUser) {
 		ModelAndView mv = new ModelAndView();
 		User user = eventDao.updateUser(editUser, id);
-		System.out.println(editUser);
-		System.out.println(id);
 		mv.addObject("userID", user);
+		mv.setViewName("WEB-INF/userProfile.jsp");
+		return mv;
+	}
+	
+	@RequestMapping(path = "deleteUser.do", method = RequestMethod.POST)
+	public ModelAndView deleteUser(Integer id) {
+		ModelAndView mv = new ModelAndView();
+		eventDao.destroyUser(id);
+		mv.setViewName("WEB-INF/userProfile.jsp");
+		return mv;
+	}
+	
+	@RequestMapping(path = "deleteEvent.do", method = RequestMethod.POST)
+	public ModelAndView deleteEvent(Integer id,Event eventID) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println(" ************************** ");
+		System.out.println(eventID);
+		System.out.println(id);
+		eventDao.destroyEvent(eventID, id);
+		mv.addObject("event", eventID);
+		mv.setViewName("WEB-INF/userProfile.jsp");
+		return mv;
+	}
+	
+	@RequestMapping(path = "editEvent.do", method = RequestMethod.POST)
+	public ModelAndView editEvent(Integer id,Event event) {
+		ModelAndView mv = new ModelAndView();
+		eventDao.editEvent(id, event);
+		mv.addObject("event", event);
 		mv.setViewName("WEB-INF/userProfile.jsp");
 		return mv;
 	}

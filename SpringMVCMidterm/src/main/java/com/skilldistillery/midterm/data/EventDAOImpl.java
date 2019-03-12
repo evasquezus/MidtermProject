@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,9 +40,10 @@ public class EventDAOImpl implements EventDAO {
 
 	// Method for deleting user
 	@Override
-	public boolean destroyUser(User userID, int id) {
+	public boolean destroyUser(Integer id) {
 		User toBeDeleted = em.find(User.class, id);
-		em.remove(toBeDeleted); // performs the delete on the managed entity
+		toBeDeleted.setActive(false);
+		em.flush();
 		System.out.println(toBeDeleted.getId());
 		Boolean result = !em.contains(toBeDeleted);
 		return result;
@@ -65,16 +67,15 @@ public class EventDAOImpl implements EventDAO {
 	@Override
 	public boolean destroyEvent(Event eventID, int id) {
 		Event toBeDeleted = em.find(Event.class, id);
-		em.remove(toBeDeleted); // performs the delete on the managed entity
-		em.getTransaction().commit();
-		System.out.println(toBeDeleted.getId());
+		toBeDeleted.setActive(false);
+		em.flush();
 		Boolean result = !em.contains(toBeDeleted);
 		return result;
 	}
 
 	// Method for editing an event
 	@Override
-	public boolean editEvent(Event eventID, int id) {
+	public boolean editEvent(int id, Event eventID) {
 		Event toBeEdited = em.find(Event.class, id);
 		System.out.println(toBeEdited.getId());
 		return false;
@@ -90,6 +91,21 @@ public class EventDAOImpl implements EventDAO {
 			String query = "SELECT u FROM User u WHERE u.email = :email";
 
 			user = em.createQuery(query, User.class).setParameter("email", email).getSingleResult();
+
+		}
+
+		return user;
+
+	}
+	
+	@Override
+	public User getSessionUser(HttpSession session) {
+
+		User user = null;
+
+		if (session.getId() != null) {
+
+		} else {
 
 		}
 
