@@ -4,6 +4,7 @@
 </head>
 
 <body>
+	<jsp:include page="navigation/navigation.jsp" />
 	<div>
 	${user.id}<br>
 	${user.firstName}<br>
