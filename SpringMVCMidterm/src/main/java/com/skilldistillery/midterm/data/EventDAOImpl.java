@@ -1,10 +1,10 @@
 package com.skilldistillery.midterm.data;
 
-
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,9 +20,9 @@ public class EventDAOImpl implements EventDAO {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@Override
-	public List<EventSubject>  findAllEventSubjects() {
+	public List<EventSubject> findAllEventSubjects() {
 		String query = "SELECT es FROM EventSubject es";
 
 		List<EventSubject> results = em.createQuery(query, EventSubject.class).getResultList();
@@ -96,6 +96,34 @@ public class EventDAOImpl implements EventDAO {
 
 		return user;
 
+	}
+
+	@Override
+	public User getSessionUser(HttpSession session) {
+
+		User user = null;
+
+		if (session.getId() != null) {
+
+		} else {
+
+		}
+
+		return user;
+
+	}
+
+	@Override
+	public User updateUser(User user, Integer id) {
+		User toBeUpdated = em.find(User.class, id);
+		toBeUpdated.setFirstName(user.getFirstName());
+		toBeUpdated.setLastName(user.getLastName());
+		toBeUpdated.setEmail(user.getEmail());
+		toBeUpdated.setPhone(user.getPhone());
+		em.persist(toBeUpdated);
+		em.flush();		
+		return toBeUpdated;
+		
 	}
 
 	// Method for adding user to an event

@@ -46,7 +46,7 @@ public class MidTermController {
 		User user = eventDao.findUserByEmail(email);
 		if (user != null && user.getPassword().equals(password)) {
 			session.setAttribute("user", user);
-			mv.setViewName("WEB-INF/loginUser.jsp");
+			mv.setViewName("WEB-INF/userProfile.jsp");
 		} else {
 			mv.setViewName("WEB-INF/index.jsp");
 		}
@@ -92,6 +92,7 @@ public class MidTermController {
 		
 		event.setActive(true);
 		event.setOpen(true);
+
 		event.setStartTime(startTime2.toString());
 		event.setFinishTime(finishTime2.toString());
 		ModelAndView mv = new ModelAndView();
@@ -114,4 +115,14 @@ public class MidTermController {
 
 	}
 
+	@RequestMapping(path = "editUser.do", method = RequestMethod.POST)
+	public ModelAndView editUser(Integer id, User editUser) {
+		ModelAndView mv = new ModelAndView();
+		User user = eventDao.updateUser(editUser, id);
+		System.out.println(editUser);
+		System.out.println(id);
+		mv.addObject("userID", user);
+		mv.setViewName("WEB-INF/userProfile.jsp");
+		return mv;
+	}
 }
