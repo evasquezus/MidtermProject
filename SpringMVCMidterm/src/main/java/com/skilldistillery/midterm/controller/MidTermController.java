@@ -1,6 +1,8 @@
 package com.skilldistillery.midterm.controller;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -38,7 +40,6 @@ public class MidTermController {
 		return mv;
 	}
 
-
 	@RequestMapping(path = "login.do", params = { "email", "password" }, method = RequestMethod.POST)
 	public ModelAndView loginUser(HttpSession session, String email, String password) {
 		ModelAndView mv = new ModelAndView();
@@ -56,8 +57,13 @@ public class MidTermController {
 	@RequestMapping(path = "createEvent.do", method = RequestMethod.GET)
 	public ModelAndView displayCreateUserEvent() {
 		ModelAndView mv = new ModelAndView();
-		List<EventSubject> eventsubjects = eventDao.findAllEventSubjects();
-
+		
+		List<EventSubject> eventsubjectsList = eventDao.findAllEventSubjects();
+		Set<EventSubject> eventsubjects = new HashSet<EventSubject>(eventsubjectsList);		
+		HashSet<Object> seen=new HashSet<>();
+		eventsubjects.removeIf(e->!seen.add(e.getEventName()));
+		
+		
 		Boolean errorNoSubjects = false;
 		if (eventsubjects.size() == 0) {
 			errorNoSubjects = true;
@@ -73,25 +79,32 @@ public class MidTermController {
 	}
 
 	@RequestMapping(path = "saveEvent.do", method = RequestMethod.POST)
-	public ModelAndView createFilm(Event event, int userId, String location,
-			String city, String state, int zipcode,
-			String eventName, String imgEventSubject,
-			String startTime2, String finishTime2) {
+	public ModelAndView createEvent(HttpSession session, Event event,  String location, String city, String state, int zipcode,
+			String eventName, String imgEventSubject, String startTime2, String finishTime2, boolean chooseDropdown,
+			String eventNameNew, String eventNameDropDown) {
 
+		EventSubject eventSubject =null;
+		if(chooseDropdown){
+			 eventSubject = new EventSubject(eventNameDropDown, imgEventSubject, true);
+		}else {
+			 eventSubject = new EventSubject(eventNameNew, imgEventSubject, true);
+		}
+		
+		event.setActive(true);
+		event.setOpen(true);
 		event.setStartTime(startTime2.toString());
 		event.setFinishTime(finishTime2.toString());
 		ModelAndView mv = new ModelAndView();
-
-		EventSubject eventSubject = new EventSubject(eventName, imgEventSubject, true);
+		
 		Address address = new Address(location, city, state, zipcode);
-		Event newCreatedEvent = eventDao.createEvent(userId, event, address, eventSubject);
+		Event newCreatedEvent = eventDao.createEvent(1, event, address, eventSubject);
 
 		Boolean errorCreatedEvent = false;
 		if (newCreatedEvent == null) {
 			errorCreatedEvent = true;
 			mv.addObject("newCreatedEvent", newCreatedEvent);
 			mv.addObject("errorCreatedEvent", errorCreatedEvent);
-			mv.setViewName("WEB-INF/error/errorPage.jsp");
+			mv.setViewName("WEB-INF/error/error.jsp");
 			return mv;
 		} else {
 			mv.addObject("newCreatedEvent", newCreatedEvent);

@@ -9,53 +9,75 @@
 <title>Insert title here</title>
 <jsp:include page="../bootstrap/bootstrapHead.jsp" />
 <link rel="stylesheet" type="text/css" href="css/formCard.css" />
+
 </head>
 <body>
 	<jsp:include page="../navigation/navigation.jsp" />
-
+	<%-- <c:if test = "${user != null}"> --%>
 	<div class="container">
 		<form action="saveEvent.do" method="POST"
 			class="form-card addEditEvent">
 			<fieldset class="form-fieldset">
 				<legend class="form-legend">Create New Event </legend>
+
 				<div class="form-row">
-				
-					<div class=" form-group col-md-5 col-sm-12">
-						<select name="eventName" class="form-control">
-							<option selected>Choose event type</option>
-							<c:if test="${not empty eventsubjects  }">
-								<c:forEach var="k" items="${eventsubjects}">
-									<option name="${k.eventName}" value="${k.eventName}" >${k.eventName}</option>
-								</c:forEach>
-							</c:if>
-						</select>
-					</div>
-					
+					<label class="form-radio-label"> <input
+						name="chooseDropdown" data-toggle="collapse"
+						data-target="#collapseExample1" aria-expanded="false"
+						aria-controls="collapseExample" class=" radiocreate1 form-radio-field"
+						type="radio"  value="true" /> 
+						<i class="form-radio-button"></i>
+						<span>Choose Existing event</span>
+					</label>
 					<div class="form-group text-center col-md-2 col-sm-12">
 						<h3>or</h3>
 					</div>
-					<div class="form-group col-md-5 col-sm-12">
-						<p>
-							<button class="btn btn-primary" type="button"
-								data-toggle="collapse" data-target="#collapseExample"
-								aria-expanded="false" aria-controls="collapseExample">
-								Add Event +</button>
-						</p>
-					</div>
+					<label class="form-radio-label"> <input
+						name="chooseDropdown" data-toggle="collapse"
+						data-target="#collapseExample" aria-expanded="false"
+						aria-controls="collapseExample" class="form-radio-field radiocreate"
+						type="radio"  value="false" /> <i class="form-radio-button"></i>
+						<span>Create new one</span>
+					</label>
+
 				</div>
-				<div class="collapse" id="collapseExample">
-					<div class="card card-body">
-						<div class="form-group">
-							<label class="form-label" for="name"> Type</label> <input
-								type="text" class="form-control" name="eventName"
-								placeholder="Type of event" tabindex="1" >
-								<label class="form-label" for="name"> Image url</label>
-								<input
-								type="text" class="form-control" name="imgEventSubject"
-								placeholder="Type of event" tabindex="1" />
+				<div class="row">
+					<div class="col-md-6">
+						<div class="collapse" id="collapseExample1">
+							<div class="card card-body">
+								<div class=" form-group col-md-12 col-sm-12">
+									<select name="eventNameDropDown" class="form-control">
+										<option value="" selected>Choose event type</option>
+										<c:if test="${not empty eventsubjects  }">
+											<c:forEach var="k" items="${eventsubjects}">
+												<option name="${k.eventName}" value="${k.eventName}">${k.eventName}</option>
+											</c:forEach>
+										</c:if>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="collapse" id="collapseExample">
+							<div class="card card-body">
+								<div class="form-group">
+									<label class="form-label" for="name"> Type</label>
+									 <input
+										type="text" class="form-control" name="eventNameNew"
+										placeholder="Type of event" tabindex="1"> 
+									<label
+										class="form-label" for="imgEventSubject"> Image url</label> 
+									<input
+										type="text" class="form-control" name="imgEventSubject"
+										placeholder="Type of event" tabindex="1" />
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
+
 				<div class="form-group">
 					<label class="form-label" for="name"> Name</label> <input
 						type="text" class="form-control" id="name" name="name"
@@ -87,19 +109,18 @@
 					</div>
 				</div>
 
-				<div class=" form-group col-md-6">
-					<label class="form-label" for="userId"> user id</label> <input
-						name="userId" class="form-control" placeholder="user Id"
-						type="number" required />
 
-				</div>
+				<input name="${user.id}" hidden class="form-control"
+					value="${user.id}" type="number" />
+
 				<div class="form-row">
-				<div class=" form-group col-md-5">
-					<label class="form-label" for="maxSize"> Maximum people can attend your event</label> <input
-						name="maxSize" min="1" class="form-control" placeholder="number of people"
-						type="number" required />
+					<div class=" form-group col-md-5">
+						<label class="form-label" for="maxSize"> Maximum people
+							can attend your event</label> <input name="maxSize" min="1"
+							class="form-control" placeholder="number of people" type="number"
+							required />
 
-				</div>
+					</div>
 				</div>
 				<div class="form-group">
 					<label class="form-label" for="description">Describe your
@@ -108,8 +129,8 @@
 						class="form-control" id="description" placeholder="Message..."
 						tabindex="0"></textarea>
 				</div>
-				
-				 <div class="form-row">
+
+				<div class="form-row">
 					<div class="col-md-6 col-sm-12">
 						<label class="form-label" for="startTime">Start Day and
 							time</label> <input class="form-control dateForm" type="datetime-local"
@@ -120,7 +141,7 @@
 							time</label> <input class="form-control dateForm" type="datetime-local"
 							name="finishTime2" min="2018-06-07T00:00" max="2020-06-14T00:00">
 					</div>
-				</div>  
+				</div>
 
 				<div class="form-group ">
 					<label class="form-label" for="imageUrl">Image url:</label> <input
@@ -130,12 +151,12 @@
 				<div class="form-radio form-radio-inline">
 					<div class="form-radio-legend">Car Pool?</div>
 					<label class="form-radio-label"> <input name="rideShare"
-						class="form-radio-field" type="radio" required value="true" /> <i
-						class="form-radio-button"></i> <span>YES</span>
+						class="form-radio-field" type="checkbox"  value="true" />
+						<i class="form-radio-button"></i> <span>YES</span>
 					</label> <label class="form-radio-label"> <input name="rideShare"
-						class="form-radio-field" type="radio" required value="false" /> <i
-						class="form-radio-button"></i> <span>No</span><br />
-					</label> 
+						class="form-radio-field" type="checkbox"  value="false" />
+						<i class="form-radio-button"></i> <span>No</span><br />
+					</label>
 				</div>
 			</fieldset>
 			<div class="text-center">
@@ -146,6 +167,22 @@
 		</form>
 
 	</div>
+	<%-- 	</c:if>
+	<c:if test = "${user == null}"> You must be logged in to create event</c:if> --%>
 	<jsp:include page="../bootstrap/bootstrapFoot.jsp" />
+
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+		  $(".radiocreate").click(function(){
+		    $("#collapseExample1").collapse('hide');
+		    $("#collapseExample").collapse('show');
+		  });
+ 		  $(".radiocreate1").click(function(){
+		    $("#collapseExample").collapse('hide');
+		    $("#collapseExample1").collapse('show');
+		  });
+		});
+	</script>
 </body>
 </html>
