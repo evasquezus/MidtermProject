@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `event` (
   `event_subject_id` INT NULL,
   `start_time` DATETIME NULL DEFAULT  CURRENT_TIMESTAMP,
   `finish_time` DATETIME NULL DEFAULT  CURRENT_TIMESTAMP,
-  `image_url` VARCHAR(200) NULL DEFAULT 'default.jpg',
+  `image_url` VARCHAR(200) NULL,
   `address_id` INT NULL,
   `open` TINYINT NULL DEFAULT 1,
   `max_size` INT NULL DEFAULT 10,
@@ -217,13 +217,14 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `unha`;
-INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (1, '123 street', 'a', 'cartersville', 'georgia', 'ga', 12345, '2019-03-12 16:19:25');
-INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (2, '234 street', 'b', 'new york', 'new york', 'ny', 23456, '2019-03-12 16:19:25');
-INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (3, '345 street', 'c', 'denver', 'colorado', 'co', 34567, '2019-03-12 16:19:25');
-INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (4, '456 street', 'd', 'jersey city', 'new jersey', 'nj', 45678, '2019-03-12 16:19:25');
-INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (5, '18300 W Alameda Pkwy', 'NULL', 'morrison', 'colorado', 'co', 80465, '2019-03-12 16:19:25');
-INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (6, '4600 Humboldt Street', 'NULL', 'denver', 'colorado', 'co', 80216, '2019-03-12 16:19:25');
-INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (7, '1350 Curtis Street', 'NULL', 'denver', 'colorado', 'co', 80202, '2019-03-12 16:19:25');
+INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (1, '123 Street', 'A', 'Cartersville', 'Georgia', 'GA', 12345, '2019-03-05 16:19:25');
+INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (2, '234 Street', 'B', 'New York', 'New York', 'NY', 23456, '2019-03-06 16:19:25');
+INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (3, '345 Street', 'C', 'Denver', 'Colorado', 'CO', 34567, '2019-03-07 16:19:25');
+INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (4, '456 Street', 'D', 'Jersey City', 'New Jersey', 'NJ', 45678, '2019-03-08 16:19:25');
+INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (5, '18300 W Alameda Pkwy', 'NULL', 'Morrison', 'Colorado', 'CO', 80465, '2019-03-09 16:19:25');
+INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (6, '4600 Humboldt Street', 'NULL', 'Denver', 'Colorado', 'CO', 80216, '2019-03-10 16:19:25');
+INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (7, '1350 Curtis Street', 'NULL', 'Denver', 'Colorado', 'CO', 80202, '2019-03-11 16:19:25');
+INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (8, '345 Oakridge Drive', 'NULL', 'Cartersville', 'Georgia', 'GA', 30121, '2019-03-12 16:19:25');
 
 COMMIT;
 
@@ -244,10 +245,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `unha`;
-INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (1, 1, 2, '1234', 'Todd', 'Trowbridge', 'todd@todd.com', 123456789, 'default.png', 1, '2019-03-12 16:19:25');
-INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (2, 2, 2, '2345', 'Eric', 'Vasquez', 'eric@eric.com', 234567890, 'default.png', 1, '2019-03-12 16:19:25');
-INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (3, 3, 2, '3456', 'Anna', 'Jimenez', 'anna@anna.com', 345678901, 'default.png', 1, '2019-03-12 16:19:25');
-INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (4, 4, 1, '4567', 'Bella', 'Jimenez', 'bella@bella.com', 456789012, 'default.png', 1, '2019-03-12 16:19:25');
+INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (1, 1, 2, '1234', 'Admin', 'Admin', 'admin@admin.com', 123456789, 'NULL', 1, '2019-03-12 16:19:25');
+INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (2, 2, 2, '2345', 'Eric', 'Vasquez', 'eric@eric.com', 234567890, 'NULL', 1, '2019-03-12 16:19:25');
+INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (3, 3, 2, '3456', 'Anna', 'Jimenez', 'anna@anna.com', 345678901, 'NULL', 1, '2019-03-12 16:19:25');
+INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (4, 4, 1, '4567', 'Bella', 'Jimenez', 'bella@bella.com', 456789012, 'NULL', 1, '2019-03-12 16:19:25');
+INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (5, 8, 2, '1234', 'Todd', 'Trowbridge', 'todd@todd.com', 567890123, 'NULL', 1, '2019-03-13 16:19:25');
 
 COMMIT;
 
@@ -257,9 +259,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `unha`;
-INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (1, 'metallica', 'default.jpg', 1, '2019-03-12 16:19:25', 0, 1);
-INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (2, 'blink 182', 'default.jpg', 2, '2019-03-12 16:19:25', 0, 1);
-INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (3, 'chainsmokers', 'default.jpg', 3, '2019-03-12 16:19:25', 0, 1);
+INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (1, 'Metallica', 'NULL', 1, '2019-03-09 18:00:00', 0, 1);
+INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (2, 'Blink 182', 'NULL', 2, '2019-03-10 18:00:00', 0, 1);
+INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (3, 'The Chainsmokers', 'NULL', 3, '2019-03-11 18:00:00', 0, 1);
 
 COMMIT;
 
@@ -269,9 +271,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `unha`;
-INSERT INTO `event` (`id`, `name`, `description`, `event_subject_id`, `start_time`, `finish_time`, `image_url`, `address_id`, `open`, `max_size`, `rideshare`, `user_id`, `date_created`, `active`) VALUES (1, 'Metallica at Red Rocks', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, '2019-03-12 16:19:25', '2019-03-12 16:19:25', 'default.jpg', 5, 1, 5, 1, 1, '2019-03-12 16:19:25', 1);
-INSERT INTO `event` (`id`, `name`, `description`, `event_subject_id`, `start_time`, `finish_time`, `image_url`, `address_id`, `open`, `max_size`, `rideshare`, `user_id`, `date_created`, `active`) VALUES (2, 'Blink 182 at Denver Coliseum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 2, '2019-03-12 16:19:25', '2019-03-12 16:19:25', 'default.jpg', 6, 1, 10, 0, 2, '2019-03-12 16:19:25', 1);
-INSERT INTO `event` (`id`, `name`, `description`, `event_subject_id`, `start_time`, `finish_time`, `image_url`, `address_id`, `open`, `max_size`, `rideshare`, `user_id`, `date_created`, `active`) VALUES (3, 'Chainsmokers at Buell Theatre', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 3, '2019-03-12 16:19:25', '2019-03-12 16:19:25', 'default.jpg', 7, 1, 99, 1, 3, '2019-03-12 16:19:25', 1);
+INSERT INTO `event` (`id`, `name`, `description`, `event_subject_id`, `start_time`, `finish_time`, `image_url`, `address_id`, `open`, `max_size`, `rideshare`, `user_id`, `date_created`, `active`) VALUES (1, 'Metallica at Red Rocks', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, '2019-03-15 19:00:00', '2019-03-15 22:00:00', 'NULL', 5, 1, 5, 1, 1, '2019-03-12 16:19:25', 1);
+INSERT INTO `event` (`id`, `name`, `description`, `event_subject_id`, `start_time`, `finish_time`, `image_url`, `address_id`, `open`, `max_size`, `rideshare`, `user_id`, `date_created`, `active`) VALUES (2, 'Blink 182 at Denver Coliseum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 2, '2019-03-17 18:00:00', '2019-03-17 22:00:00', 'NULL', 6, 1, 10, 0, 2, '2019-03-12 16:19:25', 1);
+INSERT INTO `event` (`id`, `name`, `description`, `event_subject_id`, `start_time`, `finish_time`, `image_url`, `address_id`, `open`, `max_size`, `rideshare`, `user_id`, `date_created`, `active`) VALUES (3, 'Chainsmokers at Buell Theatre', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 3, '2019-03-19 18:30:00', '2019-03-19 22:00:00', 'NULL', 7, 1, 99, 1, 3, '2019-03-12 16:19:25', 1);
 
 COMMIT;
 
@@ -284,18 +286,6 @@ USE `unha`;
 INSERT INTO `user_event` (`id`, `user_id`, `date_created`, `event_rating`, `flag_content`, `active`, `host_rating`, `event_id`) VALUES (1, 1, '2019-03-12 16:19:25', 5, 0, 1, NULL, 1);
 INSERT INTO `user_event` (`id`, `user_id`, `date_created`, `event_rating`, `flag_content`, `active`, `host_rating`, `event_id`) VALUES (2, 2, '2019-03-12 16:19:25', 5, 0, 1, NULL, 2);
 INSERT INTO `user_event` (`id`, `user_id`, `date_created`, `event_rating`, `flag_content`, `active`, `host_rating`, `event_id`) VALUES (3, 3, '2019-03-12 16:19:25', 5, 0, 1, NULL, 3);
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `comment`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `unha`;
-INSERT INTO `comment` (`id`, `title`, `body`, `flag_content`, `date_created`, `in_reply_to`, `active`, `user_event_id`) VALUES (1, 'first comment', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, '2019-03-12 16:19:25', 1, 1, 1);
-INSERT INTO `comment` (`id`, `title`, `body`, `flag_content`, `date_created`, `in_reply_to`, `active`, `user_event_id`) VALUES (2, 'second comment', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, '2019-03-12 16:19:25', 1, 1, 1);
-INSERT INTO `comment` (`id`, `title`, `body`, `flag_content`, `date_created`, `in_reply_to`, `active`, `user_event_id`) VALUES (3, 'third comment', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, '2019-03-12 16:19:25', 2, 1, 1);
 
 COMMIT;
 
