@@ -24,7 +24,24 @@
 				<button class="btn btn-primary my-2 my-sm-0" type="submit">Login</button>
 			</form>
 			<a class="nav-link disabled" href="#"> or </a>
-			<a href="/registerUser.jsp" class="btn btn-primary">Register</a>
+			<div class="dropdown">
+						<button class="btn btn-primary" type="button"
+							id="dropdownMenuButtonForRegister" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">Register</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<form action="registerUser.do" method="POST">
+								First Name: <input type="text" name="firstName"> <br>
+								Last Name: <input type="text" name="lastName"> <br>
+								Email: <input type="text" name="email"> <br>
+								Password: <input type="text" name="password"> <br>
+								Confirm Password: <input type="text" name="confirmPassword">
+								Zip Code (optional): <input type="text" name="zipcode"> <br>
+								<br> 
+								<input type="submit" name="userID"
+									value="Register User" />
+							</form>
+						</div>
+					</div>
       	</c:if>
       	<c:if test = "${user != null}">
 	    	<a class="nav-link" href="/userProfile.jsp">Hello, ${user.firstName}</a>

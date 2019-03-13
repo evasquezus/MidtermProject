@@ -37,8 +37,9 @@ public class MidTermController {
 	public ModelAndView registerUser(User user) {
 		ModelAndView mv = new ModelAndView();
 		eventDao.createUser(user);
+		user.setActive(true);
 		mv.addObject("userID", user);
-		mv.setViewName("WEB-INF/index.jsp");
+		mv.setViewName("WEB-INF/userProfile.jsp");
 		return mv;
 	}
 

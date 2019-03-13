@@ -135,6 +135,7 @@
 									value=${user.phone
 									} name="phone">
 								Email: <input type="text" value=${user.email } name="email">
+								<br> <input type="hidden" name="active" value="1" />
 								<br> <input type="hidden" name="id" value="${user.id}" />
 								<br> <input type="submit" class="btn btn-danger btn-sm"
 									value="Edit User" /> <br>
