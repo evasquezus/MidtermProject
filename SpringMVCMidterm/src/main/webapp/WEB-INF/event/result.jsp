@@ -7,11 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<jsp:include page="../bootstrap/bootstrapHead.jsp" />
+
 <link rel="stylesheet" type="text/css" href="css/eventCard.css" />
+<jsp:include page="../bootstrap/bootstrapHead.jsp" />
 </head>
 <body>
-	<jsp:include page="../navigation/navigation.jsp" />
+<jsp:include page="../navigation/navigation.jsp" />
 	<div class="container">
 		<c:if test="${not empty currentUser}">
 			<h3>All events created by ${currentUser.firstName}</h3>
@@ -39,7 +40,8 @@
 							</div>
 							<div class="card-body" style="overflow-y: auto">
 								<h4 class="card-title">${newCreatedEvent.name }</h4>
-								<p class="card-text">Description:
+								<p class="card-text">
+								Description:
 									${newCreatedEvent.description }</p>
 								<p>${newCreatedEvent.eventSubject.eventName }</p>
 								<p>Start time${newCreatedEvent.startTime }</p>
@@ -48,16 +50,36 @@
 								<p>Maximum people in a group${newCreatedEvent.maxSize }</p>
 
 								<p>Location ${newCreatedEvent.address.address }</p>
-							</div>
-							<div class="card-footer"
-								style="background: inherit; border-color: inherit;">
-								<button href="#" class="btn btn-primary">
-									Details
-									</bitton>
-							</div>
+								<div class="row  card-back-footer">
+											<div class="col-6 ">
+												<form action="eventDetails.do" method="GET">
+													<input type="hidden" name="id" value="${event.id}" /> <input
+														class=" col btn btnResult btn-primary btn-main-color"
+														type="submit" value="DETAILS" />
+												</form>
+											</div>
+										</div>
+									</div>
+									<div class="card-footer">
+										<div class="row  card-back-footer">
+											<div class="col-6 ">
+												<form action="editEvent.do" method="POST" name="id">
+													<input type="hidden" name="id" value="${event.id}" /> <input
+														type="submit"
+														class="col btnResult btn btn-outline-primary" value="EDIT" />
+												</form>
+											</div>
+											<div class="col-6">
+												<form action="deleteEvent.do" method="POST" name="id">
+													<input type="hidden" name="id" value="${event.id}" /> <input
+														type="submit"
+														class="col btnResult btn btn-outline-primary"
+														value="DELETE" />
+												</form>
+											</div>
+										</div>
+									</div>
 						</div>
-
-
 					</div>
 
 				</c:forEach>

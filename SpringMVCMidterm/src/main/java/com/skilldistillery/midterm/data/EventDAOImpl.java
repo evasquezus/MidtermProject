@@ -99,7 +99,7 @@ public class EventDAOImpl implements EventDAO {
 		return user;
 
 	}
-	
+
 	@Override
 	public User getSessionUser(HttpSession session) {
 
@@ -123,9 +123,9 @@ public class EventDAOImpl implements EventDAO {
 		toBeUpdated.setEmail(user.getEmail());
 		toBeUpdated.setPhone(user.getPhone());
 		em.persist(toBeUpdated);
-		em.flush();		
+		em.flush();
 		return toBeUpdated;
-		
+
 	}
 
 	@Override
@@ -134,17 +134,15 @@ public class EventDAOImpl implements EventDAO {
 		String query = "SELECT e FROM Event e";
 
 		List<Event> results = em.createQuery(query, Event.class).getResultList();
-		
+
 		return results;
 	}
 
 	@Override
 	public List<Event> findUserEvents(int userId) {
-		
+
 		String query = "Select e FROM Event e WHERE user.id  = :id ORDER BY e.dateCreated DESC";
-		List<Event> results = em.createQuery(query, Event.class)
-				.setParameter("id", userId)
-				.getResultList();
+		List<Event> results = em.createQuery(query, Event.class).setParameter("id", userId).getResultList();
 
 		return results;
 	}
@@ -154,8 +152,6 @@ public class EventDAOImpl implements EventDAO {
 		Event event = em.find(Event.class, eventId);
 		return event;
 	}
-
-
 
 	// Method for adding user to an event
 

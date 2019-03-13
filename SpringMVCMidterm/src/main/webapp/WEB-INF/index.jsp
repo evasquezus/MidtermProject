@@ -17,7 +17,8 @@
 	<section id="cover"class"container-fluid"></section>
 	<div class="container">
 		<section>
-			<c:if test="${userevents.size() > 0 && not empty currentUser}">
+			<c:if
+				test="${userevents.size() > 0 && not empty currentUser && currentUser.id != 1}">
 				<h3>Your latest events</h3>
 				<div class="container">
 					<div class="row">
@@ -52,22 +53,32 @@
 										<p>Maximum people in a group${newCreatedEvent.maxSize }</p>
 
 										<p>Location ${newCreatedEvent.address.address }</p>
+										<div class="row  card-back-footer">
+											<div class="col-6 ">
+
+												<form action="eventDetails.do" method="GET">
+													<input type="hidden" name="id" value="${event.id}" /> <input
+														class=" col btn btnResult btn-primary btn-main-color"
+														type="submit" value="DETAILS" />
+												</form>
+											</div>
+										</div>
 									</div>
 									<div class="card-footer">
 										<div class="row  card-back-footer">
 											<div class="col-6 ">
+												<form action="editEvent.do" method="POST" name="id">
+													<input type="hidden" name="id" value="${event.id}" /> <input
+														type="submit"
+														class="col btnResult btn btn-outline-primary" value="EDIT" />
+												</form>
+											</div>
+											<div class="col-6">
 												<form action="deleteEvent.do" method="POST" name="id">
 													<input type="hidden" name="id" value="${event.id}" /> <input
 														type="submit"
 														class="col btnResult btn btn-outline-primary"
 														value="DELETE" />
-												</form>
-											</div>
-											<div class="col-6">
-												<form action="eventDetails.do" method="GET">
-													<input type="hidden" name="id" value="${event.id}" /> <input
-														class=" col btn btnResult btn-primary btn-main-color"
-														type="submit" value="DETAILS" />
 												</form>
 											</div>
 										</div>
@@ -125,21 +136,28 @@
 							<p>Location ${event.address.address }</p>
 							<div class="row  card-back-footer">
 								<div class="col-6 ">
-									<form action="deleteEvent.do" method="POST" name="id">
+
+									<form action="eventDetails.do" method="GET">
 										<input type="hidden" name="id" value="${event.id}" /> <input
-											type="submit" class="col btnResult btn btn-outline-primary"
-											value="DELETE" />
+											class=" col btn btnResult btn-primary btn-main-color"
+											type="submit" value="DETAILS" />
 									</form>
 								</div>
-								<div class="col-6 ">
-									<form action="joinEvent.do" method="POST" name="id">
-										<input type="hidden" name="id" value="${event.id}" /> <input
-											type="submit" class="col btnResult btn btn-outline-primary"
-											value="JOIN" />
-									</form>
-								</div>
+								<c:if
+									test="${not empty event && not empty currentUser 
+									&& currentUser.id != 1 && event.user.id != currentUser.id}">
+									<div class="col-6 ">
+										<form action="joinEvent.do" method="POST" name="id">
+											<input type="hidden" name="id" value="${event.id}" /> <input
+												type="submit" class="col btnResult btn btn-outline-primary"
+												value="JOIN" />
+										</form>
+									</div>
+								</c:if>
 							</div>
 						</div>
+						<c:if test="${not empty event && not empty currentUser 
+									&& (currentUser.id == 1 || event.user.id == currentUser.id)}">
 						<div class="card-footer">
 							<div class="row  card-back-footer">
 								<div class="col-6 ">
@@ -150,49 +168,20 @@
 									</form>
 								</div>
 								<div class="col-6">
-									<form action="eventDetails.do" method="GET">
+									<form action="deleteEvent.do" method="POST" name="id">
 										<input type="hidden" name="id" value="${event.id}" /> <input
-											class=" col btn btnResult btn-primary btn-main-color"
-											type="submit" value="DETAILS" />
+											type="submit" class="col btnResult btn btn-outline-primary"
+											value="DELETE" />
 									</form>
 								</div>
-
 							</div>
 						</div>
-
-
+						</c:if>
 					</div>
-
-
 				</div>
-
 			</c:forEach>
 		</div>
 	</div>
-
-
-
-	<%-- 	<div class="container-fluid">
-
-		<div class="card-deck" style="background-color: rgb(252, 210, 42);">
-			<c:forEach var="event" items="${indexEvents}">
-				<div class="card">
-					<img class="card-img-top" src="/resources/event_images/default.jpg"
-						alt="Card image cap">
-					<div class="card-body">
-						<h5 class="card-title">${event.name}</h5>
-						<p class="card-text">${event.description}</p>
-						<p class="card-text">
-							<small class="text-muted">Hosted by:
-								${event.user.firstName}</small>
-						</p>
-					</div>
-				</div>
-			</c:forEach>
-
-		</div>
-		<p style="background-color: rgb(64, 146, 214);">
-	</div> --%>
 	<jsp:include page="bootstrap/bootstrapFoot.jsp" />
 </body>
 </html>
