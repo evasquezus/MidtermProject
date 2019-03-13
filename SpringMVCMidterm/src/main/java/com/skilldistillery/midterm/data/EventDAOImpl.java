@@ -1,5 +1,6 @@
 package com.skilldistillery.midterm.data;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -57,6 +58,7 @@ public class EventDAOImpl implements EventDAO {
 		event.setEventSubject(eventSubject);
 		event.setUser(userAddEventTo);
 		event.setAddress(address);
+		event.setDateCreated(new Date());
 		em.persist(event);
 		em.flush();
 		return event;
@@ -139,7 +141,7 @@ public class EventDAOImpl implements EventDAO {
 	@Override
 	public List<Event> findUserEvents(int userId) {
 		
-		String query = "Select e FROM Event e WHERE user.id  = :id ORDER BY e.dateCreated";
+		String query = "Select e FROM Event e WHERE user.id  = :id ORDER BY e.dateCreated DESC";
 		List<Event> results = em.createQuery(query, Event.class)
 				.setParameter("id", userId)
 				.getResultList();
