@@ -136,6 +136,23 @@ public class EventDAOImpl implements EventDAO {
 		return results;
 	}
 
+	@Override
+	public List<Event> findUserEvents(int userId) {
+		
+		String query = "Select e FROM Event e WHERE user.id  = :id ORDER BY e.dateCreated";
+		List<Event> results = em.createQuery(query, Event.class)
+				.setParameter("id", userId)
+				.getResultList();
+
+		return results;
+	}
+
+	@Override
+	public Event findEventById(int eventId) {
+		Event event = em.find(Event.class, eventId);
+		return event;
+	}
+
 
 
 	// Method for adding user to an event

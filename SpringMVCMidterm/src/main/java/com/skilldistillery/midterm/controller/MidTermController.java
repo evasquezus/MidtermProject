@@ -1,5 +1,6 @@
 package com.skilldistillery.midterm.controller;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -25,9 +26,25 @@ public class MidTermController {
 	private EventDAO eventDao;
 
 	@RequestMapping(path = { "/", "home.do" }, method = RequestMethod.GET)
-	public ModelAndView index() {
-		List<Event> indexEvents = eventDao.findEventsForFrontPage();
+	public ModelAndView index(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
+		List<Event> indexEvents = eventDao.findEventsForFrontPage();
+		User currentUser = (User)session.getAttribute("user");
+		if(currentUser != null) {
+			List<Event> userevents = eventDao.findUserEvents(currentUser.getId());
+			
+			if(userevents != null) {
+				if(userevents.size()>3) {
+					List<Event> subItems = new ArrayList<Event>(userevents.subList(0, 3));
+					mv.addObject("userevents", subItems);
+				}else {
+					mv.addObject("userevents", userevents);
+				}
+				
+				mv.addObject("currentUser", currentUser);
+
+			}
+		}		
 		mv.addObject("indexEvents", indexEvents);
 		mv.setViewName("WEB-INF/index.jsp");
 		return mv;
@@ -81,7 +98,7 @@ public class MidTermController {
 
 	}
 
-	@RequestMapping(path = "saveEvent.do", method = RequestMethod.POST)
+	@RequestMapping(path = "allUserEvents.do", method = RequestMethod.POST)
 	public ModelAndView createEvent(HttpSession session, Event event,  String location, String city, String state, int zipcode,
 			String eventName, String imgEventSubject, String startTime2, String finishTime2, boolean chooseDropdown,
 			String eventNameNew, String eventNameDropDown) {
@@ -99,9 +116,10 @@ public class MidTermController {
 		event.setStartTime(startTime2.toString());
 		event.setFinishTime(finishTime2.toString());
 		ModelAndView mv = new ModelAndView();
-		
+		User currentUser = (User)session.getAttribute("user");
+
 		Address address = new Address(location, city, state, zipcode);
-		Event newCreatedEvent = eventDao.createEvent(1, event, address, eventSubject);
+		Event newCreatedEvent = eventDao.createEvent(currentUser.getId(), event, address, eventSubject);
 
 		Boolean errorCreatedEvent = false;
 		if (newCreatedEvent == null) {
@@ -111,7 +129,10 @@ public class MidTermController {
 			mv.setViewName("WEB-INF/error/error.jsp");
 			return mv;
 		} else {
-			mv.addObject("newCreatedEvent", newCreatedEvent);
+//			mv.addObject("newCreatedEvent", newCreatedEvent);
+			List<Event> userevents = eventDao.findUserEvents(event.getUser().getId());
+			mv.addObject("userevents", userevents);
+			mv.addObject("currentUser", currentUser);
 			mv.setViewName("WEB-INF/event/result.jsp");
 			return mv;
 		}
@@ -161,6 +182,18 @@ public class MidTermController {
 		ModelAndView mv = new ModelAndView();
 		session.invalidate();
 		mv.setViewName("home.do");
+		return mv;
+	}
+	
+	@RequestMapping(path = "eventDetails.do" , method = RequestMethod.GET)
+	public ModelAndView eventdetails(HttpSession session
+			, Event event
+			) {
+		ModelAndView mv = new ModelAndView();
+//		Event selectedEvent = eventDao.findEventById(event.getId());
+//
+//		mv.addObject("selectedEvent", selectedEvent);
+		mv.setViewName("WEB-INF/event/result.jsp");
 		return mv;
 	}
 }

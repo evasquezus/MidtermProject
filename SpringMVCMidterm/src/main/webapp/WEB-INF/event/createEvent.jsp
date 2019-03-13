@@ -12,16 +12,16 @@
 
 </head>
 <body>
-	<jsp:include page="../navigation/navigation.jsp" />
+<jsp:include page="../navigation/navigation.jsp" />
  <c:if test = "${user != null}"> 
 	<div class="container">
-		<form action="saveEvent.do" method="POST"
+		<form action="allUserEvents.do" method="POST"
 			class="form-card addEditEvent">
 			<fieldset class="form-fieldset">
 				<legend class="form-legend">Create New Event </legend>
-
 				<div class="form-row">
-					<label class="form-radio-label"> <input
+					<label class="form-radio-label"> 
+					<input
 						name="chooseDropdown" data-toggle="collapse"
 						data-target="#collapseExample1" aria-expanded="false"
 						aria-controls="collapseExample" class=" radiocreate1 form-radio-field"
@@ -108,18 +108,16 @@
 							type="text" class="form-control">
 					</div>
 				</div>
-
-
 				<input name="${user.id}" hidden class="form-control"
 					value="${user.id}" type="number" />
 
 				<div class="form-row">
 					<div class=" form-group col-md-5">
 						<label class="form-label" for="maxSize"> Maximum people
-							can attend your event</label> <input name="maxSize" min="1"
+							can attend your event</label> 
+							<input name="maxSize" min="1"
 							class="form-control" placeholder="number of people" type="number"
 							required />
-
 					</div>
 				</div>
 				<div class="form-group">
@@ -134,12 +132,12 @@
 					<div class="col-md-6 col-sm-12">
 						<label class="form-label" for="startTime">Start Day and
 							time</label> <input class="form-control dateForm" type="datetime-local"
-							name="startTime2" min="2018-06-07T00:00" max="2020-06-14T00:00">
+							name="startTime2" value="2018-06-07T00:00" >
 					</div>
 					<div class="form-group col-md-6 col-sm-12">
 						<label class="form-label" for="finishTime">End Day and
 							time</label> <input class="form-control dateForm" type="datetime-local"
-							name="finishTime2" min="2018-06-07T00:00" max="2020-06-14T00:00">
+							name="finishTime2" min="2018-06-07T00:00" value="2020-06-14T00:00">
 					</div>
 				</div>
 
@@ -172,17 +170,6 @@
 	<jsp:include page="../bootstrap/bootstrapFoot.jsp" />
 
 
-	<script type="text/javascript">
-	$(document).ready(function(){
-		  $(".radiocreate").click(function(){
-		    $("#collapseExample1").collapse('hide');
-		    $("#collapseExample").collapse('show');
-		  });
- 		  $(".radiocreate1").click(function(){
-		    $("#collapseExample").collapse('hide');
-		    $("#collapseExample1").collapse('show');
-		  });
-		});
-	</script>
+
 </body>
 </html>

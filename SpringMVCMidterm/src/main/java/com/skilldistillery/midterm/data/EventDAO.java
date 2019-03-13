@@ -10,8 +10,12 @@ import com.skilldistillery.midterm.entities.EventSubject;
 import com.skilldistillery.midterm.entities.User;
 
 public interface EventDAO {
-
+	
+	public Event findEventById(int eventId);
+	
 	public Event createEvent(int userId, Event event, Address address, EventSubject eventSubject);
+	
+	public List<Event> findUserEvents(int userId);
 	
 	public List<EventSubject> findAllEventSubjects();
 	

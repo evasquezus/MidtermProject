@@ -39,7 +39,6 @@
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
 								data-dismiss="modal">Close</button>
-
 						</div>
 					</div>
 				</div>
@@ -54,13 +53,21 @@
 				<div class="col-md-3">
 					<div class="profile-sidebar position-fixed">
 						<div class="profile-userpic">
-							<img
-								src="https://media.rockstargames.com/chinatownwars/global/downloads/avatars/zhou_256x256.jpg"
-								class="img-responsive" alt="">
+						
+							<c:choose>
+								<c:when test="${empty user.imageUrl}">
+									<img
+										src="resources/user_images/default.png"
+										class="img-responsive" alt="">
+								</c:when>
+								<c:otherwise>
+									<img src="${user.imageUrl}" class="img-responsive" alt="">
+								</c:otherwise>
+							</c:choose>
+
 						</div>
 						<div class="profile-usertitle">
-							<div class="profile-usertitle-name">Tango Ricky</div>
-							<div class="profile-usertitle-job">Developer</div>
+							<div class="profile-usertitle-name">${user.firstName} ${user.lastName}</div>
 						</div>
 						<div class="profile-userbuttons">
 							<button type="button" class="btn btn-success btn-sm">Follow</button>
