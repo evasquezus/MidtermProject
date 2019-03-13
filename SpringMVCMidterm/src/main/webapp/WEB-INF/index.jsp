@@ -23,6 +23,8 @@
 				<div class="container">
 					<div class="row">
 						<c:forEach var="newCreatedEvent" items="${userevents}">
+			<c:if test="${ newCreatedEvent.active}">
+				
 							<div class="col-lg-4 col-sm-6 col-xs-12 pb-3">
 								<div class="card card-custom bg-white border-white border-0">
 									<div class="card-custom-img"
@@ -87,7 +89,7 @@
 
 
 							</div>
-
+</c:if>
 						</c:forEach>
 					</div>
 				</div>
@@ -104,6 +106,7 @@
 		<h3>All Upcoming events</h3>
 		<div class="row">
 			<c:forEach var="event" items="${indexEvents}">
+			<c:if test="${ event.active}">
 				<div class="col-lg-4 col-sm-6 col-xs-12 pb-3">
 					<div class="card card-custom bg-white border-white border-0">
 						<div class="card-custom-img"
@@ -169,7 +172,8 @@
 								</div>
 								<div class="col-6">
 									<form action="deleteEvent.do" method="POST" name="id">
-										<input type="hidden" name="id" value="${event.id}" /> <input
+										<input type="hidden" name="id" value="${event.id}" />
+										<input type="hidden" name="indexpage" value="true" /> <input
 											type="submit" class="col btnResult btn btn-outline-primary"
 											value="DELETE" />
 									</form>
@@ -179,6 +183,7 @@
 						</c:if>
 					</div>
 				</div>
+				</c:if>
 			</c:forEach>
 		</div>
 	</div>

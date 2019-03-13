@@ -83,7 +83,6 @@ public class MidTermController {
 		HashSet<Object> seen=new HashSet<>();
 		eventsubjects.removeIf(e->!seen.add(e.getEventName()));
 		
-		
 		Boolean errorNoSubjects = false;
 		if (eventsubjects.size() == 0) {
 			errorNoSubjects = true;
@@ -157,15 +156,21 @@ public class MidTermController {
 	}
 	
 	@RequestMapping(path = "deleteEvent.do", method = RequestMethod.POST)
-	public ModelAndView deleteEvent(Integer id,Event eventID) {
+	public String deleteEvent(Integer id,Event eventID, Boolean indexpage) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println(" ************************** ");
-		System.out.println(eventID);
-		System.out.println(id);
 		eventDao.destroyEvent(eventID, id);
 		mv.addObject("event", eventID);
-		mv.setViewName("WEB-INF/userProfile.jsp");
-		return mv;
+		System.out.println(indexpage + "33333333333333333333%%%%%%%%%%%%%%%%%%");
+
+		if(indexpage) {
+			System.out.println(indexpage + "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+			return "redirect:/home.do";
+		}else{
+			// mv.setViewName("WEB-INF/userProfile.jsp");
+			return "redirect:/userProfile.jsp";
+
+		}
+		
 	}
 	
 	@RequestMapping(path = "editEvent.do", method = RequestMethod.POST)

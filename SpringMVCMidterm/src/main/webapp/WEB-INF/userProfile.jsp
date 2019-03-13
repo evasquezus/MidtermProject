@@ -95,6 +95,7 @@
 											<div class="dropdown-menu"
 												aria-labelledby="dropdownMenuButton">
 												<form action="deleteUser.do" method="POST" name="userID">
+												<input type="hidden" name="indexpage" value="false" />
 													<input type="text" name="id" value="${user.id}" /> <br>
 													<input type="submit" class="btn btn-danger btn-sm"
 														value="Edit User" name="id" />
