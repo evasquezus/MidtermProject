@@ -244,10 +244,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `unha`;
-INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (1, 1, 2, '1234', 'todd', 'trowbridge', 'todd@todd.com', 123456789, 'NULL', 1, '2019-03-12 16:19:25');
-INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (2, 2, 2, '2345', 'eric', 'vasquez', 'eric@eric.com', 234567890, 'NULL', 1, '2019-03-12 16:19:25');
-INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (3, 3, 2, '3456', 'anna', 'jimenez', 'anna@anna.com', 345678901, 'NULL', 1, '2019-03-12 16:19:25');
-INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (4, 4, 1, '4567', 'bella', 'jimenez', 'bella@bella.com', 456789012, 'NULL', 1, '2019-03-12 16:19:25');
+INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (1, 1, 2, '1234', 'Todd', 'Trowbridge', 'todd@todd.com', 123456789, 'default.png', 1, '2019-03-12 16:19:25');
+INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (2, 2, 2, '2345', 'Eric', 'Vasquez', 'eric@eric.com', 234567890, 'default.png', 1, '2019-03-12 16:19:25');
+INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (3, 3, 2, '3456', 'Anna', 'Jimenez', 'anna@anna.com', 345678901, 'default.png', 1, '2019-03-12 16:19:25');
+INSERT INTO `user` (`id`, `address_id`, `role_id`, `password`, `first_name`, `last_name`, `email`, `phone`, `image_url`, `active`, `date_created`) VALUES (4, 4, 1, '4567', 'Bella', 'Jimenez', 'bella@bella.com', 456789012, 'default.png', 1, '2019-03-12 16:19:25');
 
 COMMIT;
 
@@ -257,9 +257,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `unha`;
-INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (1, 'metallica', 'NULL', 1, '2019-03-12 16:19:25', 0, 1);
-INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (2, 'blink 182', 'NULL', 2, '2019-03-12 16:19:25', 0, 1);
-INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (3, 'chainsmokers', 'NULL', 3, '2019-03-12 16:19:25', 0, 1);
+INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (1, 'metallica', 'default.jpg', 1, '2019-03-12 16:19:25', 0, 1);
+INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (2, 'blink 182', 'default.jpg', 2, '2019-03-12 16:19:25', 0, 1);
+INSERT INTO `event_subject` (`id`, `event_name`, `img_url`, `user_id`, `date_created`, `flag_content`, `active`) VALUES (3, 'chainsmokers', 'default.jpg', 3, '2019-03-12 16:19:25', 0, 1);
 
 COMMIT;
 
