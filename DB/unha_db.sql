@@ -224,6 +224,7 @@ INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abb
 INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (5, '18300 W Alameda Pkwy', 'NULL', 'Morrison', 'Colorado', 'CO', 80465, '2019-03-09 16:19:25');
 INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (6, '4600 Humboldt Street', 'NULL', 'Denver', 'Colorado', 'CO', 80216, '2019-03-10 16:19:25');
 INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (7, '1350 Curtis Street', 'NULL', 'Denver', 'Colorado', 'CO', 80202, '2019-03-11 16:19:25');
+INSERT INTO `address` (`id`, `address`, `apartment`, `city`, `state`, `state_abbreviation`, `zip_code`, `date_created`) VALUES (8, '345 Oakridge Drive', 'NULL', 'Cartersville', 'Georgia', 'GA', 30121, '2019-03-12 16:19:25');
 
 COMMIT;
 
