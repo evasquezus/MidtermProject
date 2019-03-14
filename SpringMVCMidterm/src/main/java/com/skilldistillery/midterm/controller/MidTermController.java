@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.skilldistillery.midterm.data.EventDAO;
 import com.skilldistillery.midterm.entities.Address;
 import com.skilldistillery.midterm.entities.Event;
@@ -157,16 +156,12 @@ public class MidTermController {
 	}
 	
 	@RequestMapping(path = "deleteEvent.do", method = RequestMethod.POST)
-	public String deleteEvent(Integer id,Event eventID, Boolean indexpage) {
+	public ModelAndView deleteEvent(Integer id,Event eventID) {
 		ModelAndView mv = new ModelAndView();
 		eventDao.destroyEvent(eventID, id);
 		mv.addObject("event", eventID);
-		if(indexpage) {
-			return "redirect:/home.do";
-		}else{
-			// mv.setViewName("WEB-INF/userProfile.jsp");
-			return "redirect:/userProfile.jsp";
-		}	
+		mv.setViewName("WEB-INF/userProfile.jsp");	
+		return mv;
 	}
 	
 	@RequestMapping(path = "editEvent.do", method = RequestMethod.POST)
@@ -185,6 +180,14 @@ public class MidTermController {
 		mv.setViewName("home.do");
 		return mv;
 	}
+	
+	@RequestMapping(path = "userProfile.do", method = RequestMethod.GET)
+	public ModelAndView reditUserUser(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/userProfile.jsp");
+		return mv;
+	}
+	
 	
 	@RequestMapping(path = "eventDetails.do" , method = RequestMethod.GET)
 	public ModelAndView eventdetails(HttpSession session, Integer id) {
