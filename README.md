@@ -9,7 +9,7 @@
 
 ## Overview
 
-During this 7 day spring we decided to build a website called "VolunteerUp". This website lets you create or join events in your area which other people have the ability to join. Have you ever failed trying to find a friend or family member to join you at an event? Worry not we have you covered, our page allows you to find like minded individuals who will join you for an aweasome night out a concert.
+During this 7 day spring we decided to build a website. This website lets you create or join events in your area which other people have the ability to join. Have you ever failed trying to find a friend or family member to join you at an event? Worry not we have you covered, our page allows you to find like minded individuals who will join you for an aweasome night out a concert.
 
 The process to register, create, login/logout, join ,create or leave events, are all straight foward and simple. Admins have the higher privalages and can delete or edit your event if you don't follow the guideslines for posting. All crud funcationallity is present in this project.
 
