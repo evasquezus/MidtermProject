@@ -16,7 +16,9 @@
 	width:400px;
 	left:-300px;
 }
-
+.backArrow{
+	font-size: 18px;
+}
 /* 
 html, body {
   height: 100%;

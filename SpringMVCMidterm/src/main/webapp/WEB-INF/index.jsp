@@ -67,7 +67,7 @@
 										<div class="card-footer">
 											<div class="row  card-back-footer">
 												<div class="col-6 ">
-													<form action="editEvent.do" method="POST" name="id">
+													<form action="editEvent.do" method="GET" name="id">
 														<input type="hidden" name="id" value="${newCreatedEvent.id}" /> <input
 															type="submit"
 															class="col btnResult btn btn-outline-primary"
@@ -181,7 +181,7 @@
 								<div class="card-footer">
 									<div class="row  card-back-footer">
 										<div class="col-6 ">
-											<form action="editEvent.do" method="POST" name="id">
+											<form action="editEvent.do" method="GET" name="id">
 												<input type="hidden" name="id" value="${event.id}" /> <input
 													type="submit" class="col btnResult btn btn-outline-primary"
 													value="EDIT" />

@@ -141,11 +141,15 @@ public class Address {
 		this.state = state;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Address [id=" + id + ", address=" + address + ", apartment=" + apartment + ", city=" + city + ", state="
 				+ state + ", stateAbbreviation=" + stateAbbreviation + ", zipcode=" + zipcode + ", dateCreated="
 				+ dateCreated + ", user=" + user + ", events=" + events + "]";
-	}	
+	}
+
+	
 	
 }

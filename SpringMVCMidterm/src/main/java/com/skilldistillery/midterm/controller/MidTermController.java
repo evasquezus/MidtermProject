@@ -173,14 +173,6 @@ public class MidTermController {
 		return "redirect:/home.do";
 	}
 		
-	@RequestMapping(path = "editEvent.do", method = RequestMethod.POST)
-	public ModelAndView editEvent(Integer id,Event event) {
-		ModelAndView mv = new ModelAndView();
-		eventDao.editEvent(id, event);
-		mv.addObject("event", event);
-		mv.setViewName("WEB-INF/userProfile.jsp");
-		return mv;
-	}
 	
 	@RequestMapping(path = "logout.do")
 	public ModelAndView logoutUser(HttpSession session) {
@@ -202,10 +194,15 @@ public class MidTermController {
 	public ModelAndView eventdetails(HttpSession session, Integer id) {
 		ModelAndView mv = new ModelAndView();
 		Event selectedEvent = eventDao.findEventById(id);
+		User currentUser = (User)session.getAttribute("user");
+
 		if(selectedEvent == null) {
 			mv.addObject("errorEventisNull", true);
 			mv.setViewName("WEB-INF/event/eventDetails.jsp");
 		}else {
+			if(currentUser != null) {
+				mv.addObject("currentUser", currentUser);
+			}
 			mv.addObject("selectedEvent", selectedEvent);
 			mv.setViewName("WEB-INF/event/eventDetails.jsp");
 		}
@@ -217,7 +214,7 @@ public class MidTermController {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(eventId +"eeeeeeeeeeeeeeeeeeeeeeeee");
 		User currentUser = (User)session.getAttribute("user");
-Boolean t=true;
+		Boolean t=true;
 		UserEvent addUserToEvent = eventDao.addUsertoEventUser(currentUser.getId(),eventId );
 		if(addUserToEvent == null) {
 			mv.addObject("addUserToEventSuccess", false);
@@ -229,4 +226,25 @@ Boolean t=true;
 			return "redirect:/home.do";
 		}
 	}
+	
+	@RequestMapping(path = "editEvent.do" , method = RequestMethod.GET)
+	public ModelAndView editEvent(HttpSession session, Integer id) {
+		ModelAndView mv = new ModelAndView();
+		Event selectedEvent = eventDao.findEventById(id);
+		User currentUser = (User)session.getAttribute("user");
+
+		if(selectedEvent == null) {
+			mv.addObject("errorEventisNull", true);
+			mv.setViewName("WEB-INF/error/error.jsp");
+		}else {
+			if(currentUser != null) {
+				mv.addObject("user", currentUser);
+			}
+			mv.addObject("selectedEvent", selectedEvent);
+			mv.setViewName("WEB-INF/event/editEvent.jsp");
+		}
+		return mv;
+	}
+	
+	
 }
