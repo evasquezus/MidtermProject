@@ -34,15 +34,16 @@ Click on the create event button towards the upper left hand corner of the scree
 
 
 ## Technologies used
-*SpringMVC 
-*HTML
-*CSS
-*JPA 
-*MySQL
-*CRUD
-*JSP
-*Bootstrap
-*AWS
-*SpringBoot
+    [1]: SpringMVC                
+    [2]: HTML            
+    [3]: CSS
+    [4]: JPA                
+    [5]: MySQL            
+    [6]: JSP
+    [7]: CRUD
+    [8]: JPA                
+    [9]: Bootstrap            
+    [10]:SpringBoot
+    [11]:AWS
 
 ## Lessons Learned
