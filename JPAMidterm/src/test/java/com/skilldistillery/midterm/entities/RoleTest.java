@@ -49,8 +49,8 @@ public class RoleTest {
 	public void test_role_map_user_onetomany_return_list_of_users_assosiation() {
 		role = em.find(Role.class, 2);
 		assertNotNull(role);
-		assertEquals(3, role.getUsers().size());
-		assertEquals("eric", role.getUsers().get(1).getFirstName());
+		assertEquals(4, role.getUsers().size());
+		assertEquals("Eric", role.getUsers().get(1).getFirstName());
 	}
 	
 

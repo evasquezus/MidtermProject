@@ -37,47 +37,47 @@ class UserTest {
 		user = em.find(User.class, 4);
 		assertNotNull(user);
 		assertEquals(4, user.getId());
-		assertEquals("bella", user.getFirstName());
+		assertEquals("Bella", user.getFirstName());
 	}
 	
 	@Test
 	public void test_user_map_address_onetone_assosiation() {
 		assertNotNull(user);
-		assertEquals("todd", user.getFirstName());
-		assertEquals("cartersville", user.getAddress().getCity());
-		assertEquals("ga", user.getAddress().getStateAbbreviation());
+		assertEquals("Admin", user.getFirstName());
+		assertEquals("Cartersville", user.getAddress().getCity());
+		assertEquals("GA", user.getAddress().getStateAbbreviation());
 	}
 	
 	
 	@Test
 	public void test_user_map_role_onetone_assosiation() {
 		assertNotNull(user);
-		assertEquals("todd", user.getFirstName());
+		assertEquals("Admin", user.getFirstName());
 		assertEquals("admin", user.getRole().getName());
 	}
 	
 	@Test
 	public void test_user_map_event_onetomany_assosiation() {
 		assertNotNull(user);
-		assertEquals("todd", user.getFirstName());
+		assertEquals("Admin", user.getFirstName());
 		assertEquals(1, user.getEvents().size());
-		assertEquals("metallica at red rocks", user.getEvents().get(0).getName());
+		assertEquals("Metallica at Red Rocks", user.getEvents().get(0).getName());
 	}
 	
 	@Test
 	public void test_user_map_eventsubject_onetomany_assosiation() {
 		assertNotNull(user);
-		assertEquals("todd", user.getFirstName());
+		assertEquals("Admin", user.getFirstName());
 		assertEquals(1, user.getEventSubjects().size());
-		assertEquals("metallica", user.getEventSubjects().get(0).getEventName());
+		assertEquals("Metallica", user.getEventSubjects().get(0).getEventName());
 	}
 	
 	@Test
 	public void test_user_map_userevent_onetomany_assosiation() {
 		assertNotNull(user);
-		assertEquals("todd", user.getFirstName());
+		assertEquals("Admin", user.getFirstName());
 		assertEquals(1, user.getUserEvents().size());
-		assertEquals("2004-05-23 14:25:10.0", user.getUserEvents().get(0).getDateCreated().toString());
+		assertEquals("2019-03-12 16:19:25.0", user.getUserEvents().get(0).getDateCreated().toString());
 	}
 	
 	

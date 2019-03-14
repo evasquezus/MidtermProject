@@ -24,3 +24,10 @@ dependencies {
     compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '8.5.23'
     implementation ('org.springframework.boot:spring-boot-starter-tomcat')
 }
+
+apply plugin: 'war'
+war {
+  enabled = true
+  archiveName = "${baseName}.war"     // Our app name, as defined in settings.gradle
+  destinationDir = file("./WAR")      // WAR folder under project root directory
+}
