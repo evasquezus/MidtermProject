@@ -7,12 +7,12 @@
 <meta charset="UTF-8">
 <title>User Profile</title>
 <jsp:include page="bootstrap/bootstrapHead.jsp" />
-<link href="css/main.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/carousel.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/eventCard.css" />
 </head>
 <body>
-
-
-	<br>
+	<jsp:include page="navigation/navigation.jsp" />
 	<c:if test="${user.active == false}">
 		<!-- Button trigger modal -->
 		<div style="text-align: center;">
@@ -46,7 +46,6 @@
 		</div>
 	</c:if>
 	<c:if test="${user.active == true}">
-		<jsp:include page="navigation/navigation.jsp" />
 		<!--our content goes here-->
 		<div class="container content">
 			<div class="row profile">
