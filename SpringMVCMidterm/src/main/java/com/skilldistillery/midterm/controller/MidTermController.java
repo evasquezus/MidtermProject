@@ -166,13 +166,8 @@ public class MidTermController {
 		
 	@RequestMapping(path = "deleteEventByUser.do", method = RequestMethod.POST)
 	public String deleteEvent(int eventId) {
-		//ModelAndView mv = new ModelAndView();
-		System.out.println(eventId + "$$$$$$$$$$$$$$$$$$$$$$$");
 		boolean isSuccessful = eventDao.deleteEvent(eventId);
-		System.out.println(isSuccessful + "@@@@@@@@@@@@@@@@$$$$$$$$$$$$");
-		// mv.setViewName("WEB-INF/index.jsp");
 		if (!isSuccessful) {
-			//mv.setViewName("WEB-INF/error/error.jsp");
 			return "WEB-INF/error/error.jsp";
 		}
 		return "redirect:/home.do";

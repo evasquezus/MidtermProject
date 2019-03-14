@@ -172,7 +172,6 @@ public class EventDAOImpl implements EventDAO {
 	public Boolean deleteEvent(int eventId) {
 		Event toBeDeleted = em.find(Event.class, eventId);
 		toBeDeleted.setActive(false);
-//		em.flush();
 		em.persist(toBeDeleted);
 		if(toBeDeleted.isActive()) {
 			return false;
@@ -180,21 +179,5 @@ public class EventDAOImpl implements EventDAO {
 			return true;
 		}
 	}
-
-	// Method for adding user to an event
-
-//	public User addUserToEvent(User userToBeAdded, Event eventId, int id) {
-//		User addUserToEvent = em.find(User.class, id);
-//		Event eventToBeAttended = em.find(Event.class, eventId);
-//		eventToBeAttended.getMaxSize();
-//		eventToBeAttended.getDescription();
-//		addUserToEvent.getFirstName();
-//		addUserToEvent.getLastName();
-//		addUserToEvent.getImageUrl();
-//		addUserToEvent.getPhone();
-//		eventToBeAttended.setCustomerId(addUserToEvent.getId());
-//		return null;
-//
-//	}
 
 }
