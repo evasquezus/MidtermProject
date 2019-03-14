@@ -20,7 +20,7 @@
 		<c:if test = "${user == null}">
 	        <form class="form-inline my-2 my-lg-0" action="login.do" method="POST">
 				<input type="text" class="form-control" placeholder="email@email.com" aria-label="Email" aria-describedby="login" name="email"> 
-				<input type="text" class="form-control" placeholder="password" aria-label="Password" aria-describedby="login" name="password">
+				<input type="password" class="form-control" placeholder="password" aria-label="Password" aria-describedby="login" name="password">
 				<button class="btn btn-primary my-2 my-sm-0" type="submit">Login</button>
 			</form>
 			<a class="nav-link disabled" href="#"> or </a>
@@ -32,9 +32,9 @@
 							<form action="registerUser.do" method="POST">
 								First Name: <input type="text" name="firstName"> <br>
 								Last Name: <input type="text" name="lastName"> <br>
-								Email: <input type="text" name="email"> <br>
-								Password: <input type="text" name="password"> <br>
-								Confirm Password: <input type="text" name="confirmPassword">
+								Email: <input type="email" name="email"> <br>
+								Password: <input type="password" name="password"> <br>
+								Confirm Password: <input type="password" name="confirmPassword">
 								Zip Code (optional): <input type="text" name="zipcode"> <br>
 								<br> 
 								<input type="submit" name="userID"
