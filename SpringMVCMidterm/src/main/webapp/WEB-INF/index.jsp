@@ -19,14 +19,12 @@
 		<section>
 			<c:if
 				test="${userevents.size() > 0 && not empty currentUser && currentUser.id != 1}">
-			
+				<h3>Your latest events</h3>
 				<div class="container">
-					
+					<div class="row">
 						<c:forEach var="newCreatedEvent" items="${userevents}">
 							<c:if test="${ newCreatedEvent.active}">
-							
-	<h3>Your latest events</h3>
-	<div class="row">
+
 								<div class="col-lg-4 col-sm-6 col-xs-12 pb-3">
 									<div class="card card-custom bg-white border-white border-0">
 										<div class="card-custom-img"
@@ -37,7 +35,7 @@
 											<c:choose>
 												<c:when test="${empty newCreatedEvent.user.imageUrl}">"
        								<img class="img-fluid"
-														src="resources/user_images/default.png" alt="Avatar" />
+														src="../resources/user_images/default.png" alt="Avatar" />
 												</c:when>
 												<c:otherwise>
 													<img class="img-fluid"
@@ -60,8 +58,7 @@
 											<div class="row  card-back-footer">
 												<div class="col-6 ">
 													<form action="eventDetails.do" method="GET">
-														<input type="hidden" name="id"
-															value="${newCreatedEvent.id}" /> <input
+														<input type="hidden" name="id" value="${newCreatedEvent.id}" /> <input
 															class=" col btn btnResult btn-primary btn-main-color"
 															type="submit" value="DETAILS" />
 													</form>
@@ -71,17 +68,17 @@
 										<div class="card-footer">
 											<div class="row  card-back-footer">
 												<div class="col-6 ">
-													<form action="editEvent.do" method="GET">
-														<input type="hidden" name="id"
-															value="${newCreatedEvent.id}" /> <input
-															class=" col btn btnResult btn-primary btn-main-color"
-															type="submit" value="EDIT" />
+													<form action="editEvent.do" method="POST" name="id">
+														<input type="hidden" name="id" value="${event.id}" /> <input
+															type="submit"
+															class="col btnResult btn btn-outline-primary"
+															value="EDIT" />
 													</form>
 												</div>
 												<div class="col-6">
-													<form action="deleteEventByUser.do" method="POST" name="id">
-														<input type="hidden" name="eventId"
-															value="${newCreatedEvent.id}" /> <input type="submit"
+													<form action="deleteEvent.do" method="POST" name="id">
+														<input type="hidden" name="id" value="${event.id}" /> <input
+															type="submit"
 															class="col btnResult btn btn-outline-primary"
 															value="DELETE" />
 													</form>
@@ -92,10 +89,9 @@
 
 
 								</div>
-								</div>
 							</c:if>
 						</c:forEach>
-					
+					</div>
 				</div>
 
 
@@ -189,15 +185,15 @@
 								<div class="card-footer">
 									<div class="row  card-back-footer">
 										<div class="col-6 ">
-											<form action="editEvent.do" method="GET">
-												<input type="hidden" name="id" value="${event.id}" />
-												<input class=" col btn btnResult btn-primary btn-main-color"
-													type="submit" value="EDIT" />
+											<form action="editEvent.do" method="GET" name="id">
+												<input type="hidden" name="id" value="${event.id}" /> <input
+													type="submit" class="col btnResult btn btn-outline-primary"
+													value="EDIT" />
 											</form>
 										</div>
 										<div class="col-6">
-											<form action=deleteEventByUser.do method="POST" name="eventId">
-												<input type="hidden" name="eventId" value="${event.id}" /> <input
+											<form action="deleteEvent.do" method="POST" name="id">
+												<input type="hidden" name="id" value="${event.id}" /> <input
 													type="hidden" name="indexpage" value="true" /> <input
 													type="submit" class="col btnResult btn btn-outline-primary"
 													value="DELETE" />
