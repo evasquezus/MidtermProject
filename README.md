@@ -29,8 +29,11 @@ The process to register, create, login/logout, join ,create or leave events, are
     
 ## How to log in
 
-If you wish to login as an Admin
-*UserName : admin@admin.com Password   1234
+1.If you wish to login as an Admin
+2.UserName :
+3.admin@admin.com
+4.Password   
+5.1234
 
 If you wish to login as an User
 *UserName eric@eric.com Password 2345
