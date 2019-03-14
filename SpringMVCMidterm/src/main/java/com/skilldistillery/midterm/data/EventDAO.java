@@ -37,5 +37,6 @@ public interface EventDAO {
 	public User updateUser(User user, Integer id);
 
 	public UserEvent addUsertoEventUser(Integer userId, Integer eventId);
+	public Boolean deleteEvent(int eventId);
 	
 }
