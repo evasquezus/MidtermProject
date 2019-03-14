@@ -76,8 +76,7 @@ public class EventDAOImpl implements EventDAO {
 		Event toBeDeleted = em.find(Event.class, id);
 		toBeDeleted.setActive(false);
 		em.flush();
-		Boolean result = !em.contains(toBeDeleted);
-		return result;
+		return false;
 	}
 
 	// Method for editing an event
@@ -172,6 +171,7 @@ public class EventDAOImpl implements EventDAO {
 	public Boolean deleteEvent(int eventId) {
 		Event toBeDeleted = em.find(Event.class, eventId);
 		toBeDeleted.setActive(false);
+//		em.flush();
 		em.persist(toBeDeleted);
 		if(toBeDeleted.isActive()) {
 			return false;
