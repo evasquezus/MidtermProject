@@ -1,20 +1,18 @@
-package com.skilldistillery.midterm.entities;
+package com.skilldistillery.midterm.entitytests;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.skilldistillery.midterm.entities.Event;
-import com.skilldistillery.midterm.entities.EventSubject;
 
 public class EventTest {
 	private EntityManagerFactory emf;
@@ -51,28 +49,28 @@ public class EventTest {
 	@Test
 	public void test_event_map_user_manytone_assosiation() {
 		assertNotNull(event);
-		assertEquals("2004-05-23 14:25:10.0", event.getFinishTime().toString());
-		assertEquals("todd", event.getUser().getFirstName());
-		assertEquals("todd@todd.com", event.getUser().getEmail());
+		assertEquals("2019-03-15 22:00:00.0", event.getFinishTime().toString());
+		assertEquals("Admin", event.getUser().getFirstName());
+		assertEquals("admin@admin.com", event.getUser().getEmail());
 	}
 
 	@Test
 	public void test_event_map_userevent_onetomany_assosiation() {
 		assertNotNull(event);
 		assertEquals(1, event.getUserevents().size());
-		assertEquals("2004-05-23 14:25:10.0", event.getUserevents().get(0).getDateCreated().toString());
+		assertEquals("2019-03-12 16:19:25.0", event.getUserevents().get(0).getDateCreated().toString());
 	}
 	
 	@Test
 	public void test_event_map_eventSubject_manytoone_assosiation() {
 		assertNotNull(event);
-		assertEquals("metallica", event.getEventSubject().getEventName());
+		assertEquals("Metallica", event.getEventSubject().getEventName());
 	}
 	
 	@Test
 	public void test_event_map_address_manytoone_assosiation() {
 		assertNotNull(event);
-		assertEquals("co", event.getAddress().getStateAbbreviation());
+		assertEquals("CO", event.getAddress().getStateAbbreviation());
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.skilldistillery.midterm.entities;
+package com.skilldistillery.midterm.entitytests;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -36,19 +36,19 @@ public class AddressTest {
 		Address address = em.find(Address.class, 4);
 		assertNotNull(address);
 		assertEquals(4, address.getId());
-		assertEquals("456 street", address.getAddress());
-		assertEquals("2004-05-23 14:25:10.0", address.getDateCreated().toString());
+		assertEquals("456 Street", address.getAddress());
+		assertEquals("2019-03-08 16:19:25.0", address.getDateCreated().toString());
 	}
 	
 	@Test
 	public void test_address_user_map_onetone_assosiation() {
 		Address address = em.find(Address.class, 4);
 		assertNotNull(address);
-		assertEquals("jersey city", address.getCity());
-		assertEquals("new jersey", address.getState());
-		assertEquals("456 street", address.getAddress());
-		assertEquals("bella", address.getUser().getFirstName());
-		assertEquals("jimenez", address.getUser().getLastName());
+		assertEquals("Jersey City", address.getCity());
+		assertEquals("New Jersey", address.getState());
+		assertEquals("456 Street", address.getAddress());
+		assertEquals("Bella", address.getUser().getFirstName());
+		assertEquals("Jimenez", address.getUser().getLastName());
 
 	}
 	
