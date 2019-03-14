@@ -23,7 +23,7 @@ If you wish to login as an User
 *UserName : eric@eric.com
 *Password   2345
 
-## Walkthrough 
+## Instructions 
 *Create Profile
 In order to create an event you must first be logged in, you can use the above login information or create a new user using the "REGISTER" button. You will be prompted to provide your first name, last name, email, password and a password in order to register. Once thats completed you will be redirected towards your profile page.
 
