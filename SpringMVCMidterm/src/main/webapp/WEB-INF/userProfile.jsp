@@ -57,7 +57,7 @@
 							<c:choose>
 								<c:when test="${empty user.imageUrl}">
 									<img width="150px"
-										src="resources/user_images/default.png"
+										src="../resources/user_images/default.png"
 										class="img-responsive" alt="">
 								</c:when>
 								<c:otherwise>
