@@ -18,6 +18,7 @@ import com.skilldistillery.midterm.entities.Address;
 import com.skilldistillery.midterm.entities.Event;
 import com.skilldistillery.midterm.entities.EventSubject;
 import com.skilldistillery.midterm.entities.User;
+import com.skilldistillery.midterm.entities.UserEvent;
 
 @Controller
 public class MidTermController {
@@ -160,17 +161,12 @@ public class MidTermController {
 		ModelAndView mv = new ModelAndView();
 		eventDao.destroyEvent(eventID, id);
 		mv.addObject("event", eventID);
-		System.out.println(indexpage + "33333333333333333333%%%%%%%%%%%%%%%%%%");
-
 		if(indexpage) {
-			System.out.println(indexpage + "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 			return "redirect:/home.do";
 		}else{
 			// mv.setViewName("WEB-INF/userProfile.jsp");
 			return "redirect:/userProfile.jsp";
-
-		}
-		
+		}	
 	}
 	
 	@RequestMapping(path = "editEvent.do", method = RequestMethod.POST)
@@ -191,14 +187,34 @@ public class MidTermController {
 	}
 	
 	@RequestMapping(path = "eventDetails.do" , method = RequestMethod.GET)
-	public ModelAndView eventdetails(HttpSession session
-			, Event event
-			) {
+	public ModelAndView eventdetails(HttpSession session, Integer id) {
 		ModelAndView mv = new ModelAndView();
-//		Event selectedEvent = eventDao.findEventById(event.getId());
-//
-//		mv.addObject("selectedEvent", selectedEvent);
-		mv.setViewName("WEB-INF/event/result.jsp");
+		Event selectedEvent = eventDao.findEventById(id);
+		if(selectedEvent == null) {
+			mv.addObject("errorEventisNull", true);
+			mv.setViewName("WEB-INF/event/eventDetails.jsp");
+		}else {
+			mv.addObject("selectedEvent", selectedEvent);
+			mv.setViewName("WEB-INF/event/eventDetails.jsp");
+		}
 		return mv;
+	}
+	
+	@RequestMapping(path = "joinEvent.do" , method = RequestMethod.POST)
+	public String joinEvent(HttpSession session, Integer eventId) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println(eventId +"eeeeeeeeeeeeeeeeeeeeeeeee");
+		User currentUser = (User)session.getAttribute("user");
+Boolean t=true;
+		UserEvent addUserToEvent = eventDao.addUsertoEventUser(currentUser.getId(),eventId );
+		if(addUserToEvent == null) {
+			mv.addObject("addUserToEventSuccess", false);
+			return "redirect:/home.do";
+		}else {
+			mv.addObject("addUserToEventSuccess", t);
+			//System.out.println(addUserToEventSuccess + "###########################");
+			mv.addObject("addUserToEvent", addUserToEvent);
+			return "redirect:/home.do";
+		}
 	}
 }

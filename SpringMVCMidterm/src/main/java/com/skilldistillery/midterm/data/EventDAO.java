@@ -8,6 +8,7 @@ import com.skilldistillery.midterm.entities.Address;
 import com.skilldistillery.midterm.entities.Event;
 import com.skilldistillery.midterm.entities.EventSubject;
 import com.skilldistillery.midterm.entities.User;
+import com.skilldistillery.midterm.entities.UserEvent;
 
 public interface EventDAO {
 	
@@ -34,5 +35,7 @@ public interface EventDAO {
 	public User getSessionUser(HttpSession session);
 	
 	public User updateUser(User user, Integer id);
+
+	public UserEvent addUsertoEventUser(Integer userId, Integer eventId);
 	
 }

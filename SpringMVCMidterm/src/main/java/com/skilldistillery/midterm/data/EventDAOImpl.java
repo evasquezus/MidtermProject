@@ -14,6 +14,7 @@ import com.skilldistillery.midterm.entities.Address;
 import com.skilldistillery.midterm.entities.Event;
 import com.skilldistillery.midterm.entities.EventSubject;
 import com.skilldistillery.midterm.entities.User;
+import com.skilldistillery.midterm.entities.UserEvent;
 
 @Transactional
 @Service
@@ -54,11 +55,15 @@ public class EventDAOImpl implements EventDAO {
 	@Override
 	public Event createEvent(int userId, Event event, Address address, EventSubject eventSubject) {
 		User userAddEventTo = em.find(User.class, userId);
+
 		eventSubject.setUser(userAddEventTo);
 		event.setEventSubject(eventSubject);
 		event.setUser(userAddEventTo);
 		event.setAddress(address);
 		event.setDateCreated(new Date());
+		
+		UserEvent userevent = new UserEvent(new Date(),null, false, true, null, userAddEventTo, event );
+		em.persist(userevent);
 		em.persist(event);
 		em.flush();
 		return event;
@@ -151,6 +156,16 @@ public class EventDAOImpl implements EventDAO {
 	public Event findEventById(int eventId) {
 		Event event = em.find(Event.class, eventId);
 		return event;
+	}
+
+	@Override
+	public UserEvent addUsertoEventUser(Integer userId, Integer eventId) {
+		Event userEvent = em.find(Event.class, eventId);
+		User addUserToEvent = em.find(User.class, userId);
+		UserEvent addCurrentUserToUserEvent = new UserEvent(new Date(),null, false, true, null, addUserToEvent, userEvent );
+		em.persist(addCurrentUserToUserEvent);
+		em.flush();
+		return addCurrentUserToUserEvent;
 	}
 
 	// Method for adding user to an event

@@ -8,6 +8,14 @@
   font-weight:bold;
 }
 
+.fa-check-circle{
+	font-size:48pp;
+	color:green;
+}
+.dropdown-menu.show{
+	width:400px;
+	left:-300px;
+}
 
 /* 
 html, body {

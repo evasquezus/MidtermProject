@@ -56,6 +56,19 @@ public class UserEvent {
 	public User getUser() {
 		return user;
 	}
+	public UserEvent() {
+		
+	}
+	public UserEvent(Date dateCreated, Integer eventRating, boolean flagContent, boolean active, Integer hostRating, User user,
+			Event event) {
+		this.dateCreated = dateCreated;
+		this.eventRating = eventRating;
+		this.flagContent = flagContent;
+		this.active = active;
+		this.hostRating = hostRating;
+		this.user = user;
+		this.event = event;
+	}
 
 	public void setUser(User user) {
 		this.user = user;
@@ -110,11 +123,11 @@ public class UserEvent {
 		this.active = active;
 	}
 
-	public int getHostRating() {
-		return hostRating;
+	public void setEventRating(Integer eventRating) {
+		this.eventRating = eventRating;
 	}
 
-	public void setHostRating(int hostRating) {
+	public void setHostRating(Integer hostRating) {
 		this.hostRating = hostRating;
 	}
 	
