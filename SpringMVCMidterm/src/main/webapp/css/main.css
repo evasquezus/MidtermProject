@@ -1,6 +1,6 @@
 #cover{
   height:60vh;
-  background-image: url(/resources/event_images/default.jpg);
+  background-image: url(../resources/event_images/default.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 
