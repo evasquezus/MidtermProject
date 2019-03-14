@@ -20,8 +20,10 @@ If you wish to login as an Admin
 *Password   1234
 
 If you wish to login as an User
-*UserName : eric@eric.com
-*Password   2345
+*UserName 
+* eric@eric.com
+*Password  
+*2345
 
 ## Instructions 
 *Create Profile
