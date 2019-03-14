@@ -17,7 +17,8 @@
 	<section id="cover"></section>
 	<div class="container mt-5">
 		<section>
-			<c:if test="${userevents.size() > 0 && not empty currentUser && currentUser.id != 1}">
+			<c:if
+				test="${userevents.size() > 0 && not empty currentUser && currentUser.id != 1}">
 				<h3>Your latest events</h3>
 				<div class="container">
 					<div class="row">
@@ -67,20 +68,21 @@
 										<div class="card-footer">
 											<div class="row  card-back-footer">
 												<div class="col-6 ">
-													<form action="editEvent.do" method="GET" name="id">
-														<input type="hidden" name="id" value="${newCreatedEvent.id}" /> <input
+													<form action="editEvent.do" method="POST" name="id">
+														<input type="hidden" name="id" value="${event.id}" /> <input
 															type="submit"
 															class="col btnResult btn btn-outline-primary"
 															value="EDIT" />
 													</form>
 												</div>
-										<div class="col-6">
-											<form action="deleteEventByUser.do" method="POST" name="eventId">
-												<input type="hidden" name="eventId" value="${newCreatedEvent.id}" />  <input
-													type="submit" class="col btnResult btn btn-outline-primary"
-													value="DELETE" />
-											</form>
-										</div>
+												<div class="col-6">
+													<form action="deleteEvent.do" method="POST" name="id">
+														<input type="hidden" name="id" value="${event.id}" /> <input
+															type="submit"
+															class="col btnResult btn btn-outline-primary"
+															value="DELETE" />
+													</form>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -94,18 +96,18 @@
 
 
 			</c:if>
-	<c:if test = "${empty userevents && not empty currentUser }">
-	 You don't have any events, Go ahead and create one!!</c:if> 
+			<c:if test="${empty userevents && not empty currentUser }">
+	 You don't have any events, Go ahead and create one!!</c:if>
 		</section>
 
 	</div>
 
 	<div class="container mt-5">
-	<c:if test = "${empty indexEvents && not empty currentUser }">
-	<h3>Currently there is No upcoming events.New ones coming soon!</h3>
-	</c:if>
-	<c:if test = "${!empty indexEvents && not empty currentUser }">
-		<h3>All Upcoming events</h3>
+		<c:if test="${empty indexEvents && not empty currentUser }">
+			<h3>Currently there is No upcoming events.New ones coming soon!</h3>
+		</c:if>
+		<c:if test="${!empty indexEvents && not empty currentUser }">
+			<h3>All Upcoming events</h3>
 		</c:if>
 		<div class="row">
 			<c:forEach var="event" items="${indexEvents}">
@@ -164,13 +166,15 @@
 												</c:if>
 											</c:forEach>
 											<c:if test="${!contains}">
-											<form action="joinEvent.do" method="POST" name="eventId">
-												<input type="hidden" name="eventId" value="${event.id}" />
-												<input type="submit"
-													class="col btnResult btn btn-outline-primary" value="JOIN" />
-											</form>
+												<form action="joinEvent.do" method="POST" name="eventId">
+													<input type="hidden" name="eventId" value="${event.id}" />
+													<input type="submit"
+														class="col btnResult btn btn-outline-primary" value="JOIN" />
+												</form>
 											</c:if>
-											<c:if test="${contains}">Joined <i class="far fa-check-circle"></i> </c:if>
+											<c:if test="${contains}">Joined <i
+													class="far fa-check-circle"></i>
+											</c:if>
 										</div>
 									</c:if>
 								</div>
@@ -188,8 +192,9 @@
 											</form>
 										</div>
 										<div class="col-6">
-											<form action="deleteEventByUser.do" method="POST" name="eventId">
-												<input type="hidden" name="eventId" value="${event.id}" />  <input
+											<form action="deleteEvent.do" method="POST" name="id">
+												<input type="hidden" name="id" value="${event.id}" /> <input
+													type="hidden" name="indexpage" value="true" /> <input
 													type="submit" class="col btnResult btn btn-outline-primary"
 													value="DELETE" />
 											</form>
