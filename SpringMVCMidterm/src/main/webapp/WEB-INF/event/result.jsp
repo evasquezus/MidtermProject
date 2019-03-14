@@ -53,7 +53,7 @@
 								<div class="row  card-back-footer">
 											<div class="col-6 ">
 												<form action="eventDetails.do" method="GET">
-													<input type="hidden" name="id" value="${event.id}" /> <input
+													<input type="hidden" name="id" value="${newCreatedEvent.id}" /> <input
 														class=" col btn btnResult btn-primary btn-main-color"
 														type="submit" value="DETAILS" />
 												</form>
@@ -63,20 +63,19 @@
 									<div class="card-footer">
 										<div class="row  card-back-footer">
 											<div class="col-6 ">
-												<form action="editEvent.do" method="POST" name="id">
-													<input type="hidden" name="id" value="${event.id}" /> <input
+												<form action="editEvent.do" method="POST" name="eventId">
+													<input type="hidden" name="id" value="${newCreatedEvent.id}" /> <input
 														type="submit"
 														class="col btnResult btn btn-outline-primary" value="EDIT" />
 												</form>
 											</div>
-											<div class="col-6">
-												<form action="deleteEvent.do" method="POST" name="id">
-													<input type="hidden" name="id" value="${event.id}" /> <input
-														type="submit"
-														class="col btnResult btn btn-outline-primary"
-														value="DELETE" />
-												</form>
-											</div>
+										<div class="col-6">
+											<form action="deleteEventByUser.do" method="POST" name="eventId">
+												<input type="hidden" name="eventId" value="${newCreatedEvent.id}" /> <input
+													type="submit" class="col btnResult btn btn-outline-primary"
+													value="DELETE" />
+											</form>
+										</div>
 										</div>
 									</div>
 						</div>

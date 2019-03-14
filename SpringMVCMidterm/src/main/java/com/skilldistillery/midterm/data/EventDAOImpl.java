@@ -168,6 +168,19 @@ public class EventDAOImpl implements EventDAO {
 		return addCurrentUserToUserEvent;
 	}
 
+	@Override
+	public Boolean deleteEvent(int eventId) {
+		Event toBeDeleted = em.find(Event.class, eventId);
+		toBeDeleted.setActive(false);
+//		em.flush();
+		em.persist(toBeDeleted);
+		if(toBeDeleted.isActive()) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+
 	// Method for adding user to an event
 
 //	public User addUserToEvent(User userToBeAdded, Event eventId, int id) {
