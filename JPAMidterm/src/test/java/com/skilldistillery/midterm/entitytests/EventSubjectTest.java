@@ -1,4 +1,4 @@
-package com.skilldistillery.midterm.entities;
+package com.skilldistillery.midterm.entitytests;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;

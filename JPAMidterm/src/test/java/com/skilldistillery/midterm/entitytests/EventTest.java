@@ -1,4 +1,4 @@
-package com.skilldistillery.midterm.entities;
+package com.skilldistillery.midterm.entitytests;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,6 +11,8 @@ import javax.persistence.Persistence;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import com.skilldistillery.midterm.entities.Event;
 
 public class EventTest {
 	private EntityManagerFactory emf;

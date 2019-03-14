@@ -1,4 +1,4 @@
-package com.skilldistillery.midterm.entities;
+package com.skilldistillery.midterm.entitytests;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -6,6 +6,8 @@ import javax.persistence.Persistence;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+
+import com.skilldistillery.midterm.entities.Comment;
 
 public class CommentTest {
 	
