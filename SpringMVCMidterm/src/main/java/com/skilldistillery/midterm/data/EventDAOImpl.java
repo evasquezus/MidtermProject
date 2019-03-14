@@ -171,13 +171,27 @@ public class EventDAOImpl implements EventDAO {
 	public Boolean deleteEvent(int eventId) {
 		Event toBeDeleted = em.find(Event.class, eventId);
 		toBeDeleted.setActive(false);
-//		em.flush();
 		em.persist(toBeDeleted);
 		if(toBeDeleted.isActive()) {
 			return false;
 		}else {
 			return true;
 		}
+	}
+	
+	
+	@Override
+	public Event saveEvent(Event event, int id) {
+		Event managedEvent = em.find(Event.class, id);
+
+		managedEvent.setName(event.getName());
+		managedEvent.setDescription(event.getDescription());
+		managedEvent.setImageUrl(event.getImageUrl());
+		managedEvent.setAddress(event.getAddress());
+		managedEvent.setStartTime(event.getStartTime());
+		managedEvent.setFinishTime(event.getFinishTime());
+		
+		return managedEvent;
 	}
 
 }

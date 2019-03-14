@@ -60,27 +60,27 @@
 										<p>Max people in a group ${selectedEvent.maxSize }</p>
 
 										<p>Location ${selectedEvent.address.address }</p>
-
+										<p>City: ${selectedEvent.address.city }</p>
+										<p>State: ${selectedEvent.address.state }</p>
+										<p>ZipCode: ${selectedEvent.address.zipcode }</p>
 										<p>Hosted by : ${selectedEvent.user.firstName}
 											${selectedEvent.user.lastName}</p>
-
 									</div>
-
-
+									
 									<c:choose>
-									<c:when test="${empty currentUser}">
+										<c:when test="${empty currentUser}">
 
-										</c:when> 
+										</c:when>
 										<c:when
 											test="${currentUser.id == 1 || currentUser.id == selectedEvent.user.id}">
 											<div class="col-6">
-											<form action="editEvent.do" method="GET">
+												<form action="editEvent.do" method="GET">
 													<input type="hidden" name="id" value="${selectedEvent.id}" />
 													<input
 														class=" col btn btnResult btn-primary btn-main-color"
 														type="submit" value="EDIT" />
 												</form>
-												</div>
+											</div>
 										</c:when>
 										<c:otherwise>
 

@@ -27,9 +27,6 @@ public class Address {
 	
 	private String city;
 	
-//	@Enumerated(EnumType.ORDINAL) we can uncomment this one enum fixed with ignore cases or data in db will be updated
-//	private State state;
-	
 	private String state;
 
 	@Column(name = "state_abbreviation")

@@ -1,5 +1,6 @@
 package com.skilldistillery.midterm.controller;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -12,9 +13,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.skilldistillery.midterm.data.EventDAO;
 import com.skilldistillery.midterm.entities.Address;
 import com.skilldistillery.midterm.entities.Event;
+import com.skilldistillery.midterm.entities.EventAddressDTO;
 import com.skilldistillery.midterm.entities.EventSubject;
 import com.skilldistillery.midterm.entities.User;
 import com.skilldistillery.midterm.entities.UserEvent;
@@ -240,10 +244,41 @@ public class MidTermController {
 			if(currentUser != null) {
 				mv.addObject("user", currentUser);
 			}
+			selectedEvent.setStartTime(selectedEvent.getStartTime().replace(" ", "T"));
+			selectedEvent.setFinishTime(selectedEvent.getFinishTime().replace(" ", "T"));
+
 			mv.addObject("selectedEvent", selectedEvent);
 			mv.setViewName("WEB-INF/event/editEvent.jsp");
 		}
 		return mv;
+	}
+	
+	@RequestMapping(path = "saveEvent.do", params = "id", method = RequestMethod.POST)
+	public ModelAndView saveEvent(HttpSession session, EventAddressDTO eventAddressDTO,int id,   RedirectAttributes redir) throws SQLException {
+		ModelAndView mv = new ModelAndView();
+		Address address = new Address(eventAddressDTO.getAddress()
+				,eventAddressDTO.getCity(), 
+				eventAddressDTO.getState(),
+				eventAddressDTO.getZipcode() );
+		
+
+		Event event = new Event();
+		event.setAddress(address);
+		event.setImageUrl(eventAddressDTO.getImageUrl());
+		event.setDescription(eventAddressDTO.getDescription());
+		event.setName(eventAddressDTO.getName());
+		event.setStartTime(eventAddressDTO.getStartTime());
+		event.setFinishTime(eventAddressDTO.getFinishTime());
+		
+		
+		Event updatedEvent = eventDao.saveEvent(event, id);
+		User currentUser = (User)session.getAttribute("user");
+		mv.addObject("currentUser", currentUser);
+		mv.addObject("selectedEvent", updatedEvent);
+		mv.setViewName("WEB-INF/event/eventDetails.jsp");
+
+		return mv;
+
 	}
 	
 	

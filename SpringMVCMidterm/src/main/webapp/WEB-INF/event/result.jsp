@@ -63,10 +63,11 @@
 									<div class="card-footer">
 										<div class="row  card-back-footer">
 											<div class="col-6 ">
-												<form action="editEvent.do" method="POST" name="eventId">
-													<input type="hidden" name="id" value="${newCreatedEvent.id}" /> <input
-														type="submit"
-														class="col btnResult btn btn-outline-primary" value="EDIT" />
+							<form action="editEvent.do" method="GET">
+													<input type="hidden" name="id" value="${newCreatedEvent.id}" />
+													<input
+														class=" col btn btnResult btn-primary btn-main-color"
+														type="submit" value="EDIT" />
 												</form>
 											</div>
 										<div class="col-6">
