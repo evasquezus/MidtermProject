@@ -3,12 +3,12 @@
          [2]: Scrum  Master :  Anna Jimenez            
          [3]: Repo Owner : Edwin Vasquez
 ## Team Full Stacks CRUD Project
-
+Evented
 http://3.17.253.216:8080/SpringMVCMidterm/
 
 
 ## Overview
-
+Evented
 During this 7 day spring we decided to build a website. This website lets you create or join events in your area which other people have the ability to join. Have you ever failed trying to find a friend or family member to join you at an event? Worry not we have you covered, our page allows you to find like minded individuals who will join you for an aweasome night out .
 
 The process to register, create, login/logout, join ,create or leave events, are all straight foward and simple. Admins have the higher privalages and can delete or edit your event if you don't follow the guideslines for posting. All crud funcationallity is present in this project.
