@@ -169,7 +169,7 @@ public class MidTermController {
 	}
 		
 	@RequestMapping(path = "deleteEventByUser.do", method = RequestMethod.POST)
-	public String deleteEvent(int eventId) {
+	public String deleteEventByUser(int eventId) {
 		boolean isSuccessful = eventDao.deleteEvent(eventId);
 		if (!isSuccessful) {
 			return "WEB-INF/error/error.jsp";
@@ -254,14 +254,14 @@ public class MidTermController {
 	}
 	
 	@RequestMapping(path = "saveEvent.do", params = "id", method = RequestMethod.POST)
-	public ModelAndView saveEvent(HttpSession session, EventAddressDTO eventAddressDTO,int id,   RedirectAttributes redir) throws SQLException {
+	public ModelAndView saveEvent(HttpSession session, EventAddressDTO eventAddressDTO,int id, 
+		RedirectAttributes redir) throws SQLException {
 		ModelAndView mv = new ModelAndView();
 		Address address = new Address(eventAddressDTO.getAddress()
 				,eventAddressDTO.getCity(), 
 				eventAddressDTO.getState(),
 				eventAddressDTO.getZipcode() );
 		
-
 		Event event = new Event();
 		event.setAddress(address);
 		event.setImageUrl(eventAddressDTO.getImageUrl());

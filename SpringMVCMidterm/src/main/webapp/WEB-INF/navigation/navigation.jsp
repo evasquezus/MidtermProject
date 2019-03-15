@@ -12,11 +12,12 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"><a class="nav-link" href="home.do">Home<span class="sr-only">(current)</span></a></li>
-			<c:if test = "${user != null}">
-				<li class="nav-item"><a class="nav-link" href="createEvent.do">Create Event</a></li>
-      		</c:if>
+			<li class="nav-item active"><a class="nav-link home" href="home.do">EVENTED<span class="sr-only">(current)</span></a></li>
+
 		</ul>
+					<c:if test = "${user != null}">
+				<a class="nav-link btn btn-outline-primary " href="createEvent.do">Create Event</a>
+      		</c:if>
 		<c:if test = "${user == null}">
 	        <form class="form-inline my-2 my-lg-0" action="login.do" method="POST">
 				<input type="text" class="form-control" placeholder="email@email.com" aria-label="Email" aria-describedby="login" name="email"> 

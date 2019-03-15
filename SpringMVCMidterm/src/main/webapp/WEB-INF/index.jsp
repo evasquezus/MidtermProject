@@ -45,20 +45,38 @@
 
 										</div>
 										<div class="card-body" style="overflow-y: auto">
-											<h4 class="card-title">${newCreatedEvent.name }</h4>
-											<p class="card-text">Description:
-												${newCreatedEvent.description }</p>
-											<p>${newCreatedEvent.eventSubject.eventName }</p>
-											<p>Start time${newCreatedEvent.startTime }</p>
-											<p>Finish Time${newCreatedEvent.finishTime }</p>
+				<h4 class="card-title">${newCreatedEvent.name }</h4>
+								<h5>Type: ${newCreatedEvent.eventSubject.eventName }</h5>
+								<div class="row">
+									<div class="col-1">
+										<i class="far fa-calendar-alt"></i>
+									</div>
+									<div class="col-6 cardtext offset-md-1">${newCreatedEvent.startTime }</div>
+								</div>
+								<div class="row">
+									<div class="col-1">
+										<i class="fas fa-users"></i>
+									</div>
+									<div class="col-6 cardtext offset-md-1">
+										Already Joined  <span class="alreadyJoined">
+											 ${newCreatedEvent.userevents.size()-1} </span>
+									</div>
+								</div>
 
-											<p>Maximum people in a group${newCreatedEvent.maxSize }</p>
-
-											<p>Location ${newCreatedEvent.address.address }</p>
+								<h6>Description:</h6>
+								<p class="card-text block-with-text  ">${newCreatedEvent.description }</p>
+								<div class="row">
+									<div class="col-1">
+										<i class="fas fa-map-marker-alt"></i>
+									</div>
+									<div class="col-10">${newCreatedEvent.address.address },
+										${newCreatedEvent.address.city }, ${newCreatedEvent.address.state }</div>
+								</div>
 											<div class="row  card-back-footer">
 												<div class="col-6 ">
 													<form action="eventDetails.do" method="GET">
-														<input type="hidden" name="id" value="${newCreatedEvent.id}" /> <input
+														<input type="hidden" name="id"
+															value="${newCreatedEvent.id}" /> <input
 															class=" col btn btnResult btn-primary btn-main-color"
 															type="submit" value="DETAILS" />
 													</form>
@@ -68,16 +86,16 @@
 										<div class="card-footer">
 											<div class="row  card-back-footer">
 												<div class="col-6 ">
-													<form action="editEvent.do" method="POST" name="id">
-														<input type="hidden" name="id" value="${event.id}" /> <input
+													<form action="editEvent.do" method="GET" name="id">
+														<input type="hidden" name="id" value="${newCreatedEvent.id}" /> <input
 															type="submit"
 															class="col btnResult btn btn-outline-primary"
 															value="EDIT" />
 													</form>
 												</div>
 												<div class="col-6">
-													<form action="deleteEvent.do" method="POST" name="id">
-														<input type="hidden" name="id" value="${event.id}" /> <input
+													<form action="deleteEventByUser.do" method="POST" name="eventId">
+														<input type="hidden" name="eventId" value="${newCreatedEvent.id}" /> <input
 															type="submit"
 															class="col btnResult btn btn-outline-primary"
 															value="DELETE" />
@@ -134,18 +152,32 @@
 							</div>
 							<div class="card-body" style="overflow-y: auto">
 								<h4 class="card-title">${event.name }</h4>
-								<p class="card-text">Description: ${event.description }</p>
-								<p>${event.eventSubject.eventName }</p>
-								<p>Start time${event.startTime }</p>
-								<p>Finish Time${event.finishTime }</p>
+								<h5>Type: ${event.eventSubject.eventName }</h5>
+								<div class="row">
+									<div class="col-1">
+										<i class="far fa-calendar-alt"></i>
+									</div>
+									<div class="col-6 cardtext offset-md-1">${event.startTime }</div>
+								</div>
+								<div class="row">
+									<div class="col-1">
+										<i class="fas fa-users"></i>
+									</div>
+									<div class="col-6 cardtext offset-md-1">
+										Already Joined  <span class="alreadyJoined">
+											 ${event.userevents.size()} </span>
+									</div>
+								</div>
 
-								<p>Maximum people in a group${event.maxSize }</p>
-
-								<p>Location ${event.address.address }</p>
-								<p>How many people already joined :
-									${event.userevents.size()}</p>
-
-
+								<h6>Description:</h6>
+								<p class="card-text block-with-text  ">${event.description }</p>
+								<div class="row">
+									<div class="col-1">
+										<i class="fas fa-map-marker-alt"></i>
+									</div>
+									<div class="col-10">${event.address.address },
+										${event.address.city }, ${event.address.state }</div>
+								</div>
 								<div class="row  card-back-footer">
 									<div class="col-6 ">
 
@@ -192,8 +224,8 @@
 											</form>
 										</div>
 										<div class="col-6">
-											<form action="deleteEvent.do" method="POST" name="id">
-												<input type="hidden" name="id" value="${event.id}" /> <input
+											<form action="deleteEventByUser.do" method="POST" name="eventId">
+												<input type="hidden" name="eventId" value="${event.id}" /> <input
 													type="hidden" name="indexpage" value="true" /> <input
 													type="submit" class="col btnResult btn btn-outline-primary"
 													value="DELETE" />

@@ -1,16 +1,56 @@
 #cover{
   height:60vh;
-  background-image: url(../resources/event_images/default.jpg);
+  background-image: url(../resources/event_images/surface.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 
   color:#fff;
   font-weight:bold;
 }
+.fa, .far, .fas{
+	font-size: 24px;
+    padding-top: 4px;
+    color: #69DBD3;
+}
 
+.block-with-text {
+  overflow: hidden;
+  position: relative;
+  line-height: 1.5em;
+  max-height: 6em;
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
+}
+.block-with-text:before {
+  content: '...';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.block-with-text:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  background: white;
+}
+.cardtext{
+	font-size: 16px;
+    padding-top: 3px;
+     padding-bottom: 3px;
+   
+}
+.alreadyJoined{
+	font-size: 18px;
+	font-weight: 600;
+	margin-left:5px;
+}
 .fa-check-circle{
-	font-size:48pp;
-	color:green;
+	font-size:34px;
+	color: #51F0AF;
 }
 .dropdown-menu.show{
 	width:400px;
@@ -19,6 +59,49 @@
 .backArrow{
 	font-size: 18px;
 }
+.btn-outline-primary:hover{
+	color: #ffffff !important;
+    background-color: #756FF5 !important;
+}
+.btn-primary, 
+/* .btn-primary:hover,  */
+.btn-primary:active, .btn-primary:visited {
+
+    background-color: #756FF5 !important;
+    border-color: #756FF5 !important;
+}
+.nav-link.home{
+	color: #756FF5 !important;
+	font-weight: 800;
+	font-size: 16px;
+}
+
+/* .btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+} */
+ 
+.btn-outline-primary {
+    color: #756FF5 !important;
+     border-color: #756FF5 !important;
+}
+ 
+/* .btn-outline-primary:hover,  */
+.btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary.active, .open > .dropdown-toggle.btn-outline-primary {
+    background: #756FF5;
+}
+ 
+.btn-outline-primary:active, .btn-outline-primary.active {
+    background: #756FF5;
+    box-shadow: none;
+}
+
+
+
+
+
+
+
+
 /* 
 html, body {
   height: 100%;
