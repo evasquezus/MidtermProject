@@ -41,11 +41,11 @@
 
 											<c:choose>
 												<c:when test="${empty selectedEvent.user.imageUrl}">"
-       								<img class="img-fluid"
+       												<img class="img-fluid"
 														src="../resources/user_images/default.png" alt="Avatar" />
 												</c:when>
 												<c:otherwise>
-													<img class="img-fluid" src="../resources/user_images/${selectedEvent.user.imageUrl}"
+													<img class="img-fluid" src="../../resources/user_images/default.png"
 														alt="Avatar" />
 												</c:otherwise>
 											</c:choose>
