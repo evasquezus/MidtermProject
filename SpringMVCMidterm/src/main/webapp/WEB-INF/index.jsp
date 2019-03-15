@@ -137,17 +137,16 @@
 
 							<div class="card-custom-avatar">
 
-								<c:choose>
-									<c:when test="${empty event.user.imageUrl}">"
+											<c:choose>
+												<c:when test="${empty event.user.imageUrl}">"
        								<img class="img-fluid"
-											src="resources/user_images/default.png" alt="Avatar" />
-									</c:when>
-									<c:otherwise>
-										<img class="img-fluid" src="resources/user_images/default.png"
-											<%-- src="${event.user.imageUrl}" --%>
-										alt="Avatar" />
-									</c:otherwise>
-								</c:choose>
+														src="../resources/user_images/default.png" alt="Avatar" />
+												</c:when>
+												<c:otherwise>
+													<img class="img-fluid"
+														src="${event.user.imageUrl}" alt="Avatar" />
+												</c:otherwise>
+											</c:choose>
 
 							</div>
 							<div class="card-body" style="overflow-y: auto">
