@@ -42,10 +42,10 @@
 											<c:choose>
 												<c:when test="${empty selectedEvent.user.imageUrl}">"
        								<img class="img-fluid"
-														src="resources/user_images/default.png" alt="Avatar" />
+														src="../resources/user_images/default.png" alt="Avatar" />
 												</c:when>
 												<c:otherwise>
-													<img class="img-fluid" src="${selectedEvent.user.imageUrl}"
+													<img class="img-fluid" src="../resources/user_images/${selectedEvent.user.imageUrl}"
 														alt="Avatar" />
 												</c:otherwise>
 											</c:choose>
@@ -73,7 +73,7 @@
 										</c:when>
 										<c:when
 											test="${currentUser.id == 1 || currentUser.id == selectedEvent.user.id}">
-											<div class="col-6">
+											<div class="col-6 offset-3 pb-3">
 												<form action="editEvent.do" method="GET">
 													<input type="hidden" name="id" value="${selectedEvent.id}" />
 													<input
