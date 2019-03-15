@@ -55,6 +55,7 @@
 .dropdown-menu.show{
 	width:400px;
 	left:-300px;
+	text-align: center;
 }
 .backArrow{
 	font-size: 18px;

@@ -36,7 +36,7 @@
 								Email: <input type="email" name="email"> <br>
 								Password: <input type="password" name="password"> <br>
 								Confirm Password: <input type="password" name="confirmPassword">
-								Zip Code (optional): <input type="text" name="zipcode"> <br>
+								<!-- Zip Code (optional): <input type="text" name="zipcode"> <br> -->
 								<br> 
 								<input type="submit" name="userID"
 									value="Register User" />

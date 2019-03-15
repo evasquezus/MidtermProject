@@ -69,8 +69,9 @@
 							<div class="profile-usertitle-name">${user.firstName} ${user.lastName}</div>
 						</div>
 						<div class="profile-userbuttons">
-							<button type="button" class="btn btn-success btn-sm">Follow</button>
-							<button type="button" class="btn btn-danger btn-sm">Message</button>
+							<form action="../resources/images/bsod.jpg">
+							<button type="submit" class="btn btn-success btn-sm">Follow</button>
+							<button type="submit" class="btn btn-danger btn-sm">Message</button>
 						</div>
 					</div>
 				</div>
@@ -137,11 +138,12 @@
 									value=${user.firstName}> <br> Last Name: <input
 									type="text" value=${user.lastName } name="lastName"> <br>
 								<h3>Contact Information:</h3>
-								<br> Home Address <input type="text" name="homeAddress">
+								<!-- <br> Home Address <input type="text" name="homeAddress"> -->
 								<br> Phone Number <input type="text"
 									value=${user.phone
-									} name="phone">
-								Email: <input type="text" value=${user.email } name="email">
+									} name="phone"> <br>
+								Email: <input type="text" value=${user.email } name="email"> <br>
+								Password: <input type="text" value=${user.password } name="password">
 								<br> <input type="hidden" name="active" value="1" />
 								<br> <input type="hidden" name="id" value="${user.id}" />
 								<br> <input type="submit" class="btn btn-danger btn-sm"
