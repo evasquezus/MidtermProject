@@ -85,7 +85,7 @@ DROP TABLE IF EXISTS `event_subject` ;
 CREATE TABLE IF NOT EXISTS `event_subject` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `event_name` VARCHAR(200) NULL,
-  `img_url` VARCHAR(200) NULL DEFAULT 'default.jpg',
+  `img_url` VARCHAR(1000) NULL DEFAULT 'default.jpg',
   `user_id` INT NULL,
   `date_created` DATETIME NULL DEFAULT  CURRENT_TIMESTAMP,
   `flag_content` TINYINT NULL DEFAULT 0,
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `event` (
   `event_subject_id` INT NULL,
   `start_time` DATETIME NULL DEFAULT  CURRENT_TIMESTAMP,
   `finish_time` DATETIME NULL DEFAULT  CURRENT_TIMESTAMP,
-  `image_url` VARCHAR(200) NULL,
+  `image_url` VARCHAR(1000) NULL,
   `address_id` INT NULL,
   `open` TINYINT NULL DEFAULT 1,
   `max_size` INT NULL DEFAULT 10,
