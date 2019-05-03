@@ -9,9 +9,9 @@ http://3.17.253.216:8080/SpringMVCMidterm/
 
 ## Overview
 Evented
-During this 7 day sprint we decided to build a website. This website lets you create or join events in your area which other people have the ability to join. Have you ever failed trying to find a friend or family member to join you at an event? Worry not we have you covered, our page allows you to find like minded individuals who will join you for an aweasome night out .
+During this 7 day sprint we decided to build a website. This website lets you create or join events in your area which other people have the ability to join. Have you ever failed trying to find a friend or family member to join you at an event? Worry not we have you covered, our page allows you to find like minded individuals who will join you for an awesome night out.
+The process to register, create, login/logout, join, create or leave events, are all straight forward and simple. Admins have the higher privileges and can delete or edit your event if you don't follow the guidelines for posting. All crud functionality is present in this project.
 
-The process to register, create, login/logout, join ,create or leave events, are all straight foward and simple. Admins have the higher privalages and can delete or edit your event if you don't follow the guideslines for posting. All crud funcationallity is present in this project.
 
 ## DB Design
 <img width="887" alt="Screen Shot 2019-04-15 at 7 40 47 PM" src="https://user-images.githubusercontent.com/46031363/56175997-c678c180-5fb6-11e9-9133-a022cc97afb0.png">
