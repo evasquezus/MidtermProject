@@ -10,6 +10,7 @@ http://3.17.253.216:8080/SpringMVCMidterm/
 ## Overview
 Evented
 During this 7 day sprint we decided to build a website. This website lets you create or join events in your area which other people have the ability to join. Have you ever failed trying to find a friend or family member to join you at an event? Worry not we have you covered, our page allows you to find like minded individuals who will join you for an awesome night out.
+
 The process to register, create, login/logout, join, create or leave events, are all straight forward and simple. Admins have the higher privileges and can delete or edit your event if you don't follow the guidelines for posting. All crud functionality is present in this project.
 
 
